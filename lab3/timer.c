@@ -10,6 +10,7 @@ int hook_id = 0;
 int count = 0;
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
+  hook_id = TIMER0_IRQ;
   *bit_no = BIT(hook_id);
   if (sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id)) {
     return 1;
