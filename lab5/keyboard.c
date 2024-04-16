@@ -12,7 +12,7 @@ bool flag_complete = false;
 int (kb_subscribe_int)(uint8_t *bit_no) {
   hook_id_kb = 1;
   *bit_no = hook_id_kb;
-  if (sys_irqsetpolicy(KEYBOARD_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE , &hook_id_kb)) {
+  if (sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE , &hook_id_kb)) {
     return 1;
   }
   return 0;

@@ -44,5 +44,14 @@ int (set_graphics_mode)(uint16_t mode);
 int (get_permission)(unsigned int base_addr, unsigned int size);
 int (map_vram)(void);
 int (set_pixel)(uint16_t x, uint16_t y, uint32_t color);
+int (paint_screen)(uint32_t color);
+int (clear_screen)();
+uint16_t get_XRes(void);
+uint16_t get_YRes(void);
+uint16_t get_bits_pixel(void);
+uint16_t get_bytes_pixel(void);
+uint16_t get_RedMaskSize  (void);
+uint16_t get_GreenMaskSize(void);
+uint16_t get_BlueMaskSize (void);
 
 #endif /* end of include guard: GRAPHICS_MACROS_H_INCLUDED */
