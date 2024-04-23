@@ -3,7 +3,7 @@
 
 static void *video_mem; 
 static vbe_mode_info_t vbe_mem_info;
-static mmap_t mem_map;
+//static mmap_t mem_map;
 
 /*int (vg_exit)() {
   reg86_t r86; 
@@ -98,10 +98,6 @@ void* (vg_init)(uint16_t mode) {
     set_graphics_mode(mode);
     return video_mem;
 }
-
-typedef struct{
-    uint8_t comp[3];
-} rgb_8_8_8_t;
 
 
 //mem video + (x + y*hres)*bp

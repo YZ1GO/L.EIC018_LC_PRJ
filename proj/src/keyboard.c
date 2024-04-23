@@ -1,7 +1,6 @@
 #include <lcom/lcf.h>
 #include "keyboard.h"
 
-//5.1
 int hook_id_kb = 1;
 uint8_t scancode;
 uint8_t bytes[2];

@@ -296,13 +296,13 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
               vg_draw_rectangle(sp->x,sp->y,sp->w,sp->h, BLACK);
               sp->x += sp->vx;
               sp->y += sp->vy;
-              if (sp->x >= xf) {
+              if (((sp->x >= xf) && (vx > 0)) || ((vx < 0) && (sp->x <= xf))) {
                 sp->x = xf;
               }
-              if (sp->y >= yf) {
+              if (((sp->y >= yf) && (vy > 0)) || ((sp->y <= yf) && (vy < 0))) {
                 sp->y = yf;
               }
-              if (sp->x >= xf && sp->y >= yf) {
+              if (sp->x == xf && sp->y == yf) {
                 good = 0;
               }
               sprite_draw(sp);

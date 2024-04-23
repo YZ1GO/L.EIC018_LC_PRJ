@@ -1,6 +1,7 @@
 #include "sprite.h"
+#include <stdint.h>
 
-struct player {
+typedef struct {
     sprite_t* sprite;
     int position_x;
     int position_y;
@@ -8,20 +9,16 @@ struct player {
     int width;
     int health;
     int score;
-};
+} player_t;
 
-typedef struct player player_t;
-
-struct element {
+typedef struct {
     sprite_t* sprite;
     int position_x;
     int position_y;
     int height;
-    int wdith;
+    int width;
     int velocity;
-};
-
-typedef struct element element_t;
+} element_t;
 
 bool check_collision(element_t el, player_t p);
 void increase_score(int elapsed_time, player_t* p);
@@ -31,3 +28,4 @@ int get_y_player(player_t* p);
 int get_score_player(player_t* p);
 int get_health_player(player_t* p);
 void draw_player(player_t p);
+void handleMoviment(uint8_t scancode, sprite_t* sp);

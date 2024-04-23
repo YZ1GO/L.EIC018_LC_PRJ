@@ -12,6 +12,7 @@
 #include "keyboard.h"
 #include "i8254.h"
 #include "utils.h"
+#include "list.h"
 
 //extern variables
 extern int kb_count;
@@ -30,11 +31,11 @@ int main(int argc, char *argv[]) {
 
     // enables to log function invocations that are being "wrapped" by LCF
     // [comment this out if you don't want/need it]
-    lcf_trace_calls("/home/lcom/labs/proj/trace.txt");
+    lcf_trace_calls("/home/lcom/labs/g6/proj/trace.txt");
 
     // enables to save the output of printf function calls on a file
     // [comment this out if you don't want/need it]
-    lcf_log_output("/home/lcom/labs/proj/output.txt");
+    lcf_log_output("/home/lcom/labs/g6/proj/output.txt");
 
     // handles control over to LCF
     // [LCF handles command line arguments and invokes the right function]
@@ -50,12 +51,11 @@ int main(int argc, char *argv[]) {
 
 int(proj_main_loop)(int argc, char *argv[]) {
     vg_init(0x105);
-    sprite_t *sp = sprite_ctor(pikachu_xpm);
+    sprite_t *sp = sprite_ctor(mario_xpm);
     int x = 100;
     int y = 100;
     sprite_set_pos(sp, x, y);
     sprite_draw(sp);
-
 
     int ipc_status;
     message msg;
@@ -79,12 +79,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
                     if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
                         kb_interupt_handler();
                         size_temp--;
-                        if (size_temp == 0) {
-                            kbd_print_scancode(!(bytes[size-1] & BREAK_CODE_BIT), size, bytes);
-                        }
                         if (flag_complete_kb) {
                             size = 0;
                             flag_complete_kb = false;
+                            handleMoviment(scancode, sp);
                         }
                     }
                     break;
