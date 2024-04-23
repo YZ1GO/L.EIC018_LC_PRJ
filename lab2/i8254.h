@@ -4,6 +4,10 @@
 #include <lcom/lcf.h>
 
 /** @defgroup i8254 i8254
+<<<<<<< HEAD
+ * @{
+=======
+>>>>>>> origin/202108614
  *
  * Constants for programming the i8254 Timer. Needs to be completed.
  */
