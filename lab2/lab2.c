@@ -4,7 +4,10 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+<<<<<<< HEAD
+=======
 extern int count;
+>>>>>>> origin/202108614
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -31,6 +34,26 @@ int main(int argc, char *argv[]) {
 }
 
 int(timer_test_read_config)(uint8_t timer, enum timer_status_field field) {
+<<<<<<< HEAD
+  /* To be implemented by the students */
+  printf("%s is not yet implemented!\n", __func__);
+
+  return 1;
+}
+
+int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
+  /* To be implemented by the students */
+  printf("%s is not yet implemented!\n", __func__);
+
+  return 1;
+}
+
+int(timer_test_int)(uint8_t time) {
+  /* To be implemented by the students */
+  printf("%s is not yet implemented!\n", __func__);
+
+  return 1;
+=======
   uint8_t status = 0;
   if (timer_get_conf(timer, &status)) {
     return 1;
@@ -88,4 +111,5 @@ int(timer_test_int)(uint8_t time) {
     return 1;
   }
   return 0;
+>>>>>>> origin/202108614
 }
