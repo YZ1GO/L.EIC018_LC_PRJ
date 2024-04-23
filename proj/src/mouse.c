@@ -4,8 +4,8 @@
 #include <stdint.h>
 
 int hook_id_mouse = 12;
-uint8_t byte;
-uint8_t bytes[3];
+uint8_t byte_m;
+uint8_t bytes_m[3];
 uint8_t count_mouse = 0;
 bool flag_complete = false;
 
@@ -53,13 +53,13 @@ int(mouse_read_byte)(uint8_t status, uint8_t* byte) {
 void (mouse_ih)() {
   uint8_t status;
   mouse_read_status(&status);
-  mouse_read_byte(status, &byte);
-  if (count_mouse == 0 && (byte & BIT(3))) {
-    bytes[count_mouse] = byte;
+  mouse_read_byte(status, &byte_m);
+  if (count_mouse == 0 && (byte_m & BIT(3))) {
+    bytes_m[count_mouse] = byte_m;
     count_mouse++;
   }
   else if (count_mouse != 0) {
-    bytes[count_mouse] = byte;
+    bytes_m[count_mouse] = byte_m;
     count_mouse++;
   }
   if (count_mouse >= 3) {
@@ -69,21 +69,21 @@ void (mouse_ih)() {
 
 void (build_packet)(struct packet* pp) {
   for (int i = 0; i < 3; i++) {
-    pp->bytes[i] = bytes[i];
+    pp->bytes[i] = bytes_m[i];
   }
-  pp->lb = bytes[0] & LEFT_BUTTON;
-  pp->mb = bytes[0] & MIDDLE_BUTTON;
-  pp->rb = bytes[0] & RIGHT_BUTTON;
-  pp->x_ov = bytes[0] & X_OVERFLOW;
-  pp->y_ov = bytes[0] & Y_OVERFLOW;
+  pp->lb = bytes_m[0] & LEFT_BUTTON;
+  pp->mb = bytes_m[0] & MIDDLE_BUTTON;
+  pp->rb = bytes_m[0] & RIGHT_BUTTON;
+  pp->x_ov = bytes_m[0] & X_OVERFLOW;
+  pp->y_ov = bytes_m[0] & Y_OVERFLOW;
   //X Delta
-  pp->delta_x = bytes[1];
-  if (bytes[0] & MSB_X_DELTA) {
+  pp->delta_x = bytes_m[1];
+  if (bytes_m[0] & MSB_X_DELTA) {
     pp->delta_x |= 0xFF00; 
   }
   //Y Delta
-  pp->delta_y = bytes[2];
-  if (bytes[0] & MSB_Y_DELTA) {
+  pp->delta_y = bytes_m[2];
+  if (bytes_m[0] & MSB_Y_DELTA) {
     pp->delta_y |= 0xFF00;
   }
 }

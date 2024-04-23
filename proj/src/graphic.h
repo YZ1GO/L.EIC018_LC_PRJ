@@ -44,6 +44,7 @@ int (set_graphics_mode)(uint16_t mode);
 int (get_permission)(unsigned int base_addr, unsigned int size);
 int (map_vram)(void);
 int (set_pixel)(uint16_t x, uint16_t y, uint32_t color);
+int (set_pixel_no_black)(uint16_t x, uint16_t y, uint32_t color);
 int (paint_screen)(uint32_t color);
 int (clear_screen)();
 uint16_t get_XRes(void);

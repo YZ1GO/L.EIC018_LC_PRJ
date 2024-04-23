@@ -24,6 +24,11 @@ extern bool flag_complete_kb;
 extern uint32_t count;
 extern int hook_id;
 extern int hook_id_kb;
+extern int hook_id_mouse;
+extern int count_mouse;
+extern int bytes_m[3];
+extern int byte_m;
+extern bool flag_complete;
 
 int main(int argc, char *argv[]) {
     // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -51,22 +56,37 @@ int main(int argc, char *argv[]) {
 
 int(proj_main_loop)(int argc, char *argv[]) {
     vg_init(0x105);
-    sprite_t *sp = sprite_ctor(mario_xpm);
-    int x = 100;
-    int y = 100;
-    sprite_set_pos(sp, x, y);
-    sprite_draw(sp);
+    sprite_t *cursor = sprite_ctor(mouse_icon_xpm);
+    cursor->x = 100;
+    cursor->y = 100;
+    sprite_t *play = sprite_ctor(PLAY_xpm);
+    sprite_t *exit = sprite_ctor(EXIT_xpm);
+    drawMenu(play, exit, cursor);
 
     int ipc_status;
     message msg;
     int r;
+
     uint8_t bit_no_kbd;
     if (kb_subscribe_int(&bit_no_kbd)) {
         return 1;
     }
-    uint32_t irq_set = BIT(1);
+    uint32_t irq_set_kb = BIT(1);
 
-    while(bytes[0] != ESC_BREAK_CODE) { 
+    uint8_t bit_no_m;
+    if (send_command(0xF4)) {
+        return 1;
+    }
+    if (mouse_subscribe_int(&bit_no_m)) {
+        return 1;
+    }
+    uint32_t irq_set_m = BIT(12); 
+    uint32_t number_packets = 0;
+    struct packet mouse_packet;
+
+    int state;
+    int good = 1;
+    while(good) { 
         /* You may want to use a different condition */
         /* Get a request message. */
         if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
@@ -76,13 +96,27 @@ int(proj_main_loop)(int argc, char *argv[]) {
         if (is_ipc_notify(ipc_status)) { /* received notification */
             switch (_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE: /* hardware interrupt notification */				
-                    if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
+                    if (msg.m_notify.interrupts & irq_set_kb) { /* subscribed interrupt */
                         kb_interupt_handler();
                         size_temp--;
                         if (flag_complete_kb) {
                             size = 0;
                             flag_complete_kb = false;
-                            handleMoviment(scancode, sp);
+                            //vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
+                            //handleMovimentCursor(scancode, cursor);
+                            //drawMenu(play, exit, cursor);
+                            handleClick(scancode, cursor, play, exit, &state, &good);
+                        }
+                    }
+                    if (msg.m_notify.interrupts & irq_set_m) { /* subscribed interrupt */
+                        mouse_ih();
+                        if (flag_complete) {
+                            build_packet(&mouse_packet);
+                            number_packets++;
+                            flag_complete = false;
+                            count_mouse = 0;
+                            handleMovimentCursorMouse(&mouse_packet, cursor);
+                            sprite_draw(cursor);
                         }
                     }
                     break;
@@ -95,6 +129,12 @@ int(proj_main_loop)(int argc, char *argv[]) {
         }
     }
     if (kb_unsubscribe_int()) {
+        return 1;
+    }
+    if (mouse_unsubscribe_int()) {
+        return 1;
+    }
+    if (send_command(0xF5)) {
         return 1;
     }
     if (vg_exit()) {

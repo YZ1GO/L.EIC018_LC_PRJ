@@ -41,7 +41,7 @@ void sprite_draw(const sprite_t *p){
     for (int i = 0; i < p->w; i++) {
         for (int j = 0; j < p->h; j++) {
             if (p->x + i < get_XRes() && p->y + j < get_YRes()) {
-                set_pixel(p->x + i, p->y + j, p->map[i + j * p->w]);
+                set_pixel_no_black(p->x + i, p->y + j, p->map[i + j * p->w]);
             }
         }
     }
