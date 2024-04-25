@@ -9,6 +9,8 @@ int hook_id_timer = 0;
 
 uint32_t count_timer = 0;
 
+uint32_t count_elapsed_time = 0;
+
 int (timer_subscribe_int)(uint8_t *bit_no) {
   hook_id_timer = 0;
   *bit_no = hook_id_timer;
@@ -27,6 +29,7 @@ int (timer_unsubscribe_int)() {
 
 void (timer_int_handler)() {
   count_timer++;
+  count_elapsed_time++;
 }
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {

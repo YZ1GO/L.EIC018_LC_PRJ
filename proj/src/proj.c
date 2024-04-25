@@ -31,6 +31,7 @@ extern int byte_m;
 extern bool flag_complete;
 extern int hook_id_timer;
 extern uint32_t count_timer;
+extern uint32_t count_elapsed_time;
 int elapsed_time = 0;
 
 int main(int argc, char *argv[]) {
@@ -65,6 +66,8 @@ int(proj_main_loop)(int argc, char *argv[]) {
     sprite_t *exit = sprite_ctor(EXIT_xpm);
     sprite_t *player = sprite_ctor(mario_xpm_xpm);
     sprite_t *arena = sprite_ctor(arena_xpm);
+    sprite_t *object = sprite_ctor(enemy);
+    sprite_set_pos(object, 200, 5);
     sprite_set_pos(arena, 0, 0);
     sprite_set_pos(logo, 100, 100);
     sprite_set_pos(cursor, 100, 100);
@@ -118,11 +121,15 @@ int(proj_main_loop)(int argc, char *argv[]) {
                 case HARDWARE: /* hardware interrupt notification */	
                     if (msg.m_notify.interrupts & irq_set_timer) { /* subscribed interrupt */
                         timer_int_handler();
-                        if (count_timer % 60) {
+                        if (count_timer % 1 == 0) {
                             if (state == 1) {
-                                sprite_draw(player);
+                                vg_draw_rectangle(object->x, object->y, object->w, object->h, BLACK);
+                                handleMovimentEnemy(object, elapsed_time);
+                                sprite_draw(object);
                                 sprite_draw(arena);
-                                elapsed_time++;
+                                if (count_elapsed_time % 60 == 0) {
+                                    elapsed_time++;
+                                }
                             }
                         }
                     }			
@@ -142,6 +149,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 handleClick(scancode, cursor, play, exit, &state, &good);
                                 vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
                                 handleMoviment(scancode, player, 1);
+                                sprite_draw(player);
                                 sprite_draw(arena);
                             }
                         }

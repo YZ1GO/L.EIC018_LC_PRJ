@@ -74,3 +74,25 @@ void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo) 
     sprite_draw(exit);
     sprite_draw(cursor);
 }
+
+void handleMovimentEnemy(sprite_t* object, int elapsed_time) {
+    if (elapsed_time <= 10) {
+        object->y = object->y + 3;
+    }
+    else if (elapsed_time > 10 && elapsed_time <= 20) {
+        object->y = object->y + 5;
+
+    }
+    else if (elapsed_time > 20 && elapsed_time <= 30) {
+        object->y = object->y + 7;
+    }
+    else if (elapsed_time > 30 && elapsed_time <= 40) {
+        object->y = object->y + 9;
+    }
+    else {
+        object->y = object->y + 11;
+    }
+    if (object->y + object->h > 768) {
+        object->y = 5;
+    }
+}
