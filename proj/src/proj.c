@@ -129,6 +129,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 sprite_draw(arena);
                                 if (count_elapsed_time % 60 == 0) {
                                     elapsed_time++;
+                                    game.score += 50*elapsed_time + 10; 
+                                }
+                                if (game.health <= 0) {
+                                    good = 0;
                                 }
                             }
                         }
@@ -151,6 +155,9 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 handleMoviment(scancode, player, 1);
                                 sprite_draw(player);
                                 sprite_draw(arena);
+                                if (check_collision(player, object)) {
+                                    game.health = game.health - 30;
+                                }
                             }
                         }
                     }

@@ -2,6 +2,7 @@
 #include "mouse.h"
 #include "game.h"
 #include <stdint.h>
+#include <stdlib.h>
 
 bool check_collision_menu(sprite_t* el, sprite_t* cursor) {
     if (el->x <= cursor->x && el->x + el->w >= cursor->x) {
@@ -94,5 +95,50 @@ void handleMovimentEnemy(sprite_t* object, int elapsed_time) {
     }
     if (object->y + object->h > 768) {
         object->y = 5;
+    }
+}
+
+void get_each_digit(int n, int* array) {
+    int it = 0;
+    while (n > 0) {
+        int digit = n % 10;  
+        array[it] = digit;
+        it++;
+        n /= 10;             
+    } 
+}
+
+void draw_numbers(int* array, int position_y) {
+    int size = sizeof(array) / sizeof(array[0]);
+    int position_x = 750;
+    sprite_t* n;
+    for (int i = 0; i < size; i++) {
+        switch(array[i]) {
+            case 0: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 1: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 2: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 3: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 4: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 5: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 6: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 7: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 8: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 9: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+        }
+        position_x = position_x - 50;
+    }
+}
+
+bool check_collision(sprite_t* player, sprite_t* object) {
+    if (player->x <= object->x && player->x + player->w >= object->x) {
+        if (player->y <= object->y && player->y + player->h >= object->y) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return false;
     }
 }
