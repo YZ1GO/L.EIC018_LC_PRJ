@@ -29,6 +29,9 @@ extern int count_mouse;
 extern int bytes_m[3];
 extern int byte_m;
 extern bool flag_complete;
+extern int hook_id_timer;
+extern uint32_t count_timer;
+int elapsed_time = 0;
 
 int main(int argc, char *argv[]) {
     // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -57,15 +60,29 @@ int main(int argc, char *argv[]) {
 int(proj_main_loop)(int argc, char *argv[]) {
     vg_init(0x105);
     sprite_t *cursor = sprite_ctor(mouse_icon_xpm);
-    cursor->x = 100;
-    cursor->y = 100;
+    sprite_t *logo = sprite_ctor(logo_xpm);
     sprite_t *play = sprite_ctor(PLAY_xpm);
     sprite_t *exit = sprite_ctor(EXIT_xpm);
-    drawMenu(play, exit, cursor);
+    sprite_t *player = sprite_ctor(mario_xpm_xpm);
+    sprite_t *arena = sprite_ctor(arena_xpm);
+    sprite_set_pos(arena, 0, 0);
+    sprite_set_pos(logo, 100, 100);
+    sprite_set_pos(cursor, 100, 100);
+    sprite_set_pos(play, 450, 300);
+    sprite_set_pos(exit, 450, 400);
+    sprite_set_pos(player, 200, 500);
+    drawMenu(play, exit, cursor, logo);
+    printf("%d,%d\n", player->h, player->w);
 
     int ipc_status;
     message msg;
     int r;
+
+    uint8_t bit_no_timer;
+    if (timer_subscribe_int(&bit_no_timer)) {
+        return 1;
+    }
+    uint32_t irq_set_timer = BIT(0);
 
     uint8_t bit_no_kbd;
     if (kb_subscribe_int(&bit_no_kbd)) {
@@ -84,8 +101,11 @@ int(proj_main_loop)(int argc, char *argv[]) {
     uint32_t number_packets = 0;
     struct packet mouse_packet;
 
-    int state;
+    int state = 0;
     int good = 1;
+    game_t game;
+    game.health = 100;
+    game.score = 0;
     while(good) { 
         /* You may want to use a different condition */
         /* Get a request message. */
@@ -95,17 +115,35 @@ int(proj_main_loop)(int argc, char *argv[]) {
         }
         if (is_ipc_notify(ipc_status)) { /* received notification */
             switch (_ENDPOINT_P(msg.m_source)) {
-                case HARDWARE: /* hardware interrupt notification */				
+                case HARDWARE: /* hardware interrupt notification */	
+                    if (msg.m_notify.interrupts & irq_set_timer) { /* subscribed interrupt */
+                        timer_int_handler();
+                        if (count_timer % 60) {
+                            if (state == 1) {
+                                sprite_draw(player);
+                                sprite_draw(arena);
+                                elapsed_time++;
+                            }
+                        }
+                    }			
                     if (msg.m_notify.interrupts & irq_set_kb) { /* subscribed interrupt */
                         kb_interupt_handler();
                         size_temp--;
                         if (flag_complete_kb) {
                             size = 0;
                             flag_complete_kb = false;
-                            //vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
-                            //handleMovimentCursor(scancode, cursor);
-                            //drawMenu(play, exit, cursor);
-                            handleClick(scancode, cursor, play, exit, &state, &good);
+                            if (state == 0) {
+                                vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
+                                handleMoviment(scancode, cursor, 0);
+                                drawMenu(play, exit, cursor, logo);
+                                handleClick(scancode, cursor, play, exit, &state, &good);
+                            }
+                            if (state == 1) {
+                                handleClick(scancode, cursor, play, exit, &state, &good);
+                                vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
+                                handleMoviment(scancode, player, 1);
+                                sprite_draw(arena);
+                            }
                         }
                     }
                     if (msg.m_notify.interrupts & irq_set_m) { /* subscribed interrupt */
@@ -115,8 +153,11 @@ int(proj_main_loop)(int argc, char *argv[]) {
                             number_packets++;
                             flag_complete = false;
                             count_mouse = 0;
-                            handleMovimentCursorMouse(&mouse_packet, cursor);
-                            sprite_draw(cursor);
+                            if (state == 0) {
+                                vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
+                                handleMovimentCursorMouse(&mouse_packet, cursor);
+                                drawMenu(play, exit, cursor, logo);
+                            }
                         }
                     }
                     break;
@@ -127,6 +168,9 @@ int(proj_main_loop)(int argc, char *argv[]) {
             /* received a standard message, not a notification */
             /* no standard messages expected: do nothing */
         }
+    }
+    if(timer_unsubscribe_int()) {
+        return 1;
     }
     if (kb_unsubscribe_int()) {
         return 1;
