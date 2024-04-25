@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
 
 int(proj_main_loop)(int argc, char *argv[]) {
     vg_init(0x105);
-    sprite_t *sp = sprite_ctor(mario_xpm);
+    sprite_t *sp = sprite_ctor(NINE_xpm);
     int x = 100;
     int y = 100;
     sprite_set_pos(sp, x, y);

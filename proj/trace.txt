@@ -6,8 +6,8 @@
   > vg_init(0x105)
     @graphic.c:96, vg_init
       vbe_get_mode_info(mode, &vbe_mem_info)
-    > vbe_get_mode_info(0x105, addr: 0x8239908)
-    < vbe_get_mode_info(0x105, addr: 0x8239908 [0xe0000000, 1024x768, Indexed (8 BPP) <768 KiB>]) -> (ret: 0)
+    > vbe_get_mode_info(0x105, addr: 0x82398d8)
+    < vbe_get_mode_info(0x105, addr: 0x82398d8 [0xe0000000, 1024x768, Indexed (8 BPP) <768 KiB>]) -> (ret: 0)
     @graphic.c:47, get_permission
       sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mmr)
     > sys_privctl(SELF, SYS_PRIV_ADD_MEM, addr: 0xeffff620 [0xe0000000 - 0xe00c0000 <768 KiB>])
@@ -22,12 +22,12 @@
   < vg_init(0x105) -> (ret: 0xef93b000)
   @sprite.c:12, sprite_ctor
     xpm_load(xpm, type, &img)
-  > xpm_load(addr: 0x81c0b80, XPM_INDEXED, addr: 0xeffff720)
-  < xpm_load(addr: 0x81c0b80, XPM_INDEXED, addr: 0xeffff720 [300x382 : 114600 bytes]) -> (ret: 0x826b000)
+  > xpm_load(addr: 0x81c1ae8, XPM_INDEXED, addr: 0xeffff720)
+  < xpm_load(addr: 0x81c1ae8, XPM_INDEXED, addr: 0xeffff720 [50x50 : 2500 bytes]) -> (ret: 0x825b000)
   @keyboard.c:14, kb_subscribe_int
     sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &hook_id_kb)
-  > sys_irqsetpolicy(1, 3, addr: 0x8238c88 [1])
-  < sys_irqsetpolicy(1, 3, addr: 0x8238c88 [10]) -> (ret: 0)
+  > sys_irqsetpolicy(1, 3, addr: 0x8238c58 [1])
+  < sys_irqsetpolicy(1, 3, addr: 0x8238c58 [10]) -> (ret: 0)
   @proj.c:72, proj_main_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff760, addr: 0xeffff7a8)
