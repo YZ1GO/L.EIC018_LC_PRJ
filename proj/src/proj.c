@@ -103,7 +103,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
     uint32_t irq_set_m = BIT(12); 
     uint32_t number_packets = 0;
     struct packet mouse_packet;
-
     int state = 0;
     int good = 1;
     game_t game;
@@ -130,6 +129,9 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 if (count_elapsed_time % 60 == 0) {
                                     elapsed_time++;
                                     game.score += 50*elapsed_time + 10; 
+                                    draw_numbers(game.score, 200);
+                                    draw_numbers(game.health, 300);
+                                    draw_numbers(elapsed_time, 400);
                                 }
                                 if (game.health <= 0) {
                                     good = 0;
