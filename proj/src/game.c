@@ -105,7 +105,7 @@ void handleMovimentEnemy(sprite_t* object, int elapsed_time) {
         object->y = object->y + 11;
     }
     if (object->y + object->h > 768) {
-        object->y = 5;
+        object->y = 5; object->x = 5 + rand() % (646 - object->w + 1);
     }
 }
 
