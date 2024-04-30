@@ -4,6 +4,17 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+extern xpm_row_t ZERO_xpm[];
+extern xpm_row_t ONE_xpm[];
+extern xpm_row_t TWO_xpm[];
+extern xpm_row_t THREE_xpm[];
+extern xpm_row_t FOUR_xpm[];
+extern xpm_row_t FIVE_xpm[];
+extern xpm_row_t SIX_xpm[];
+extern xpm_row_t SEVEN_xpm[];
+extern xpm_row_t EIGHT_xpm[];
+extern xpm_row_t NINE_xpm[];
+
 bool check_collision_menu(sprite_t* el, sprite_t* cursor) {
     if (el->x <= cursor->x && el->x + el->w >= cursor->x) {
         if (el->y <= cursor->y && el->y + el->h >= cursor->y) {
@@ -94,38 +105,40 @@ void handleMovimentEnemy(sprite_t* object, int elapsed_time) {
         object->y = object->y + 11;
     }
     if (object->y + object->h > 768) {
-        object->y = 5;
+        object->y = 5; object->x = 5 + rand() % (646 - object->w + 1);
     }
 }
 
-void get_each_digit(int n, int* array) {
-    int it = 0;
-    while (n > 0) {
-        int digit = n % 10;  
-        array[it] = digit;
-        it++;
-        n /= 10;             
-    } 
-}
-
-void draw_numbers(int* array, int position_y) {
-    int size = sizeof(array) / sizeof(array[0]);
-    int position_x = 750;
+void draw_numbers(int number, int position_y) {
+    int position_x = 950;
     sprite_t* n;
-    for (int i = 0; i < size; i++) {
-        switch(array[i]) {
-            case 0: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
-            case 1: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
-            case 2: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
-            case 3: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
-            case 4: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
-            case 5: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
-            case 6: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
-            case 7: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
-            case 8: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
-            case 9: n = sprite_ctor(NULL); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+    while (number > 0) {
+        int digit = number % 10;
+        switch(digit) {
+            case 0: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(ZERO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 1: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(ONE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 2: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                 n = sprite_ctor(TWO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 3: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(THREE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 4: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(FOUR_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 5: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(FIVE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 6: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(SIX_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 7: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(SEVEN_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 8: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(EIGHT_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case 9: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(NINE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            default: break;
         }
         position_x = position_x - 50;
+        number /= 10;
     }
 }
 
