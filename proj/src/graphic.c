@@ -102,6 +102,20 @@ void* (vg_init)(uint16_t mode) {
 
 //mem video + (x + y*hres)*bp
 
+int (set_pixel_no_black)(uint16_t x, uint16_t y, uint32_t color) {
+    if (color == 0) {
+        return 0;
+    }
+    if (x > vbe_mem_info.XResolution || y > vbe_mem_info.YResolution) {
+        return 1;
+    }
+    unsigned int pos = (x + y * vbe_mem_info.XResolution) * get_bytes_pixel();
+    if (memcpy((void*)((unsigned int)video_mem + pos), &color, get_bytes_pixel()) == NULL) {
+        return 1;
+    }
+    return 0;
+}
+
 int (set_pixel)(uint16_t x, uint16_t y, uint32_t color) {
     if (x > vbe_mem_info.XResolution || y > vbe_mem_info.YResolution) {
         return 1;

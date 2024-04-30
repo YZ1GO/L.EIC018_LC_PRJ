@@ -27,22 +27,20 @@
 #define RTC_AF BIT(5)
 #define RTC_PF BIT(6)
 
-int rtc_init();
-
-int rtc_cleanup();
-
-int rtc_set_alarm(uint8_t hour, uint8_t minute, uint8_t second);
-
 int rtc_subscribe_int(uint8_t *bit_no);
 
 int rtc_unsubscribe_int();
+
+int rtc_init();
+
+int rtc_clean();
 
 int rtc_read_register(uint8_t address, uint8_t *data);
 
 int rtc_set_register(uint8_t address, uint8_t data);
 
-int rtc_read_date_to_string(char *string);
+int rtc_read_date(char *string);
 
-int rtc_read_time_to_string(char *string);
+int rtc_read_time(char *string);
 
 #endif
