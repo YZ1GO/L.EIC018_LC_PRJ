@@ -117,8 +117,8 @@ int (set_pixel_no_black)(uint16_t x, uint16_t y, uint32_t color) {
 }
 
 int (set_pixel)(uint16_t x, uint16_t y, uint32_t color) {
-    if (x > vbe_mem_info.XResolution || y > vbe_mem_info.YResolution) {
-        return 1;
+    if (x > vbe_mem_info.XResolution || y > vbe_mem_info.YResolution || x < 0 || y < 0) {
+        return 0;
     }
     unsigned int pos = (x + y * vbe_mem_info.XResolution) * get_bytes_pixel();
     if (memcpy((void*)((unsigned int)video_mem + pos), &color, get_bytes_pixel()) == NULL) {
