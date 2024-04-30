@@ -64,9 +64,9 @@ int(proj_main_loop)(int argc, char *argv[]) {
     sprite_t *logo = sprite_ctor(logo_xpm);
     sprite_t *play = sprite_ctor(PLAY_xpm);
     sprite_t *exit = sprite_ctor(EXIT_xpm);
-    sprite_t *player = sprite_ctor(mario_xpm_xpm);
+    sprite_t *player = sprite_ctor(plane_xpm);
     sprite_t *arena = sprite_ctor(arena_xpm);
-    sprite_t *object = sprite_ctor(enemy);
+    sprite_t *object = sprite_ctor(enemy2_xpm);
     sprite_set_pos(object, 200, 5);
     sprite_set_pos(arena, 0, 0);
     sprite_set_pos(logo, 100, 100);

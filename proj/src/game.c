@@ -51,7 +51,7 @@ void handleMoviment(uint8_t scancode, sprite_t* sp, int is_player) {
 void handleMovimentCursorMouse(struct packet* pp, sprite_t* sp) {
     uint8_t b[3];
     for (int i = 0; i < 3; i++) {
-       b[i] = pp->bytes[i];
+        b[i] = pp->bytes[i];
     }
     int16_t x = pp->delta_x;
     int16_t y = pp->delta_y;
@@ -120,7 +120,7 @@ void draw_numbers(int number, int position_y) {
             case 1: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
                 n = sprite_ctor(ONE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case 2: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
-                 n = sprite_ctor(TWO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+                n = sprite_ctor(TWO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case 3: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
                 n = sprite_ctor(THREE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case 4: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
