@@ -87,22 +87,26 @@ void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo) 
     sprite_draw(cursor);
 }
 
-void handleMovimentEnemy(sprite_t* object, sprite_t* object2, int elapsed_time) {
+void handleVerticalMovementEnemy(sprite_t* object, sprite_t* object2, int elapsed_time) {
     if (elapsed_time <= 10) {
         object->y = object->y + 3;
+        object2->y = object2->y + 3;
     }
     else if (elapsed_time > 10 && elapsed_time <= 20) {
         object->y = object->y + 5;
-
+        object2->y = object2->y + 5;
     }
     else if (elapsed_time > 20 && elapsed_time <= 30) {
         object->y = object->y + 7;
+        object2->y = object2->y + 7;
     }
     else if (elapsed_time > 30 && elapsed_time <= 40) {
         object->y = object->y + 9;
+        object2->y = object2->y + 9;
     }
     else {
         object->y = object->y + 11;
+        object2->y = object2->y + 11;
     }
     if (object->y + object->h > 768) {
         int new_x = 5 + rand() % (646 - object->w + 1);
@@ -114,6 +118,17 @@ void handleMovimentEnemy(sprite_t* object, sprite_t* object2, int elapsed_time) 
         }
         object->x = new_x;
         object->y = 5; 
+    }
+    if (object2->y + object2->h > 768) {
+        int new_x = 5 + rand() % (646 - object2->w + 1);
+        if (new_x == object->x) {
+            new_x += object2->w;
+            if (new_x > 646 - object2->w) {
+                new_x -= 2 * object2->w;
+            }
+        }
+        object2->x = new_x;
+        object2->y = 5; 
     }
 }
 
@@ -151,7 +166,18 @@ void draw_numbers(int number, int position_y) {
 }
 
 bool check_collision(sprite_t* player, sprite_t* object) {
-    if (player->x <= object->x && player->x + player->w >= object->x) {
+    for (int i = 0; i < player->w; i++) {
+        for (int j = 0; j < player->h; j++) {
+            if (player->x + i >= object->x && player->x + i < object->x + object->w &&
+                player->y + j >= object->y && player->y + j < object->y + object->h) {
+                if (player->map[i + j * player->w] != BLACK && object->map[(player->x + i - object->x) + (player->y + j - object->y) * object->w] != BLACK) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+    /*if (player->x <= object->x && player->x + player->w >= object->x) {
         if (player->y <= object->y && player->y + player->h >= object->y) {
             return true;
         }
@@ -161,5 +187,5 @@ bool check_collision(sprite_t* player, sprite_t* object) {
     }
     else {
         return false;
-    }
+    }*/
 }

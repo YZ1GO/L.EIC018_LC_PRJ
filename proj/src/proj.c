@@ -126,8 +126,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                             if (state == 1) {
                                 vg_draw_rectangle(verticalEnemy->x, verticalEnemy->y, verticalEnemy->w, verticalEnemy->h, BLACK);
                                 vg_draw_rectangle(verticalEnemy2->x, verticalEnemy2->y, verticalEnemy2->w, verticalEnemy2->h, BLACK);
-                                handleMovimentEnemy(verticalEnemy, verticalEnemy2, elapsed_time);
-                                handleMovimentEnemy(verticalEnemy2, verticalEnemy, elapsed_time);
+                                handleVerticalMovementEnemy(verticalEnemy, verticalEnemy2, elapsed_time);
                                 sprite_draw(verticalEnemy);
                                 sprite_draw(verticalEnemy2);
                                 sprite_draw(arena);

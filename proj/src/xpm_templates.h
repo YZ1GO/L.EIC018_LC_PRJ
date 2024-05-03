@@ -53,7 +53,7 @@ xpm_row_t mouse_icon_xpm[] = {
 "                                                ",
 "                                                "};
 
-xpm_row_t enemy_xpm[] = {
+xpm_row_t enemy1_xpm[] = {
 "32 27 3",
 "  0",
 ". 10",
