@@ -64,7 +64,9 @@ int(proj_main_loop)(int argc, char *argv[]) {
     sprite_t *logo = sprite_ctor(logo_xpm);
     sprite_t *play = sprite_ctor(PLAY_xpm);
     sprite_t *exit = sprite_ctor(EXIT_xpm);
-    sprite_t *player = sprite_ctor(plane_xpm);
+    sprite_t *player = sprite_ctor(player_xpm);
+    //sprite_t *playerLeft = sprite_ctor(leftPlayer_xpm);
+    //sprite_t *playerRight = sprite_ctor(rightPlayer_xpm);
     sprite_t *arena = sprite_ctor(arena_xpm);
     sprite_t *verticalEnemy = sprite_ctor(enemy2_xpm);
     sprite_t *verticalEnemy2 = sprite_ctor(enemy2_xpm);
