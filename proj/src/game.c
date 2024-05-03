@@ -87,7 +87,7 @@ void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo) 
     sprite_draw(cursor);
 }
 
-void handleMovimentEnemy(sprite_t* object, int elapsed_time) {
+void handleMovimentEnemy(sprite_t* object, sprite_t* object2, int elapsed_time) {
     if (elapsed_time <= 10) {
         object->y = object->y + 3;
     }
@@ -105,7 +105,15 @@ void handleMovimentEnemy(sprite_t* object, int elapsed_time) {
         object->y = object->y + 11;
     }
     if (object->y + object->h > 768) {
-        object->y = 5; object->x = 5 + rand() % (646 - object->w + 1);
+        int new_x = 5 + rand() % (646 - object->w + 1);
+        if (new_x == object2->x) {
+            new_x += object->w;
+            if (new_x > 646 - object->w) {
+                new_x -= 2 * object->w;
+            }
+        }
+        object->x = new_x;
+        object->y = 5; 
     }
 }
 

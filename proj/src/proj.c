@@ -66,8 +66,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
     sprite_t *exit = sprite_ctor(EXIT_xpm);
     sprite_t *player = sprite_ctor(plane_xpm);
     sprite_t *arena = sprite_ctor(arena_xpm);
-    sprite_t *object = sprite_ctor(enemy2_xpm);
-    sprite_set_pos(object, 200, 5);
+    sprite_t *verticalEnemy = sprite_ctor(enemy2_xpm);
+    sprite_t *verticalEnemy2 = sprite_ctor(enemy2_xpm);
+    sprite_set_pos(verticalEnemy, 200, 5);
+    sprite_set_pos(verticalEnemy2, 400, 5);
     sprite_set_pos(arena, 0, 0);
     sprite_set_pos(logo, 100, 100);
     sprite_set_pos(cursor, 100, 100);
@@ -122,9 +124,12 @@ int(proj_main_loop)(int argc, char *argv[]) {
                         timer_int_handler();
                         if (count_timer % 1 == 0) {
                             if (state == 1) {
-                                vg_draw_rectangle(object->x, object->y, object->w, object->h, BLACK);
-                                handleMovimentEnemy(object, elapsed_time);
-                                sprite_draw(object);
+                                vg_draw_rectangle(verticalEnemy->x, verticalEnemy->y, verticalEnemy->w, verticalEnemy->h, BLACK);
+                                vg_draw_rectangle(verticalEnemy2->x, verticalEnemy2->y, verticalEnemy2->w, verticalEnemy2->h, BLACK);
+                                handleMovimentEnemy(verticalEnemy, verticalEnemy2, elapsed_time);
+                                handleMovimentEnemy(verticalEnemy2, verticalEnemy, elapsed_time);
+                                sprite_draw(verticalEnemy);
+                                sprite_draw(verticalEnemy2);
                                 sprite_draw(arena);
                                 if (count_elapsed_time % 60 == 0) {
                                     elapsed_time++;
@@ -157,7 +162,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 handleMoviment(scancode, player, 1);
                                 sprite_draw(player);
                                 sprite_draw(arena);
-                                if (check_collision(player, object)) {
+                                if (check_collision(player, verticalEnemy)) {
                                     game.health = game.health - 30;
                                 }
                             }
