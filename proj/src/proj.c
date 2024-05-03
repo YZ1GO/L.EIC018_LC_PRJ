@@ -68,8 +68,12 @@ int(proj_main_loop)(int argc, char *argv[]) {
     sprite_t *arena = sprite_ctor(arena_xpm);
     sprite_t *verticalEnemy = sprite_ctor(enemy2_xpm);
     sprite_t *verticalEnemy2 = sprite_ctor(enemy2_xpm);
+    sprite_t *leftRightEnemy = sprite_ctor(leftRightEnemy_xpm);
+    sprite_t *rightLeftEnemy = sprite_ctor(rightLeftEnemy_xpm);
     sprite_set_pos(verticalEnemy, 200, 5);
-    sprite_set_pos(verticalEnemy2, 400, 5);
+    sprite_set_pos(verticalEnemy2, 400, -60);
+    sprite_set_pos(leftRightEnemy, 5, 300);
+    sprite_set_pos(rightLeftEnemy, 610, 100);
     sprite_set_pos(arena, 0, 0);
     sprite_set_pos(logo, 100, 100);
     sprite_set_pos(cursor, 100, 100);
@@ -126,9 +130,14 @@ int(proj_main_loop)(int argc, char *argv[]) {
                             if (state == 1) {
                                 vg_draw_rectangle(verticalEnemy->x, verticalEnemy->y, verticalEnemy->w, verticalEnemy->h, BLACK);
                                 vg_draw_rectangle(verticalEnemy2->x, verticalEnemy2->y, verticalEnemy2->w, verticalEnemy2->h, BLACK);
+                                vg_draw_rectangle(leftRightEnemy->x, leftRightEnemy->y, leftRightEnemy->w, leftRightEnemy->h, BLACK);
+                                vg_draw_rectangle(rightLeftEnemy->x, rightLeftEnemy->y, rightLeftEnemy->w, rightLeftEnemy->h, BLACK);
                                 handleVerticalMovementEnemy(verticalEnemy, verticalEnemy2, elapsed_time);
+                                handleHorizontalMovementEnemy(leftRightEnemy, rightLeftEnemy, elapsed_time);
                                 sprite_draw(verticalEnemy);
                                 sprite_draw(verticalEnemy2);
+                                sprite_draw(leftRightEnemy);
+                                sprite_draw(rightLeftEnemy);
                                 sprite_draw(arena);
                                 if (count_elapsed_time % 60 == 0) {
                                     elapsed_time++;

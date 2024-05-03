@@ -87,48 +87,93 @@ void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo) 
     sprite_draw(cursor);
 }
 
-void handleVerticalMovementEnemy(sprite_t* object, sprite_t* object2, int elapsed_time) {
+void handleVerticalMovementEnemy(sprite_t* verticalEnemy1, sprite_t* verticalEnemy2, int elapsed_time) {
     if (elapsed_time <= 10) {
-        object->y = object->y + 3;
-        object2->y = object2->y + 3;
+        verticalEnemy1->y = verticalEnemy1->y + 3;
+        verticalEnemy2->y = verticalEnemy2->y + 3;
     }
     else if (elapsed_time > 10 && elapsed_time <= 20) {
-        object->y = object->y + 5;
-        object2->y = object2->y + 5;
+        verticalEnemy1->y = verticalEnemy1->y + 5;
+        verticalEnemy2->y = verticalEnemy2->y + 5;
     }
     else if (elapsed_time > 20 && elapsed_time <= 30) {
-        object->y = object->y + 7;
-        object2->y = object2->y + 7;
+        verticalEnemy1->y = verticalEnemy1->y + 7;
+        verticalEnemy2->y = verticalEnemy2->y + 7;
     }
     else if (elapsed_time > 30 && elapsed_time <= 40) {
-        object->y = object->y + 9;
-        object2->y = object2->y + 9;
+        verticalEnemy1->y = verticalEnemy1->y + 9;
+        verticalEnemy2->y = verticalEnemy2->y + 9;
     }
     else {
-        object->y = object->y + 11;
-        object2->y = object2->y + 11;
+        verticalEnemy1->y = verticalEnemy1->y + 11;
+        verticalEnemy2->y = verticalEnemy2->y + 11;
     }
-    if (object->y + object->h > 768) {
-        int new_x = 5 + rand() % (646 - object->w + 1);
-        if (new_x == object2->x) {
-            new_x += object->w;
-            if (new_x > 646 - object->w) {
-                new_x -= 2 * object->w;
+    if (verticalEnemy1->y + verticalEnemy1->h > 768) {
+        int new_x = 5 + rand() % (646 - verticalEnemy1->w + 1);
+        if (new_x == verticalEnemy2->x) {
+            new_x += verticalEnemy1->w;
+            if (new_x > 646 - verticalEnemy1->w) {
+                new_x -= 2 * verticalEnemy1->w;
             }
         }
-        object->x = new_x;
-        object->y = 5; 
+        verticalEnemy1->x = new_x;
+        verticalEnemy1->y = 5; 
     }
-    if (object2->y + object2->h > 768) {
-        int new_x = 5 + rand() % (646 - object2->w + 1);
-        if (new_x == object->x) {
-            new_x += object2->w;
-            if (new_x > 646 - object2->w) {
-                new_x -= 2 * object2->w;
+    if (verticalEnemy2->y + verticalEnemy2->h > 768) {
+        int new_x = 5 + rand() % (646 - verticalEnemy2->w + 1);
+        if (new_x == verticalEnemy1->x) {
+            new_x += verticalEnemy2->w;
+            if (new_x > 646 - verticalEnemy2->w) {
+                new_x -= 2 * verticalEnemy2->w;
             }
         }
-        object2->x = new_x;
-        object2->y = 5; 
+        verticalEnemy2->x = new_x;
+        verticalEnemy2->y = 5; 
+    }
+}
+
+void handleHorizontalMovementEnemy(sprite_t* leftToRightEnemy, sprite_t* rightToLeftEnemy, int elapsed_time) {
+    if (elapsed_time <= 10) {
+        leftToRightEnemy->x = leftToRightEnemy->x + 3;
+        rightToLeftEnemy->x = rightToLeftEnemy->x - 3;
+    }
+    else if (elapsed_time > 10 && elapsed_time <= 20) {
+        leftToRightEnemy->x = leftToRightEnemy->x + 5;
+        rightToLeftEnemy->x = rightToLeftEnemy->x - 5;
+    }
+    else if (elapsed_time > 20 && elapsed_time <= 30) {
+        leftToRightEnemy->x = leftToRightEnemy->x + 7;
+        rightToLeftEnemy->x = rightToLeftEnemy->x - 7;
+    }
+    else if (elapsed_time > 30 && elapsed_time <= 40) {
+        leftToRightEnemy->x = leftToRightEnemy->x + 9;
+        rightToLeftEnemy->x = rightToLeftEnemy->x - 9;
+    }
+    else {
+        leftToRightEnemy->x = leftToRightEnemy->x + 11;
+        rightToLeftEnemy->x = rightToLeftEnemy->x - 11;
+    }
+    if (leftToRightEnemy->x + leftToRightEnemy->w > 646) {
+        int new_y = 5 + rand() % (768 - leftToRightEnemy->h + 1);
+        if (new_y == rightToLeftEnemy->y) {
+            new_y += leftToRightEnemy->h;
+            if (new_y > 768 - leftToRightEnemy->h) {
+                new_y -= 2 * leftToRightEnemy->h;
+            }
+        }
+        leftToRightEnemy->x = 5; 
+        leftToRightEnemy->y = new_y;
+    }
+    if (rightToLeftEnemy->x + rightToLeftEnemy->w < 0) {
+        int new_y = 5 + rand() % (768 - rightToLeftEnemy->h + 1);
+        if (new_y == leftToRightEnemy->y) {
+            new_y += rightToLeftEnemy->h;
+            if (new_y > 768 - rightToLeftEnemy->h) {
+                new_y -= 2 * rightToLeftEnemy->h;
+            }
+        }
+        rightToLeftEnemy->x = 646 - rightToLeftEnemy->w; 
+        rightToLeftEnemy->y = new_y;
     }
 }
 
