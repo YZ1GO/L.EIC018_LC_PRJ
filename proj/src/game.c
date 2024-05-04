@@ -179,6 +179,7 @@ void handleHorizontalMovementEnemy(sprite_t* leftToRightEnemy, sprite_t* rightTo
 
 void draw_numbers(int number, int position_y) {
     int position_x = 950;
+    vg_draw_rectangle(position_x - 100, position_y, 150, 50, BLACK);
     sprite_t* n;
     while (number > 0) {
         int digit = number % 10;
@@ -210,27 +211,20 @@ void draw_numbers(int number, int position_y) {
     }
 }
 
-bool check_collision(sprite_t* player, sprite_t* object) {
-    for (int i = 0; i < player->w; i++) {
-        for (int j = 0; j < player->h; j++) {
-            if (player->x + i >= object->x && player->x + i < object->x + object->w &&
-                player->y + j >= object->y && player->y + j < object->y + object->h) {
-                if (player->map[i + j * player->w] != BLACK && object->map[(player->x + i - object->x) + (player->y + j - object->y) * object->w] != BLACK) {
-                    return true;
-                }
-            }
-        }
+bool check_collision(sprite_t* player, sprite_t* object, int* last_collision_time, int elapsed_time) {
+    if (elapsed_time - *last_collision_time < COOLDOWN_PERIOD) {
+        return false;
+    }
+
+    if (player->x < object->x + object->w &&
+        player->x + player->w > object->x &&
+        player->y < object->y + object->h &&
+        player->y + player->h > object->y) {
+        vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
+        sprite_set_pos(player, 200, 500);
+        sprite_draw(player);
+        *last_collision_time = elapsed_time;
+        return true;
     }
     return false;
-    /*if (player->x <= object->x && player->x + player->w >= object->x) {
-        if (player->y <= object->y && player->y + player->h >= object->y) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    else {
-        return false;
-    }*/
 }

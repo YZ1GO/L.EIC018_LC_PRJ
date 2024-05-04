@@ -201,7 +201,7 @@ xpm_row_t rightLeftEnemy_xpm[] = {
 "           ++@+                     "};
 
 
-xpm_row_t enemy2_xpm[] = {
+xpm_row_t topDownEnemy_xpm[] = {
 "68 42 5",
 "  0",
 ". 14",

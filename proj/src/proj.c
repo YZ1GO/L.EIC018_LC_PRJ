@@ -33,6 +33,7 @@ extern int hook_id_timer;
 extern uint32_t count_timer;
 extern uint32_t count_elapsed_time;
 int elapsed_time = 0;
+int last_collision_time = -COOLDOWN_PERIOD;
 
 int main(int argc, char *argv[]) {
     // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -68,14 +69,19 @@ int(proj_main_loop)(int argc, char *argv[]) {
     //sprite_t *playerLeft = sprite_ctor(leftPlayer_xpm);
     //sprite_t *playerRight = sprite_ctor(rightPlayer_xpm);
     sprite_t *arena = sprite_ctor(arena_xpm);
-    sprite_t *verticalEnemy = sprite_ctor(enemy2_xpm);
-    sprite_t *verticalEnemy2 = sprite_ctor(enemy2_xpm);
-    sprite_t *leftRightEnemy = sprite_ctor(leftRightEnemy_xpm);
-    sprite_t *rightLeftEnemy = sprite_ctor(rightLeftEnemy_xpm);
-    sprite_set_pos(verticalEnemy, 200, 5);
-    sprite_set_pos(verticalEnemy2, 400, -60);
-    sprite_set_pos(leftRightEnemy, 5, 300);
-    sprite_set_pos(rightLeftEnemy, 610, 100);
+    sprite_t *enemies[4];
+    enemies[0] = sprite_ctor(topDownEnemy_xpm);
+    sprite_t *verticalEnemy = enemies[0];
+    enemies[1] = sprite_ctor(topDownEnemy_xpm);
+    sprite_t *verticalEnemy2 = enemies[1];
+    enemies[2] = sprite_ctor(leftRightEnemy_xpm);
+    sprite_t *leftRightEnemy = enemies[2];
+    enemies[3] = sprite_ctor(rightLeftEnemy_xpm);
+    sprite_t *rightLeftEnemy = enemies[3];
+    sprite_set_pos(enemies[0], 200, 5);
+    sprite_set_pos(enemies[1], 400, -60);
+    sprite_set_pos(enemies[2], 5, 300);
+    sprite_set_pos(enemies[3], 610, 100);
     sprite_set_pos(arena, 0, 0);
     sprite_set_pos(logo, 100, 100);
     sprite_set_pos(cursor, 100, 100);
@@ -125,7 +131,11 @@ int(proj_main_loop)(int argc, char *argv[]) {
         }
         if (is_ipc_notify(ipc_status)) { /* received notification */
             switch (_ENDPOINT_P(msg.m_source)) {
-                case HARDWARE: /* hardware interrupt notification */	
+                case HARDWARE: /* hardware interrupt notification */
+                    if (game.health <= 0) {
+                        good = 0;
+                    }	
+                    if (state == 1) sprite_draw(arena);
                     if (msg.m_notify.interrupts & irq_set_timer) { /* subscribed interrupt */
                         timer_int_handler();
                         if (count_timer % 1 == 0) {
@@ -140,7 +150,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 sprite_draw(verticalEnemy2);
                                 sprite_draw(leftRightEnemy);
                                 sprite_draw(rightLeftEnemy);
-                                sprite_draw(arena);
                                 if (count_elapsed_time % 60 == 0) {
                                     elapsed_time++;
                                     game.score += 50*elapsed_time + 10; 
@@ -148,12 +157,9 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                     draw_numbers(game.health, 300);
                                     draw_numbers(elapsed_time, 400);
                                 }
-                                if (game.health <= 0) {
-                                    good = 0;
-                                }
                             }
                         }
-                    }			
+                    }		
                     if (msg.m_notify.interrupts & irq_set_kb) { /* subscribed interrupt */
                         kb_interupt_handler();
                         size_temp--;
@@ -172,11 +178,16 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 handleMoviment(scancode, player, 1);
                                 sprite_draw(player);
                                 sprite_draw(arena);
-                                if (check_collision(player, verticalEnemy)) {
-                                    game.health = game.health - 30;
-                                }
+                                
                             }
                         }
+                    }
+                    if (state == 1) {
+                        for (int i = 0; i < 4; i++) {
+                            if (check_collision(player, enemies[i], &last_collision_time, elapsed_time)) {
+                                game.health -= 30;
+                            }
+                        }	
                     }
                     if (msg.m_notify.interrupts & irq_set_m) { /* subscribed interrupt */
                         mouse_ih();
