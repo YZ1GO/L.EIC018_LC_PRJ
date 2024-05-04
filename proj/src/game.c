@@ -88,12 +88,9 @@ void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo) 
 }
 
 int calculate_new_x(int enemyA_width, int enemyB_x) {
-    int new_x = 5 + rand() % (ARENA_WIDTH - enemyA_width + 1);
-    if (new_x == enemyB_x) {
-        new_x += enemyA_width;
-        if (new_x > ARENA_WIDTH - enemyA_width) {
-            new_x -= 2 * enemyA_width;
-        }
+    int new_x = 5 + rand() % (ARENA_WIDTH - enemyA_width - 5);
+    while (abs(new_x - enemyB_x) < enemyA_width) {
+        new_x = 5 + rand() % (ARENA_WIDTH - enemyA_width - 5);
     }
     return new_x;
 }
@@ -130,12 +127,9 @@ void handleVerticalMovementEnemy(sprite_t* verticalEnemy1, sprite_t* verticalEne
 }
 
 int calculate_new_y(int enemyA_height, int enemyB_y) {
-    int new_y = 5 + rand() % (ARENA_HEIGHT - enemyA_height + 1);
-    if (new_y == enemyB_y) {
-        new_y += enemyA_height;
-        if (new_y > ARENA_HEIGHT - enemyA_height) {
-            new_y -= 2 * enemyA_height;
-        }
+    int new_y = 5 + rand() % (ARENA_HEIGHT - enemyA_height - 5);
+    while (abs(new_y - enemyB_y) < enemyA_height) {
+        new_y = 5 + rand() % (ARENA_WIDTH - enemyA_height - 5);
     }
     return new_y;
 }
