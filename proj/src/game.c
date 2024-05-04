@@ -205,7 +205,7 @@ void draw_numbers(int number, int position_y) {
     }
 }
 
-bool check_collision(sprite_t* player, sprite_t* explosion, sprite_t* enemy, sprite_t* enemies[], int enemy_index, int* last_collision_time, int elapsed_time) {
+bool check_collision(sprite_t* player, sprite_t* explosion, sprite_t* enemy, sprite_t* enemies[], int enemy_index, int* last_collision_time, int* explosion_time, int elapsed_time) {
     if (elapsed_time - *last_collision_time < COOLDOWN_PERIOD) {
         return false;
     }
@@ -235,8 +235,8 @@ bool check_collision(sprite_t* player, sprite_t* explosion, sprite_t* enemy, spr
         sprite_draw(enemy);
         sprite_set_pos(player, PLAYER_X, PLAYER_Y);
         sprite_draw(player);
-        vg_draw_rectangle(explosion->x, explosion->y, explosion->w, explosion->h, BLACK);
         *last_collision_time = elapsed_time;
+        *explosion_time = elapsed_time;
         return true;
     }
     return false;

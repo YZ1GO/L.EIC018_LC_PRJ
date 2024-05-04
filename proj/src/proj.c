@@ -34,6 +34,7 @@ extern uint32_t count_timer;
 extern uint32_t count_elapsed_time;
 int elapsed_time = 0;
 int last_collision_time = -COOLDOWN_PERIOD;
+int explosion_time = -COOLDOWN_PERIOD;
 
 int main(int argc, char *argv[]) {
     // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -136,7 +137,13 @@ int(proj_main_loop)(int argc, char *argv[]) {
                     if (game.health <= 0) {
                         good = 0;
                     }	
-                    if (state == 1) sprite_draw(arena);
+                    if (state == 1) {
+                        sprite_draw(arena); 
+                        if (elapsed_time - explosion_time > 0.1) {
+                            vg_draw_rectangle(explosion->x, explosion->y, explosion->w, explosion->h, BLACK);
+                            explosion_time = 9999;
+                        }
+                    }    
                     if (msg.m_notify.interrupts & irq_set_timer) { /* subscribed interrupt */
                         timer_int_handler();
                         if (count_timer % 1 == 0) {
@@ -183,10 +190,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
                     }
                     if (state == 1) {
                         for (int i = 0; i < 4; i++) {
-                            if (check_collision(player, explosion, enemies[i], enemies, i, &last_collision_time, elapsed_time)) {
+                            if (check_collision(player, explosion, enemies[i], enemies, i, &last_collision_time, &explosion_time, elapsed_time)) {
                                 game.health -= 30;
                             }
-                        }	
+                        }
                     }
                     if (msg.m_notify.interrupts & irq_set_m) { /* subscribed interrupt */
                         mouse_ih();

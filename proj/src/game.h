@@ -30,4 +30,4 @@ void handleVerticalMovementEnemy(sprite_t* verticalEnemy1, sprite_t* verticalEne
 int calculate_new_y(int enemyA_height, int enemyB_y);
 void handleHorizontalMovementEnemy(sprite_t* leftToRightEnemy, sprite_t* rightToLeftEnemy, int elapsed_time);
 void draw_numbers(int number, int position_y);
-bool check_collision(sprite_t* player, sprite_t* explosion, sprite_t* enemy, sprite_t* enemies[], int enemy_index, int* last_collision_time, int elapsed_time);
+bool check_collision(sprite_t* player, sprite_t* explosion, sprite_t* enemy, sprite_t* enemies[], int enemy_index, int* last_collision_time, int* explosion_time, int elapsed_time);
