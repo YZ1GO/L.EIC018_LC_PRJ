@@ -78,6 +78,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
     sprite_t *leftRightEnemy = enemies[2];
     enemies[3] = sprite_ctor(rightLeftEnemy_xpm);
     sprite_t *rightLeftEnemy = enemies[3];
+    sprite_t *explosion = sprite_ctor(explosion_xpm);
     sprite_set_pos(enemies[0], V_ENEMY1_X, V_ENEMY1_Y);
     sprite_set_pos(enemies[1], V_ENEMY2_X, V_ENEMY2_Y);
     sprite_set_pos(enemies[2], LR_ENEMY_X, LR_ENEMY_Y);
@@ -182,7 +183,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                     }
                     if (state == 1) {
                         for (int i = 0; i < 4; i++) {
-                            if (check_collision(player, enemies[i], enemies, i, &last_collision_time, elapsed_time)) {
+                            if (check_collision(player, explosion, enemies[i], enemies, i, &last_collision_time, elapsed_time)) {
                                 game.health -= 30;
                             }
                         }	
