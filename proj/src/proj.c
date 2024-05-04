@@ -78,16 +78,16 @@ int(proj_main_loop)(int argc, char *argv[]) {
     sprite_t *leftRightEnemy = enemies[2];
     enemies[3] = sprite_ctor(rightLeftEnemy_xpm);
     sprite_t *rightLeftEnemy = enemies[3];
-    sprite_set_pos(enemies[0], 200, 5);
-    sprite_set_pos(enemies[1], 400, -60);
-    sprite_set_pos(enemies[2], 5, 300);
-    sprite_set_pos(enemies[3], 610, 100);
+    sprite_set_pos(enemies[0], V_ENEMY1_X, V_ENEMY1_Y);
+    sprite_set_pos(enemies[1], V_ENEMY2_X, V_ENEMY2_Y);
+    sprite_set_pos(enemies[2], LR_ENEMY_X, LR_ENEMY_Y);
+    sprite_set_pos(enemies[3], RL_ENEMY_X, RL_ENEMY_Y);
     sprite_set_pos(arena, 0, 0);
     sprite_set_pos(logo, 100, 100);
     sprite_set_pos(cursor, 100, 100);
     sprite_set_pos(play, 450, 300);
     sprite_set_pos(exit, 450, 400);
-    sprite_set_pos(player, 200, 500);
+    sprite_set_pos(player, PLAYER_X, PLAYER_Y);
     drawMenu(play, exit, cursor, logo);
     printf("%d,%d\n", player->h, player->w);
 
@@ -177,14 +177,12 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
                                 handleMoviment(scancode, player, 1);
                                 sprite_draw(player);
-                                sprite_draw(arena);
-                                
                             }
                         }
                     }
                     if (state == 1) {
                         for (int i = 0; i < 4; i++) {
-                            if (check_collision(player, enemies[i], &last_collision_time, elapsed_time)) {
+                            if (check_collision(player, enemies[i], enemies, i, &last_collision_time, elapsed_time)) {
                                 game.health -= 30;
                             }
                         }	

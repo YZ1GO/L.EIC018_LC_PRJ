@@ -33,8 +33,8 @@ void handleMoviment(uint8_t scancode, sprite_t* sp, int is_player) {
     if (is_player) {
         switch (scancode) {
             case 0x17: if (sp->y - 35 > 0) sp->y = sp->y - 35; break;
-            case 0x26: if (sp->x + 35 + sp->w < 646) sp->x = sp->x + 35; break;
-            case 0x25: if (sp->y + 35 + sp->h < 768) sp->y = sp->y + 35; break;
+            case 0x26: if (sp->x + 35 + sp->w < ARENA_WIDTH) sp->x = sp->x + 35; break;
+            case 0x25: if (sp->y + 35 + sp->h < ARENA_HEIGHT) sp->y = sp->y + 35; break;
             case 0x24: if (sp->x - 35 > 0) sp->x = sp->x - 35; break;
         }
     }
@@ -42,7 +42,7 @@ void handleMoviment(uint8_t scancode, sprite_t* sp, int is_player) {
         switch (scancode) {
             case 0x17: if (sp->y - 35 > 0) sp->y = sp->y - 35; break;
             case 0x26: if (sp->x + 35 + sp->w < 1024) sp->x = sp->x + 35; break;
-            case 0x25: if (sp->y + 35 + sp->h < 768) sp->y = sp->y + 35; break;
+            case 0x25: if (sp->y + 35 + sp->h < ARENA_HEIGHT) sp->y = sp->y + 35; break;
             case 0x24: if (sp->x - 35 > 0) sp->x = sp->x - 35; break;
         }
     }
@@ -87,6 +87,17 @@ void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo) 
     sprite_draw(cursor);
 }
 
+int calculate_new_x(int enemyA_width, int enemyB_x) {
+    int new_x = 5 + rand() % (ARENA_WIDTH - enemyA_width + 1);
+    if (new_x == enemyB_x) {
+        new_x += enemyA_width;
+        if (new_x > ARENA_WIDTH - enemyA_width) {
+            new_x -= 2 * enemyA_width;
+        }
+    }
+    return new_x;
+}
+
 void handleVerticalMovementEnemy(sprite_t* verticalEnemy1, sprite_t* verticalEnemy2, int elapsed_time) {
     if (elapsed_time <= 10) {
         verticalEnemy1->y = verticalEnemy1->y + 3;
@@ -108,28 +119,25 @@ void handleVerticalMovementEnemy(sprite_t* verticalEnemy1, sprite_t* verticalEne
         verticalEnemy1->y = verticalEnemy1->y + 11;
         verticalEnemy2->y = verticalEnemy2->y + 11;
     }
-    if (verticalEnemy1->y + verticalEnemy1->h > 768) {
-        int new_x = 5 + rand() % (646 - verticalEnemy1->w + 1);
-        if (new_x == verticalEnemy2->x) {
-            new_x += verticalEnemy1->w;
-            if (new_x > 646 - verticalEnemy1->w) {
-                new_x -= 2 * verticalEnemy1->w;
-            }
-        }
-        verticalEnemy1->x = new_x;
-        verticalEnemy1->y = 5; 
+    if (verticalEnemy1->y + verticalEnemy1->h > ARENA_HEIGHT) {
+        verticalEnemy1->x = calculate_new_x(verticalEnemy1->w, verticalEnemy2->x);
+        verticalEnemy1->y = V_ENEMY1_Y; 
     }
-    if (verticalEnemy2->y + verticalEnemy2->h > 768) {
-        int new_x = 5 + rand() % (646 - verticalEnemy2->w + 1);
-        if (new_x == verticalEnemy1->x) {
-            new_x += verticalEnemy2->w;
-            if (new_x > 646 - verticalEnemy2->w) {
-                new_x -= 2 * verticalEnemy2->w;
-            }
-        }
-        verticalEnemy2->x = new_x;
-        verticalEnemy2->y = 5; 
+    if (verticalEnemy2->y + verticalEnemy2->h > ARENA_HEIGHT) {
+        verticalEnemy2->x = calculate_new_x(verticalEnemy2->w, verticalEnemy1->x);
+        verticalEnemy2->y = V_ENEMY2_Y; 
     }
+}
+
+int calculate_new_y(int enemyA_height, int enemyB_y) {
+    int new_y = 5 + rand() % (ARENA_HEIGHT - enemyA_height + 1);
+    if (new_y == enemyB_y) {
+        new_y += enemyA_height;
+        if (new_y > ARENA_HEIGHT - enemyA_height) {
+            new_y -= 2 * enemyA_height;
+        }
+    }
+    return new_y;
 }
 
 void handleHorizontalMovementEnemy(sprite_t* leftToRightEnemy, sprite_t* rightToLeftEnemy, int elapsed_time) {
@@ -154,26 +162,12 @@ void handleHorizontalMovementEnemy(sprite_t* leftToRightEnemy, sprite_t* rightTo
         rightToLeftEnemy->x = rightToLeftEnemy->x - 11;
     }
     if (leftToRightEnemy->x + leftToRightEnemy->w > 646) {
-        int new_y = 5 + rand() % (768 - leftToRightEnemy->h + 1);
-        if (new_y == rightToLeftEnemy->y) {
-            new_y += leftToRightEnemy->h;
-            if (new_y > 768 - leftToRightEnemy->h) {
-                new_y -= 2 * leftToRightEnemy->h;
-            }
-        }
         leftToRightEnemy->x = 5; 
-        leftToRightEnemy->y = new_y;
+        leftToRightEnemy->y = calculate_new_y(leftToRightEnemy->h, rightToLeftEnemy->y);
     }
     if (rightToLeftEnemy->x + rightToLeftEnemy->w < 0) {
-        int new_y = 5 + rand() % (768 - rightToLeftEnemy->h + 1);
-        if (new_y == leftToRightEnemy->y) {
-            new_y += rightToLeftEnemy->h;
-            if (new_y > 768 - rightToLeftEnemy->h) {
-                new_y -= 2 * rightToLeftEnemy->h;
-            }
-        }
         rightToLeftEnemy->x = 646 - rightToLeftEnemy->w; 
-        rightToLeftEnemy->y = new_y;
+        rightToLeftEnemy->y = calculate_new_y(rightToLeftEnemy->h, leftToRightEnemy->y);
     }
 }
 
@@ -211,17 +205,33 @@ void draw_numbers(int number, int position_y) {
     }
 }
 
-bool check_collision(sprite_t* player, sprite_t* object, int* last_collision_time, int elapsed_time) {
+bool check_collision(sprite_t* player, sprite_t* enemy, sprite_t* enemies[], int enemy_index, int* last_collision_time, int elapsed_time) {
     if (elapsed_time - *last_collision_time < COOLDOWN_PERIOD) {
         return false;
     }
 
-    if (player->x < object->x + object->w &&
-        player->x + player->w > object->x &&
-        player->y < object->y + object->h &&
-        player->y + player->h > object->y) {
+    if (player->x < enemy->x + enemy->w &&
+        player->x + player->w > enemy->x &&
+        player->y < enemy->y + enemy->h &&
+        player->y + player->h > enemy->y) {
+        vg_draw_rectangle(enemy->x, enemy->y, enemy->w, enemy->h, BLACK);
         vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
-        sprite_set_pos(player, 200, 500);
+        switch(enemy_index) {
+            case 0: 
+                sprite_set_pos(enemy, calculate_new_x(enemy->w, enemies[1]->x), V_ENEMY1_Y);
+                break;
+            case 1:
+                sprite_set_pos(enemy, calculate_new_x(enemy->w, enemies[0]->x), V_ENEMY2_Y);
+                break;
+            case 2:
+                sprite_set_pos(enemy, LR_ENEMY_X, calculate_new_y(enemy->h, enemies[3]->y));
+                break;
+            case 3:
+                sprite_set_pos(enemy, RL_ENEMY_X, calculate_new_y(enemy->h, enemies[2]->y));
+                break;
+        }
+        sprite_draw(enemy);
+        sprite_set_pos(player, PLAYER_X, PLAYER_Y);
         sprite_draw(player);
         *last_collision_time = elapsed_time;
         return true;
