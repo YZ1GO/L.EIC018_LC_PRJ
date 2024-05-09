@@ -69,7 +69,7 @@ void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* e
     switch (scancode) {
         case 0x81: *good = 0; break;
         case 0x39: 
-        if (check_collision_menu(play, cursor)) {
+        if (check_collision_menu(play, cursor) && *state != 1) {
             *state = 1;
             game->score = 0;
             game->health = 100;

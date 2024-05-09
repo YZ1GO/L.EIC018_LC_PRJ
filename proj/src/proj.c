@@ -219,7 +219,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 drawRetryMenu(play, exit, cursor, textScore, game.score);
                                 handleClick(scancode, cursor, play, exit, &state, &good, &game);
                             }
-
                         }
                     }
                     if (state == 1) {
