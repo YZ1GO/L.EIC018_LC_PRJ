@@ -7,6 +7,7 @@
 #include "xpm_templates.h"
 
 //headers for devices
+#include "rtc.h"
 #include "graphic.h"
 #include "mouse.h"
 #include "keyboard.h"
@@ -80,6 +81,16 @@ int(proj_main_loop)(int argc, char *argv[]) {
     enemies[3] = sprite_ctor(rightLeftEnemy_xpm);
     sprite_t *rightLeftEnemy = enemies[3];
     sprite_t *explosion = sprite_ctor(explosion_xpm);
+     sprite_t *textScore = sprite_ctor(textScore_xpm);
+    sprite_t *scorexpm = sprite_ctor(score_xpm);
+    sprite_t *healthxpm = sprite_ctor(health_xpm);
+    sprite_t *clockxpm = sprite_ctor(clock_xpm);
+    sprite_t *timexpm = sprite_ctor(time_xpm);
+    sprite_set_pos(scorexpm, 670, 50);
+    sprite_set_pos(healthxpm, 670, 200);
+    sprite_set_pos(timexpm, 670, 350);
+    sprite_set_pos(clockxpm, 670, 500);
+    sprite_set_pos(textScore, 50, 50);
     sprite_set_pos(enemies[0], V_ENEMY1_X, V_ENEMY1_Y);
     sprite_set_pos(enemies[1], V_ENEMY2_X, V_ENEMY2_Y);
     sprite_set_pos(enemies[2], LR_ENEMY_X, LR_ENEMY_Y);
@@ -91,7 +102,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
     sprite_set_pos(exit, 450, 400);
     sprite_set_pos(player, PLAYER_X, PLAYER_Y);
     drawMenu(play, exit, cursor, logo);
-    printf("%d,%d\n", player->h, player->w);
 
     int ipc_status;
     message msg;
@@ -119,6 +129,13 @@ int(proj_main_loop)(int argc, char *argv[]) {
     uint32_t irq_set_m = BIT(12); 
     uint32_t number_packets = 0;
     struct packet mouse_packet;
+
+    uint8_t bit_no_rtc;
+    if (rtc_subscribe_int(&bit_no_rtc)) {
+        return 1;
+    }
+    //uint32_t irq_set_rtc = BIT(8);
+
     int state = 0;
     int good = 1;
     game_t game;
@@ -134,16 +151,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
         if (is_ipc_notify(ipc_status)) { /* received notification */
             switch (_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE: /* hardware interrupt notification */
-                    if (game.health <= 0) {
-                        good = 0;
-                    }	
-                    if (state == 1) {
-                        sprite_draw(arena); 
-                        if (elapsed_time - explosion_time > 0.1) {
-                            vg_draw_rectangle(explosion->x, explosion->y, explosion->w, explosion->h, BLACK);
-                            explosion_time = 9999;
-                        }
-                    }    
                     if (msg.m_notify.interrupts & irq_set_timer) { /* subscribed interrupt */
                         timer_int_handler();
                         if (count_timer % 1 == 0) {
@@ -158,13 +165,33 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 sprite_draw(verticalEnemy2);
                                 sprite_draw(leftRightEnemy);
                                 sprite_draw(rightLeftEnemy);
+                                sprite_draw(arena); 
+                                if (elapsed_time - explosion_time > 0.1) {
+                                    vg_draw_rectangle(explosion->x, explosion->y, explosion->w, explosion->h, BLACK);
+                                    explosion_time = 9999;
+                                }
                                 if (count_elapsed_time % 60 == 0) {
                                     elapsed_time++;
                                     game.score += 50*elapsed_time + 10; 
-                                    draw_numbers(game.score, 200);
-                                    draw_numbers(game.health, 300);
-                                    draw_numbers(elapsed_time, 400);
+                                    sprite_draw(scorexpm);
+                                    draw_numbers(game.score, 110, 950);
+                                    sprite_draw(healthxpm);
+                                    vg_draw_rectangle(750, 260, 150, 50, BLACK);
+                                    draw_numbers(game.health, 260, 950);
+                                    sprite_draw(timexpm);
+                                    draw_numbers(elapsed_time, 410, 950);
+                                    sprite_draw(clockxpm);
+                                    char* string = "00:00";
+                                    rtc_read_time(string);
+                                    draw_numbers_time(string, 560, 750);
                                 }
+                                if (game.health <= 0) {
+                                    vg_draw_rectangle(0, 0, 1024, 768, BLACK);
+                                    state = 2;
+                                    elapsed_time = 0;
+                                    drawRetryMenu(play, exit, cursor, textScore, game.score);
+                                }
+
                             }
                         }
                     }		
@@ -178,14 +205,21 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
                                 handleMoviment(scancode, cursor, 0);
                                 drawMenu(play, exit, cursor, logo);
-                                handleClick(scancode, cursor, play, exit, &state, &good);
+                                handleClick(scancode, cursor, play, exit, &state, &good, &game);
                             }
                             if (state == 1) {
-                                handleClick(scancode, cursor, play, exit, &state, &good);
+                                handleClick(scancode, cursor, play, exit, &state, &good, &game);
                                 vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
                                 handleMoviment(scancode, player, 1);
                                 sprite_draw(player);
                             }
+                            if (state == 2) {
+                                vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
+                                handleMoviment(scancode, cursor, 0);
+                                drawRetryMenu(play, exit, cursor, textScore, game.score);
+                                handleClick(scancode, cursor, play, exit, &state, &good, &game);
+                            }
+
                         }
                     }
                     if (state == 1) {
@@ -228,6 +262,9 @@ int(proj_main_loop)(int argc, char *argv[]) {
         return 1;
     }
     if (send_command(0xF5)) {
+        return 1;
+    }
+    if (rtc_unsubscribe_int()) {
         return 1;
     }
     if (vg_exit()) {

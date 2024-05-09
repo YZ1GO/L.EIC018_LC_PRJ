@@ -65,12 +65,14 @@ void handleMovimentCursorMouse(struct packet* pp, sprite_t* sp) {
     sp->y = sp->y - (int8_t)y;
 }
 
-void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* exit, int* state, int* good) {
+void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* exit, int* state, int* good, game_t* game) {
     switch (scancode) {
         case 0x81: *good = 0; break;
         case 0x39: 
         if (check_collision_menu(play, cursor)) {
             *state = 1;
+            game->score = 0;
+            game->health = 100;
             vg_draw_rectangle(0, 0, 1024, 768, BLACK);
         }
         if (check_collision_menu(exit, cursor)) {
@@ -86,6 +88,17 @@ void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo) 
     sprite_draw(exit);
     sprite_draw(cursor);
 }
+
+
+void drawRetryMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* textScore, int score) {
+    sprite_set_pos(cursor, cursor->x, cursor->y);
+    sprite_draw(textScore);
+    draw_numbers(score, 200, 500);
+    sprite_draw(play);
+    sprite_draw(exit);
+    sprite_draw(cursor);
+}
+
 
 int calculate_new_x(int enemyA_width, int enemyB_x) {
     int new_x = 5 + rand() % (ARENA_WIDTH - enemyA_width - 5);
@@ -165,9 +178,7 @@ void handleHorizontalMovementEnemy(sprite_t* leftToRightEnemy, sprite_t* rightTo
     }
 }
 
-void draw_numbers(int number, int position_y) {
-    int position_x = 950;
-    vg_draw_rectangle(position_x - 100, position_y, 150, 50, BLACK);
+void draw_numbers(int number, int position_y, int position_x) {
     sprite_t* n;
     while (number > 0) {
         int digit = number % 10;
@@ -177,7 +188,7 @@ void draw_numbers(int number, int position_y) {
             case 1: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
                 n = sprite_ctor(ONE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case 2: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
-                n = sprite_ctor(TWO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+                 n = sprite_ctor(TWO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case 3: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
                 n = sprite_ctor(THREE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case 4: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
@@ -198,6 +209,64 @@ void draw_numbers(int number, int position_y) {
         number /= 10;
     }
 }
+
+void draw_numbers_time(char* string, int position_y, int position_x) {
+    sprite_t* n;
+    for (int i = 0; i <= 1; i++) {
+        switch(string[i]) {
+            case '0': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(ZERO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '1': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(ONE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '2': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                 n = sprite_ctor(TWO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '3': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(THREE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '4': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(FOUR_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '5': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(FIVE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '6': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(SIX_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '7': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(SEVEN_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '8': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(EIGHT_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '9': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(NINE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            default: break;
+        }
+        position_x = position_x + 50;
+    }
+    position_x = position_x + 50;
+    for (int i = 3; i <= 4; i++) {
+        switch(string[i]) {
+            case '0': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(ZERO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '1': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(ONE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '2': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                 n = sprite_ctor(TWO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '3': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(THREE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '4': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(FOUR_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '5': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(FIVE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '6': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(SIX_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '7': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(SEVEN_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '8': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(EIGHT_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            case '9': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
+                n = sprite_ctor(NINE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+            default: break;
+        }
+        position_x = position_x + 50;
+    }
+}
+
 
 bool check_collision(sprite_t* player, sprite_t* explosion, sprite_t* enemy, sprite_t* enemies[], int enemy_index, int* last_collision_time, int* explosion_time, int elapsed_time) {
     if (elapsed_time - *last_collision_time < COOLDOWN_PERIOD) {

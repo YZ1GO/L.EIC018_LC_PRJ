@@ -21,8 +21,6 @@
 #define RTC_REGISTER_C 12
 #define RTC_REGISTER_D 13
 
-#define RTC_DONT_CARE_VALUE BIT(7) | BIT(6)
-
 #define RTC_UF BIT(4)
 #define RTC_AF BIT(5)
 #define RTC_PF BIT(6)
@@ -31,15 +29,9 @@ int rtc_subscribe_int(uint8_t *bit_no);
 
 int rtc_unsubscribe_int();
 
-int rtc_init();
-
-int rtc_clean();
-
 int rtc_read_register(uint8_t address, uint8_t *data);
 
 int rtc_set_register(uint8_t address, uint8_t data);
-
-int rtc_read_date(char *string);
 
 int rtc_read_time(char *string);
 
