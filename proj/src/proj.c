@@ -68,8 +68,8 @@ int(proj_main_loop)(int argc, char *argv[]) {
     sprite_t *play = sprite_ctor(PLAY_xpm);
     sprite_t *exit = sprite_ctor(EXIT_xpm);
     sprite_t *player = sprite_ctor(player_xpm);
-    //sprite_t *playerLeft = sprite_ctor(leftPlayer_xpm);
-    //sprite_t *playerRight = sprite_ctor(rightPlayer_xpm);
+    sprite_t *playerLeft = sprite_ctor(leftPlayer_xpm);
+    sprite_t *playerRight = sprite_ctor(rightPlayer_xpm);
     sprite_t *arena = sprite_ctor(arena_xpm);
     sprite_t *enemies[4];
     enemies[0] = sprite_ctor(topDownEnemy_xpm);
@@ -81,7 +81,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
     enemies[3] = sprite_ctor(rightLeftEnemy_xpm);
     sprite_t *rightLeftEnemy = enemies[3];
     sprite_t *explosion = sprite_ctor(explosion_xpm);
-     sprite_t *textScore = sprite_ctor(textScore_xpm);
+    sprite_t *textScore = sprite_ctor(textScore_xpm);
     sprite_t *scorexpm = sprite_ctor(score_xpm);
     sprite_t *healthxpm = sprite_ctor(health_xpm);
     sprite_t *clockxpm = sprite_ctor(clock_xpm);
@@ -135,7 +135,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
         return 1;
     }
     //uint32_t irq_set_rtc = BIT(8);
-
+    
     int state = 0;
     int good = 1;
     game_t game;
@@ -211,7 +211,16 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 handleClick(scancode, cursor, play, exit, &state, &good, &game);
                                 vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
                                 handleMoviment(scancode, player, 1);
-                                sprite_draw(player);
+                                if (scancode == 0x24) {
+                                    sprite_set_pos(playerLeft, player->x, player->y);
+                                    sprite_draw(playerLeft);
+                                } else if (scancode == 0x26) {
+                                    sprite_set_pos(playerRight, player->x, player->y);
+                                    sprite_draw(playerRight);
+                                } else {
+                                    sprite_set_pos(player, player->x, player->y);
+                                    sprite_draw(player);
+                                }
                             }
                             if (state == 2) {
                                 vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
@@ -224,7 +233,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                     if (state == 1) {
                         for (int i = 0; i < 4; i++) {
                             if (check_collision(player, explosion, enemies[i], enemies, i, &last_collision_time, &explosion_time, elapsed_time)) {
-                                game.health -= 30;
+                                game.health -= 20;
                             }
                         }
                     }
