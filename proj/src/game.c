@@ -112,24 +112,24 @@ int calculate_new_x(int enemyA_width, int enemyB_x) {
 
 void handleVerticalMovementEnemy(sprite_t* verticalEnemy1, sprite_t* verticalEnemy2, int elapsed_time) {
     if (elapsed_time <= 10) {
-        verticalEnemy1->y = verticalEnemy1->y + 3;
-        verticalEnemy2->y = verticalEnemy2->y + 3;
-    }
-    else if (elapsed_time > 10 && elapsed_time <= 20) {
         verticalEnemy1->y = verticalEnemy1->y + 5;
         verticalEnemy2->y = verticalEnemy2->y + 5;
     }
-    else if (elapsed_time > 20 && elapsed_time <= 30) {
+    else if (elapsed_time > 10 && elapsed_time <= 20) {
         verticalEnemy1->y = verticalEnemy1->y + 7;
         verticalEnemy2->y = verticalEnemy2->y + 7;
     }
-    else if (elapsed_time > 30 && elapsed_time <= 40) {
+    else if (elapsed_time > 20 && elapsed_time <= 30) {
         verticalEnemy1->y = verticalEnemy1->y + 9;
         verticalEnemy2->y = verticalEnemy2->y + 9;
     }
-    else {
+    else if (elapsed_time > 30 && elapsed_time <= 40) {
         verticalEnemy1->y = verticalEnemy1->y + 11;
         verticalEnemy2->y = verticalEnemy2->y + 11;
+    }
+    else {
+        verticalEnemy1->y = verticalEnemy1->y + 13;
+        verticalEnemy2->y = verticalEnemy2->y + 13;
     }
     if (verticalEnemy1->y + verticalEnemy1->h > ARENA_HEIGHT) {
         verticalEnemy1->x = calculate_new_x(verticalEnemy1->w, verticalEnemy2->x);
