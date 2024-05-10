@@ -188,7 +188,7 @@ void draw_numbers(int number, int position_y, int position_x) {
             case 1: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
                 n = sprite_ctor(ONE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case 2: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
-                 n = sprite_ctor(TWO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+                n = sprite_ctor(TWO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case 3: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
                 n = sprite_ctor(THREE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case 4: vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
@@ -219,7 +219,7 @@ void draw_numbers_time(char* string, int position_y, int position_x) {
             case '1': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
                 n = sprite_ctor(ONE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case '2': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
-                 n = sprite_ctor(TWO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+                n = sprite_ctor(TWO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case '3': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
                 n = sprite_ctor(THREE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case '4': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
