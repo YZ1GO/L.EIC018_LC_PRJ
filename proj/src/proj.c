@@ -205,10 +205,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
                                 handleMoviment(scancode, cursor, 0);
                                 drawMenu(play, exit, cursor, logo);
-                                handleClick(scancode, cursor, play, exit, &state, &good, &game);
+                                handleClick(scancode, cursor, play, exit, &state, &good, &game, &last_collision_time, &explosion_time);
                             }
                             if (state == 1) {
-                                handleClick(scancode, cursor, play, exit, &state, &good, &game);
+                                handleClick(scancode, cursor, play, exit, &state, &good, &game, &last_collision_time, &explosion_time);
                                 vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
                                 handleMoviment(scancode, player, 1);
                                 if (scancode == 0x24) {
@@ -226,7 +226,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
                                 handleMoviment(scancode, cursor, 0);
                                 drawRetryMenu(play, exit, cursor, textScore, game.score);
-                                handleClick(scancode, cursor, play, exit, &state, &good, &game);
+                                handleClick(scancode, cursor, play, exit, &state, &good, &game, &last_collision_time, &explosion_time);
                             }
                         }
                     }

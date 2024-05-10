@@ -65,7 +65,7 @@ void handleMovimentCursorMouse(struct packet* pp, sprite_t* sp) {
     sp->y = sp->y - (int8_t)y;
 }
 
-void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* exit, int* state, int* good, game_t* game) {
+void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* exit, int* state, int* good, game_t* game, int* last_collision_time, int* explosion_time) {
     switch (scancode) {
         case 0x81: *good = 0; break;
         case 0x39: 
@@ -73,6 +73,8 @@ void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* e
             *state = 1;
             game->score = 0;
             game->health = 100;
+            *last_collision_time = -COOLDOWN_PERIOD;
+            *explosion_time = -COOLDOWN_PERIOD;
             vg_draw_rectangle(0, 0, 1024, 768, BLACK);
         }
         if (check_collision_menu(exit, cursor)) {
@@ -246,7 +248,7 @@ void draw_numbers_time(char* string, int position_y, int position_x) {
             case '1': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
                 n = sprite_ctor(ONE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case '2': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
-                 n = sprite_ctor(TWO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
+                n = sprite_ctor(TWO_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case '3': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);
                 n = sprite_ctor(THREE_xpm); sprite_set_pos(n, position_x, position_y); sprite_draw(n); break;
             case '4': vg_draw_rectangle(position_x, position_y, 50, 50, BLACK);

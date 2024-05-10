@@ -23,7 +23,7 @@ typedef struct {
 bool check_collision_menu(sprite_t* el, sprite_t* cursor);
 void handleMoviment(uint8_t scancode, sprite_t* sp, int is_player);
 void handleMovimentCursorMouse(struct packet* pp, sprite_t* sp);
-void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* exit, int* state, int* good, game_t* game);
+void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* exit, int* state, int* good, game_t* game, int* last_collision_time, int* explosion_time);
 void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo);
 void drawRetryMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* textScore, int score);
 int calculate_new_x(int enemyA_width, int enemyB_x);
