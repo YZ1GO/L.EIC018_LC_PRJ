@@ -54,5 +54,7 @@ uint16_t get_bytes_pixel(void);
 uint16_t get_RedMaskSize  (void);
 uint16_t get_GreenMaskSize(void);
 uint16_t get_BlueMaskSize (void);
+void (swap_buffers)();
+void (free_second_buffer)();
 
 #endif /* end of include guard: GRAPHICS_MACROS_H_INCLUDED */

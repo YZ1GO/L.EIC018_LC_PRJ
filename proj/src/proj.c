@@ -251,6 +251,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                             }
                         }
                     }
+                    swap_buffers();
                     break;
                 default:
                     break; /* no other notifications expected: do nothing */	
@@ -275,6 +276,9 @@ int(proj_main_loop)(int argc, char *argv[]) {
     if (rtc_unsubscribe_int()) {
         return 1;
     }
+
+    free_second_buffer();
+    
     if (vg_exit()) {
         return 1;
     }

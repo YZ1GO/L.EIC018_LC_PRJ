@@ -2,6 +2,7 @@
 #include "graphic.h"
 
 static void *video_mem; 
+static void *second_buffer;
 static vbe_mode_info_t vbe_mem_info;
 //static mmap_t mem_map;
 
@@ -96,6 +97,12 @@ void* (vg_init)(uint16_t mode) {
     vbe_get_mode_info(mode, &vbe_mem_info);
     map_vram();
     set_graphics_mode(mode);
+
+    second_buffer = malloc(get_vram_size());
+    if (second_buffer == NULL) {
+        panic("%s: couldn't allocate second buffer.", __func__);
+    }
+    
     return video_mem;
 }
 
@@ -110,7 +117,7 @@ int (set_pixel_no_black)(uint16_t x, uint16_t y, uint32_t color) {
         return 1;
     }
     unsigned int pos = (x + y * vbe_mem_info.XResolution) * get_bytes_pixel();
-    if (memcpy((void*)((unsigned int)video_mem + pos), &color, get_bytes_pixel()) == NULL) {
+    if (memcpy((void*)((unsigned int)second_buffer + pos), &color, get_bytes_pixel()) == NULL) {
         return 1;
     }
     return 0;
@@ -121,7 +128,7 @@ int (set_pixel)(uint16_t x, uint16_t y, uint32_t color) {
         return 0;
     }
     unsigned int pos = (x + y * vbe_mem_info.XResolution) * get_bytes_pixel();
-    if (memcpy((void*)((unsigned int)video_mem + pos), &color, get_bytes_pixel()) == NULL) {
+    if (memcpy((void*)((unsigned int)second_buffer + pos), &color, get_bytes_pixel()) == NULL) {
         return 1;
     }
     return 0;
@@ -143,4 +150,12 @@ int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height,
         }
     }
     return 0;
+}
+
+void (swap_buffers)() {
+    memcpy(video_mem, second_buffer, get_vram_size());
+}
+
+void (free_second_buffer)() {
+    free(second_buffer);
 }
