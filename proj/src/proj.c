@@ -13,7 +13,6 @@
 #include "keyboard.h"
 #include "i8254.h"
 #include "utils.h"
-#include "list.h"
 
 //extern variables
 extern int kb_count;
