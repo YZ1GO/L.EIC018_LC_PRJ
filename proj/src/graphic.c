@@ -1,8 +1,8 @@
 #include <lcom/lcf.h>
 #include "graphic.h"
 
-static void *video_mem; 
-static void *second_buffer;
+static char *video_mem; 
+static char *second_buffer;
 static vbe_mode_info_t vbe_mem_info;
 //static mmap_t mem_map;
 
@@ -117,7 +117,8 @@ int (set_pixel_no_black)(uint16_t x, uint16_t y, uint32_t color) {
         return 1;
     }
     unsigned int pos = (x + y * vbe_mem_info.XResolution) * get_bytes_pixel();
-    if (memcpy((void*)((unsigned int)second_buffer + pos), &color, get_bytes_pixel()) == NULL) {
+    char*ptr = second_buffer + pos;
+    if (memcpy((void*)(ptr), &color, get_bytes_pixel()) == NULL) {
         return 1;
     }
     return 0;
@@ -128,7 +129,8 @@ int (set_pixel)(uint16_t x, uint16_t y, uint32_t color) {
         return 0;
     }
     unsigned int pos = (x + y * vbe_mem_info.XResolution) * get_bytes_pixel();
-    if (memcpy((void*)((unsigned int)second_buffer + pos), &color, get_bytes_pixel()) == NULL) {
+    char*ptr = second_buffer + pos;
+    if (memcpy((void*)(ptr), &color, get_bytes_pixel()) == NULL) {
         return 1;
     }
     return 0;

@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
 }
 
 int(proj_main_loop)(int argc, char *argv[]) {
-    vg_init(0x105);
+    vg_init(0x14C);
     sprite_t *cursor = sprite_ctor(mouse_icon_xpm);
     sprite_t *logo = sprite_ctor(logo_xpm);
     sprite_t *play = sprite_ctor(PLAY_xpm);
@@ -137,7 +137,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
     }
     //uint32_t irq_set_rtc = BIT(8);
     
-    int state = 0;
+    int state = 1;
     int good = 1;
     game_t game;
     game.health = 100;
