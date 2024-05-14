@@ -39,11 +39,11 @@ int sprite_get_h(const sprite_t *p){ return p->h; }
 
 void sprite_draw(const sprite_t *p){
     uint8_t *ptr = p->map;
-    for (int i = 0; i < p->w; i++) {
-        for (int j = 0; j < p->h; j++) {
-            if (p->x + i < get_XRes() && p->y + j < get_YRes()) {
+    for (int i = 0; i < p->h; i++) {
+        for (int j = 0; j < p->w; j++) {
+            if (p->x + j < get_XRes() && p->y + i < get_YRes()) {
                 uint32_t* color = (uint32_t*)(ptr);
-                set_pixel_no_black(p->x + i, p->y + j, *color);
+                set_pixel_no_black(p->x + j, p->y + i, *color);
                 ptr += get_bytes_pixel();
             }
         }

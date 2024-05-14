@@ -137,7 +137,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
     }
     //uint32_t irq_set_rtc = BIT(8);
     
-    int state = 1;
+    int state = 0;
     int good = 1;
     game_t game;
     game.health = 100;
