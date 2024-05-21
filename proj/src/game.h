@@ -2,10 +2,11 @@
 #include <stdint.h>
 
 #define COOLDOWN_PERIOD 1
-#define ARENA_HEIGHT 768
-#define ARENA_WIDTH 646
+#define ARENA_HEIGHT 794
+#define ARENA_WIDTH 650
 #define PLAYER_X 200
 #define PLAYER_Y 500
+#define PLAYER_STEP 36
 #define V_ENEMY1_X 200
 #define V_ENEMY1_Y 5
 #define V_ENEMY2_X 400

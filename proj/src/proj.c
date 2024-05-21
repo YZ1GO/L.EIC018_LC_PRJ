@@ -96,11 +96,11 @@ int(proj_main_loop)(int argc, char *argv[]) {
     sprite_set_pos(enemies[2], LR_ENEMY_X, LR_ENEMY_Y);
     sprite_set_pos(enemies[3], RL_ENEMY_X, RL_ENEMY_Y);
     sprite_set_pos(arena, 0, 0);
-    sprite_set_pos(logo, 100, 100);
+    sprite_set_pos(logo, 150, 100);
     sprite_set_pos(cursor, 100, 100);
-    sprite_set_pos(play, 450, 300);
-    sprite_set_pos(exit, 450, 400);
-    sprite_set_pos(retry, 450, 300);
+    sprite_set_pos(play, 500, 300);
+    sprite_set_pos(exit, 500, 400);
+    sprite_set_pos(retry, 500, 300);
     sprite_set_pos(player, PLAYER_X, PLAYER_Y);
     drawMenu(play, exit, cursor, logo);
 
@@ -250,6 +250,11 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
                                 handleMovimentCursorMouse(&mouse_packet, cursor);
                                 drawMenu(play, exit, cursor, logo);
+                            }
+                            if (state == 1) {
+                                vg_draw_rectangle(player->x,player->y, player->w, player->h, BLACK);
+                                handleMovimentCursorMouse(&mouse_packet, player);
+                                sprite_draw(player);
                             }
                             if (state == 2) {
                                 vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);

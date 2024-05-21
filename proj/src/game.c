@@ -32,18 +32,18 @@ bool check_collision_menu(sprite_t* el, sprite_t* cursor) {
 void handleMoviment(uint8_t scancode, sprite_t* sp, int is_player) {
     if (is_player) {
         switch (scancode) {
-            case 0x17: if (sp->y - 35 > 0) sp->y = sp->y - 35; break;
-            case 0x26: if (sp->x + 35 + sp->w < ARENA_WIDTH) sp->x = sp->x + 35; break;
-            case 0x25: if (sp->y + 35 + sp->h < ARENA_HEIGHT) sp->y = sp->y + 35; break;
-            case 0x24: if (sp->x - 35 > 0) sp->x = sp->x - 35; break;
+            case 0x17: if (sp->y - PLAYER_STEP > 0) sp->y = sp->y - PLAYER_STEP; break;
+            case 0x26: if (sp->x + PLAYER_STEP + sp->w < ARENA_WIDTH) sp->x = sp->x + PLAYER_STEP; break;
+            case 0x25: if (sp->y + PLAYER_STEP + sp->h < ARENA_HEIGHT) sp->y = sp->y + PLAYER_STEP; break;
+            case 0x24: if (sp->x - PLAYER_STEP > 0) sp->x = sp->x - PLAYER_STEP; break;
         }
     }
     else {
         switch (scancode) {
-            case 0x17: if (sp->y - 35 > 0) sp->y = sp->y - 35; break;
-            case 0x26: if (sp->x + 35 + sp->w < 1024) sp->x = sp->x + 35; break;
-            case 0x25: if (sp->y + 35 + sp->h < ARENA_HEIGHT) sp->y = sp->y + 35; break;
-            case 0x24: if (sp->x - 35 > 0) sp->x = sp->x - 35; break;
+            case 0x17: if (sp->y - PLAYER_STEP > 0) sp->y = sp->y - PLAYER_STEP; break;
+            case 0x26: if (sp->x + PLAYER_STEP + sp->w < 1024) sp->x = sp->x + PLAYER_STEP; break;
+            case 0x25: if (sp->y + PLAYER_STEP + sp->h < ARENA_HEIGHT) sp->y = sp->y + PLAYER_STEP; break;
+            case 0x24: if (sp->x - PLAYER_STEP > 0) sp->x = sp->x - PLAYER_STEP; break;
         }
     }
 }
@@ -95,7 +95,7 @@ void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo) 
 void drawRetryMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* textScore, int score) {
     sprite_set_pos(cursor, cursor->x, cursor->y);
     sprite_draw(textScore);
-    draw_numbers(score, 200, 500);
+    draw_numbers(score, 200, 550);
     sprite_draw(play);
     sprite_draw(exit);
     sprite_draw(cursor);
