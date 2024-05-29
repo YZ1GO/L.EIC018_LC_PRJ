@@ -15,6 +15,8 @@
 #define LR_ENEMY_Y 300
 #define RL_ENEMY_X 610
 #define RL_ENEMY_Y 100
+#define MAX_SHOTS 10
+#define SHOT_SPEED 5
 
 typedef struct {
     int health;
@@ -34,3 +36,5 @@ void handleHorizontalMovementEnemy(sprite_t* leftToRightEnemy, sprite_t* rightTo
 void draw_numbers(int number, int position_y, int position_x);
 void draw_numbers_time(char* string, int position_y, int position_x);
 bool check_collision(sprite_t* player, sprite_t* explosion, sprite_t* enemy, sprite_t* enemies[], int enemy_index, int* last_collision_time, int* explosion_time, int elapsed_time);
+void handleMovementShot(sprite_t* shots[], int index);
+void handleShotSpawn(uint8_t scancode, sprite_t* player, sprite_t* shots[], int* num_shots);

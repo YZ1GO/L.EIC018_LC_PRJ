@@ -48,6 +48,20 @@ void handleMoviment(uint8_t scancode, sprite_t* sp, int is_player) {
     }
 }
 
+void handleMovementShot(sprite_t* shots[], int index) {
+    shots[index]->y -= SHOT_SPEED;
+    sprite_set_pos(shots[index], shots[index]->x, shots[index]->y);
+    sprite_draw(shots[index]);
+}
+
+void handleShotSpawn(uint8_t scancode, sprite_t* player, sprite_t* shots[], int* num_shots) {
+    if (scancode == 0x1F && *num_shots < MAX_SHOTS) {
+        sprite_set_pos(shots[*num_shots], player->x + player->w / 2 - 1, player->y - 20);
+        sprite_draw(shots[*num_shots]);
+        num_shots++;
+    }
+}
+
 void handleMovimentCursorMouse(struct packet* pp, sprite_t* sp) {
     uint8_t b[3];
     for (int i = 0; i < 3; i++) {
@@ -112,24 +126,24 @@ int calculate_new_x(int enemyA_width, int enemyB_x) {
 
 void handleVerticalMovementEnemy(sprite_t* verticalEnemy1, sprite_t* verticalEnemy2, int elapsed_time) {
     if (elapsed_time <= 10) {
-        verticalEnemy1->y = verticalEnemy1->y + 5;
-        verticalEnemy2->y = verticalEnemy2->y + 5;
+        verticalEnemy1->y += 5;
+        verticalEnemy2->y += 5;
     }
     else if (elapsed_time > 10 && elapsed_time <= 20) {
-        verticalEnemy1->y = verticalEnemy1->y + 7;
-        verticalEnemy2->y = verticalEnemy2->y + 7;
+        verticalEnemy1->y += 7;
+        verticalEnemy2->y += 7;
     }
     else if (elapsed_time > 20 && elapsed_time <= 30) {
-        verticalEnemy1->y = verticalEnemy1->y + 9;
-        verticalEnemy2->y = verticalEnemy2->y + 9;
+        verticalEnemy1->y += 9;
+        verticalEnemy2->y += 9;
     }
     else if (elapsed_time > 30 && elapsed_time <= 40) {
-        verticalEnemy1->y = verticalEnemy1->y + 11;
-        verticalEnemy2->y = verticalEnemy2->y + 11;
+        verticalEnemy1->y += 11;
+        verticalEnemy2->y += 11;
     }
     else {
-        verticalEnemy1->y = verticalEnemy1->y + 13;
-        verticalEnemy2->y = verticalEnemy2->y + 13;
+        verticalEnemy1->y += 13;
+        verticalEnemy2->y += 13;
     }
     if (verticalEnemy1->y + verticalEnemy1->h > ARENA_HEIGHT) {
         verticalEnemy1->x = calculate_new_x(verticalEnemy1->w, verticalEnemy2->x);
@@ -151,24 +165,24 @@ int calculate_new_y(int enemyA_height, int enemyB_y) {
 
 void handleHorizontalMovementEnemy(sprite_t* leftToRightEnemy, sprite_t* rightToLeftEnemy, int elapsed_time) {
     if (elapsed_time <= 10) {
-        leftToRightEnemy->x = leftToRightEnemy->x + 3;
-        rightToLeftEnemy->x = rightToLeftEnemy->x - 3;
+        leftToRightEnemy->x += 3;
+        rightToLeftEnemy->x -= 3;
     }
     else if (elapsed_time > 10 && elapsed_time <= 20) {
-        leftToRightEnemy->x = leftToRightEnemy->x + 5;
-        rightToLeftEnemy->x = rightToLeftEnemy->x - 5;
+        leftToRightEnemy->x += 5;
+        rightToLeftEnemy->x -= 5;
     }
     else if (elapsed_time > 20 && elapsed_time <= 30) {
-        leftToRightEnemy->x = leftToRightEnemy->x + 7;
-        rightToLeftEnemy->x = rightToLeftEnemy->x - 7;
+        leftToRightEnemy->x += 7;
+        rightToLeftEnemy->x -= 7;
     }
     else if (elapsed_time > 30 && elapsed_time <= 40) {
-        leftToRightEnemy->x = leftToRightEnemy->x + 9;
-        rightToLeftEnemy->x = rightToLeftEnemy->x - 9;
+        leftToRightEnemy->x += 9;
+        rightToLeftEnemy->x -= 9;
     }
     else {
-        leftToRightEnemy->x = leftToRightEnemy->x + 11;
-        rightToLeftEnemy->x = rightToLeftEnemy->x - 11;
+        leftToRightEnemy->x += 11;
+        rightToLeftEnemy->x -= 11;
     }
     if (leftToRightEnemy->x + leftToRightEnemy->w > 646) {
         leftToRightEnemy->x = 5; 

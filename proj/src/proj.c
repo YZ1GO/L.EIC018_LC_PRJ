@@ -70,6 +70,11 @@ int(proj_main_loop)(int argc, char *argv[]) {
     sprite_t *player = sprite_ctor(player_xpm);
     sprite_t *playerLeft = sprite_ctor(leftPlayer_xpm);
     sprite_t *playerRight = sprite_ctor(rightPlayer_xpm);
+    sprite_t *shots[MAX_SHOTS];
+    int num_shots = 0;
+    for (int i = 0; i < MAX_SHOTS; i++) {
+        shots[i] = sprite_ctor(shot_xpm);
+    }
     sprite_t *arena = sprite_ctor(arena_xpm);
     sprite_t *enemies[4];
     enemies[0] = sprite_ctor(topDownEnemy_xpm);
@@ -156,6 +161,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
                         timer_int_handler();
                         if (count_timer % 1 == 0) {
                             if (state == 1) {
+                                for (int i = 0; i < num_shots; i++) {
+                                    vg_draw_rectangle(shots[i]->x, shots[i]->y, shots[i]->w, shots[i]->h, BLACK);
+                                    handleMovementShot(shots, i);
+                                }
                                 vg_draw_rectangle(verticalEnemy->x, verticalEnemy->y, verticalEnemy->w, verticalEnemy->h, BLACK);
                                 vg_draw_rectangle(verticalEnemy2->x, verticalEnemy2->y, verticalEnemy2->w, verticalEnemy2->h, BLACK);
                                 vg_draw_rectangle(leftRightEnemy->x, leftRightEnemy->y, leftRightEnemy->w, leftRightEnemy->h, BLACK);
@@ -212,6 +221,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 handleClick(scancode, cursor, play, exit, &state, &good, &game, &last_collision_time, &explosion_time);
                                 vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
                                 handleMoviment(scancode, player, 1);
+                                handleShotSpawn(scancode, player, shots, &num_shots);
                                 if (scancode == 0x24) {
                                     sprite_set_pos(playerLeft, player->x, player->y);
                                     sprite_draw(playerLeft);
