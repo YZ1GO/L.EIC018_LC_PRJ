@@ -38,3 +38,4 @@ void draw_numbers_time(char* string, int position_y, int position_x);
 bool check_collision(sprite_t* player, sprite_t* explosion, sprite_t* enemy, sprite_t* enemies[], int enemy_index, int* last_collision_time, int* explosion_time, int elapsed_time);
 void handleMovementShot(sprite_t* shots[], int index);
 void handleShotSpawn(uint8_t scancode, sprite_t* player, sprite_t* shots[], int* num_shots);
+

@@ -58,7 +58,7 @@ void handleShotSpawn(uint8_t scancode, sprite_t* player, sprite_t* shots[], int*
     if (scancode == 0x1F && *num_shots < MAX_SHOTS) {
         sprite_set_pos(shots[*num_shots], player->x + player->w / 2 - 1, player->y - 20);
         sprite_draw(shots[*num_shots]);
-        num_shots++;
+        (*num_shots)++;
     }
 }
 
