@@ -284,7 +284,7 @@ void draw_numbers_time(char* string, int position_y, int position_x) {
     }
 }
 
-void handle_collision(sprite_t* explosion, sprite_t* enemy, sprite_t* enemies[], int enemy_index, int* last_collision_time, int* explosion_time, int elapsed_time) {
+void handle_collision(sprite_t* explosion, sprite_t* enemy, sprite_t* enemies[], int enemy_index, int* last_collision_time, int* explosion_time, int elapsed_time, bool isShot) {
     vg_draw_rectangle(enemy->x, enemy->y, enemy->w, enemy->h, BLACK);
     sprite_set_pos(explosion, enemy->x, enemy->y);
     sprite_draw(explosion);
@@ -303,8 +303,10 @@ void handle_collision(sprite_t* explosion, sprite_t* enemy, sprite_t* enemies[],
             break;
     }
     sprite_draw(enemy);
-    *last_collision_time = elapsed_time;
-    *explosion_time = elapsed_time;
+    if (!isShot) {
+        *last_collision_time = elapsed_time;
+        *explosion_time = elapsed_time;
+    }
 }
 
 bool check_player_collision(sprite_t* player, sprite_t* explosion, sprite_t* enemy, sprite_t* enemies[], int enemy_index, int* last_collision_time, int* explosion_time, int elapsed_time) {
@@ -316,10 +318,11 @@ bool check_player_collision(sprite_t* player, sprite_t* explosion, sprite_t* ene
         player->x + player->w > enemy->x &&
         player->y < enemy->y + enemy->h &&
         player->y + player->h > enemy->y) {
+        vg_draw_rectangle(explosion->x, explosion->y, explosion->w, explosion->h, BLACK);
         vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
         sprite_set_pos(player, PLAYER_X, PLAYER_Y);
         sprite_draw(player);
-        handle_collision(explosion, enemy, enemies, enemy_index, last_collision_time, explosion_time, elapsed_time);
+        handle_collision(explosion, enemy, enemies, enemy_index, last_collision_time, explosion_time, elapsed_time, false);
         return true;
     }
     return false;
@@ -330,9 +333,10 @@ bool check_shot_collision(sprite_t* shot, sprite_t* explosion, sprite_t* enemy, 
         shot->x + shot->w > enemy->x &&
         shot->y < enemy->y + enemy->h &&
         shot->y + shot->h > enemy->y) {
+        vg_draw_rectangle(explosion->x, explosion->y, explosion->w, explosion->h, BLACK);
         vg_draw_rectangle(shot->x, shot->y, shot->w, shot->h, BLACK);
         sprite_set_pos(shot, 0, 0);
-        handle_collision(explosion, enemy, enemies, enemy_index, last_collision_time, explosion_time, elapsed_time);
+        handle_collision(explosion, enemy, enemies, enemy_index, last_collision_time, explosion_time, elapsed_time, true);
         return true;
     }
     return false;
