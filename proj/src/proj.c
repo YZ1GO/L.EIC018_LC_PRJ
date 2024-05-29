@@ -215,10 +215,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
                                 handleMoviment(scancode, cursor, 0);
                                 drawMenu(play, exit, cursor, logo);
-                                handleClick(scancode, cursor, play, exit, &state, &good, &game, &last_collision_time, &explosion_time);
+                                handleClick(scancode, cursor, play, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
                             }
                             if (state == 1) {
-                                handleClick(scancode, cursor, play, exit, &state, &good, &game, &last_collision_time, &explosion_time);
+                                handleClick(scancode, cursor, play, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
                                 vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
                                 handleMoviment(scancode, player, 1);
                                 handleShotSpawn(scancode, player, shots, &num_shots);
@@ -238,13 +238,21 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 handleMoviment(scancode, cursor, 0);
                                 sprite_set_pos(cursor, cursor->x, cursor->y);
                                 drawRetryMenu(retry, exit, cursor, textScore, game.score);
-                                handleClick(scancode, cursor, retry, exit, &state, &good, &game, &last_collision_time, &explosion_time);
+                                handleClick(scancode, cursor, retry, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
                             }
                         }
                     }
                     if (state == 1) {
+                        for (int i = 0; i < num_shots; i++) {
+                            for (int j = 0; j < 4; j++) {
+                                if (check_shot_collision(shots[i], explosion, enemies[j], enemies, j, &last_collision_time, &explosion_time, elapsed_time, shots, &num_shots, i)) {
+                                    game.health += 10;
+                                }
+                            }
+                        }
+
                         for (int i = 0; i < 4; i++) {
-                            if (check_collision(player, explosion, enemies[i], enemies, i, &last_collision_time, &explosion_time, elapsed_time)) {
+                            if (check_player_collision(player, explosion, enemies[i], enemies, i, &last_collision_time, &explosion_time, elapsed_time)) {
                                 game.health -= 20;
                             }
                         }
