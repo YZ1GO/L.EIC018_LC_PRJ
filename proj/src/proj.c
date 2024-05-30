@@ -148,16 +148,14 @@ int(proj_main_loop)(int argc, char *argv[]) {
     game.health = 100;
     game.score = 0;
     while(good) { 
-        /* You may want to use a different condition */
-        /* Get a request message. */
         if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
             printf("driver_receive failed with: %d", r);
             continue;
         }
-        if (is_ipc_notify(ipc_status)) { /* received notification */
+        if (is_ipc_notify(ipc_status)) {
             switch (_ENDPOINT_P(msg.m_source)) {
-                case HARDWARE: /* hardware interrupt notification */
-                    if (msg.m_notify.interrupts & irq_set_timer) { /* subscribed interrupt */
+                case HARDWARE:
+                    if (msg.m_notify.interrupts & irq_set_timer) {
                         timer_int_handler();
                         if (count_timer % 1 == 0) {
                             if (state == 1) {
@@ -205,7 +203,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                             }
                         }
                     }		
-                    if (msg.m_notify.interrupts & irq_set_kb) { /* subscribed interrupt */
+                    if (msg.m_notify.interrupts & irq_set_kb) {
                         kb_interupt_handler();
                         size_temp--;
                         if (flag_complete_kb) {
@@ -213,14 +211,14 @@ int(proj_main_loop)(int argc, char *argv[]) {
                             flag_complete_kb = false;
                             if (state == 0) {
                                 vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
-                                handleMoviment(scancode, cursor, 0);
+                                handleMovement(scancode, cursor, 0);
                                 drawMenu(play, exit, cursor, logo);
                                 handleClick(scancode, cursor, play, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
                             }
                             if (state == 1) {
                                 handleClick(scancode, cursor, play, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
                                 vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
-                                handleMoviment(scancode, player, 1);
+                                handleMovement(scancode, player, 1);
                                 handleShotSpawn(scancode, player, shots, &num_shots);
                                 if (scancode == 0x24) {
                                     sprite_set_pos(playerLeft, player->x, player->y);
@@ -235,7 +233,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                             }
                             if (state == 2) {
                                 vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
-                                handleMoviment(scancode, cursor, 0);
+                                handleMovement(scancode, cursor, 0);
                                 sprite_set_pos(cursor, cursor->x, cursor->y);
                                 drawRetryMenu(retry, exit, cursor, textScore, game.score);
                                 handleClick(scancode, cursor, retry, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
@@ -257,7 +255,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                             }
                         }
                     }
-                    if (msg.m_notify.interrupts & irq_set_m) { /* subscribed interrupt */
+                    if (msg.m_notify.interrupts & irq_set_m) {
                         mouse_ih();
                         if (flag_complete) {
                             build_packet(&mouse_packet);
@@ -266,17 +264,17 @@ int(proj_main_loop)(int argc, char *argv[]) {
                             count_mouse = 0;
                             if (state == 0) {
                                 vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
-                                handleMovimentCursorMouse(&mouse_packet, cursor);
+                                handleMovementCursorMouse(&mouse_packet, cursor);
                                 drawMenu(play, exit, cursor, logo);
                             }
                             if (state == 1) {
                                 vg_draw_rectangle(player->x,player->y, player->w, player->h, BLACK);
-                                handleMovimentCursorMouse(&mouse_packet, player);
+                                handleMovementCursorMouse(&mouse_packet, player);
                                 sprite_draw(player);
                             }
                             if (state == 2) {
                                 vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
-                                handleMovimentCursorMouse(&mouse_packet, cursor);
+                                handleMovementCursorMouse(&mouse_packet, cursor);
                                 drawRetryMenu(retry, exit, cursor, textScore, game.score);
                             }
                         }

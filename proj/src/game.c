@@ -29,7 +29,7 @@ bool check_collision_menu(sprite_t* el, sprite_t* cursor) {
     }
 }
 
-void handleMoviment(uint8_t scancode, sprite_t* sp, int is_player) {
+void handleMovement(uint8_t scancode, sprite_t* sp, int is_player) {
     if (is_player) {
         switch (scancode) {
             case 0x17: if (sp->y - PLAYER_STEP > 0) sp->y = sp->y - PLAYER_STEP; break;
@@ -62,7 +62,7 @@ void handleShotSpawn(uint8_t scancode, sprite_t* player, sprite_t* shots[], int*
     }
 }
 
-void handleMovimentCursorMouse(struct packet* pp, sprite_t* sp) {
+void handleMovementCursorMouse(struct packet* pp, sprite_t* sp) {
     uint8_t b[3];
     for (int i = 0; i < 3; i++) {
         b[i] = pp->bytes[i];
