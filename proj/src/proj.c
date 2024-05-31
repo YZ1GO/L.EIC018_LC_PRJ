@@ -214,34 +214,38 @@ int(proj_main_loop)(int argc, char *argv[]) {
                         if (flag_complete_kb) {
                             size = 0;
                             flag_complete_kb = false;
-                            if (state == 0) {
-                                vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
-                                handleMovement(scancode, cursor, 0);
-                                drawMenu(play, exit, cursor, logo);
-                                handleClick(scancode, cursor, play, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
-                            }
-                            if (state == 1) {
-                                handleClick(scancode, cursor, play, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
-                                vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
-                                handleMovement(scancode, player, 1);
-                                handleShotSpawn(scancode, player, shots, &num_shots);
-                                if (scancode == 0x24) {
-                                    sprite_set_pos(playerLeft, player->x, player->y);
-                                    sprite_draw(playerLeft);
-                                } else if (scancode == 0x26) {
-                                    sprite_set_pos(playerRight, player->x, player->y);
-                                    sprite_draw(playerRight);
-                                } else {
-                                    sprite_set_pos(player, player->x, player->y);
-                                    sprite_draw(player);
-                                }
-                            }
-                            if (state == 2) {
-                                vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
-                                handleMovement(scancode, cursor, 0);
-                                sprite_set_pos(cursor, cursor->x, cursor->y);
-                                drawRetryMenu(retry, exit, cursor, textScore, game.score);
-                                handleClick(scancode, cursor, retry, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
+                            switch (state) {
+                                case 0:
+                                    vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
+                                    handleMovement(scancode, cursor, 0);
+                                    drawMenu(play, exit, cursor, logo);
+                                    handleClick(scancode, cursor, play, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
+                                    break;
+                                case 1:
+                                    handleClick(scancode, cursor, play, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
+                                    vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
+                                    handleMovement(scancode, player, 1);
+                                    handleShotSpawn(scancode, player, shots, &num_shots);
+                                    if (scancode == 0x24) {
+                                        sprite_set_pos(playerLeft, player->x, player->y);
+                                        sprite_draw(playerLeft);
+                                    } else if (scancode == 0x26) {
+                                        sprite_set_pos(playerRight, player->x, player->y);
+                                        sprite_draw(playerRight);
+                                    } else {
+                                        sprite_set_pos(player, player->x, player->y);
+                                        sprite_draw(player);
+                                    }
+                                    break;
+                                case 2:
+                                    vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
+                                    handleMovement(scancode, cursor, 0);
+                                    sprite_set_pos(cursor, cursor->x, cursor->y);
+                                    drawRetryMenu(retry, exit, cursor, textScore, game.score);
+                                    handleClick(scancode, cursor, retry, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
+                                    break;
+                                default:
+                                    break;
                             }
                         }
                     }
@@ -267,34 +271,38 @@ int(proj_main_loop)(int argc, char *argv[]) {
                             number_packets++;
                             flag_complete = false;
                             count_mouse = 0;
-                            if (state == 0) {
-                                vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
-                                handleMovementCursorMouse(&mouse_packet, cursor);
-                                drawMenu(play, exit, cursor, logo);
-                            }
-                            if (state == 1) {
-                                vg_draw_rectangle(player->x,player->y, player->w, player->h, BLACK);
-                                handleMovementCursorMouse(&mouse_packet, player);
-                                sprite_draw(player);
-                            }
-                            if (state == 2) {
-                                vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
-                                handleMovementCursorMouse(&mouse_packet, cursor);
-                                drawRetryMenu(retry, exit, cursor, textScore, game.score);
+                            switch (state) {
+                                case 0:
+                                    vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
+                                    handleMovementCursorMouse(&mouse_packet, cursor);
+                                    drawMenu(play, exit, cursor, logo);
+                                    break;
+                                case 1:
+                                    vg_draw_rectangle(player->x,player->y, player->w, player->h, BLACK);
+                                    handleMovementCursorMouse(&mouse_packet, player);
+                                    sprite_draw(player);
+                                    break;
+                                case 2:
+                                    vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
+                                    handleMovementCursorMouse(&mouse_packet, cursor);
+                                    drawRetryMenu(retry, exit, cursor, textScore, game.score);
+                                    break;
+                                default:
+                                    break;
                             }
                         }
                     }
                     swap_buffers();
                     break;
                 default:
-                    break; /* no other notifications expected: do nothing */	
+                    break;
             }
         } else { 
             /* received a standard message, not a notification */
             /* no standard messages expected: do nothing */
         }
     }
-    if(timer_unsubscribe_int()) {
+    if (timer_unsubscribe_int()) {
         return 1;
     }
     if (kb_unsubscribe_int()) {
