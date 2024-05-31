@@ -100,7 +100,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
     sprite_set_pos(healthxpm, 670, 200);
     sprite_set_pos(timexpm, 670, 350);
     sprite_set_pos(clockxpm, 670, 500);
-    sprite_set_pos(textScore, 50, 50);
+    sprite_set_pos(textScore, 150, 50);
     sprite_set_pos(enemies[0], V_ENEMY1_X, V_ENEMY1_Y);
     sprite_set_pos(enemies[1], V_ENEMY2_X, V_ENEMY2_Y);
     sprite_set_pos(enemies[2], LR_ENEMY_X, LR_ENEMY_Y);
@@ -250,7 +250,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
                             for (int j = 0; j < 4; j++) {
                                 if (check_shot_collision(shots[i], explosion, enemies[j], enemies, j, &last_collision_time, &explosion_time, elapsed_time, shots, &num_shots, i)) {
                                     if (game.health != MAX_HEALTH) game.health += 0.5;
-                                    updateHealth(hearts, half_heartxpm, game.health);
                                 }
                             }
                         }
@@ -258,7 +257,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
                         for (int i = 0; i < 4; i++) {
                             if (check_player_collision(player, explosion, enemies[i], enemies, i, &last_collision_time, &explosion_time, elapsed_time)) {
                                 game.health -= 1;
-                                updateHealth(hearts, half_heartxpm, game.health);
                             }
                         }
                     }

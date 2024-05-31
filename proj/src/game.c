@@ -72,7 +72,7 @@ void handleMovementShot(sprite_t* shots[], int index) {
 }
 
 void handleShotSpawn(uint8_t scancode, sprite_t* player, sprite_t* shots[], int* num_shots) {
-    if (scancode == 0x1F && *num_shots < MAX_SHOTS) {
+    if (scancode == 0x39 && *num_shots < MAX_SHOTS) {
         sprite_set_pos(shots[*num_shots], player->x + player->w / 2 - 1, player->y - 20);
         sprite_draw(shots[*num_shots]);
         (*num_shots)++;
@@ -99,7 +99,7 @@ void handleMovementCursorMouse(struct packet* pp, sprite_t* sp) {
 void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* exit, int* state, int* good, game_t* game, int* num_shots, int* last_collision_time, int* explosion_time) {
     switch (scancode) {
         case 0x81: *good = 0; break;
-        case 0x39: 
+        case 0x1C: 
         if (check_collision_menu(play, cursor) && *state != 1) {
             *state = 1;
             game->score = 0;
@@ -107,7 +107,7 @@ void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* e
             *num_shots = 0;
             *last_collision_time = -COOLDOWN_PERIOD;
             *explosion_time = -COOLDOWN_PERIOD;
-            vg_draw_rectangle(0, 0, 1024, 768, BLACK);
+            vg_draw_rectangle(0, 0, 1152, 864, BLACK);
         }
         if (check_collision_menu(exit, cursor)) {
             *good = 0;
@@ -125,9 +125,10 @@ void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo) 
 
 
 void drawRetryMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* textScore, int score) {
+    vg_draw_rectangle(0, 0, 1152, 864, BLACK);
     sprite_set_pos(cursor, cursor->x, cursor->y);
     sprite_draw(textScore);
-    draw_numbers(score, 550, 200);
+    draw_numbers(score, 600, 200);
     sprite_draw(play);
     sprite_draw(exit);
     sprite_draw(cursor);
