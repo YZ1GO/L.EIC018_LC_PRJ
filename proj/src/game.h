@@ -19,6 +19,11 @@
 #define SHOT_SPEED 5
 #define INITIAL_HEALTH 3.0
 #define MAX_HEALTH 5
+#define I_KEY 0x17
+#define K_KEY 0x25
+#define J_KEY 0x24
+#define L_KEY 0x26
+#define SPACE_KEY 0x39
 
 typedef struct {
     float health;

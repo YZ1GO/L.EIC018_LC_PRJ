@@ -49,18 +49,18 @@ bool check_collision_menu(sprite_t* el, sprite_t* cursor) {
 void handleMovement(uint8_t scancode, sprite_t* sp, int is_player) {
     if (is_player) {
         switch (scancode) {
-            case 0x17: if (sp->y - PLAYER_STEP > 0) sp->y = sp->y - PLAYER_STEP; break;
-            case 0x26: if (sp->x + PLAYER_STEP + sp->w < ARENA_WIDTH) sp->x = sp->x + PLAYER_STEP; break;
-            case 0x25: if (sp->y + PLAYER_STEP + sp->h < ARENA_HEIGHT) sp->y = sp->y + PLAYER_STEP; break;
-            case 0x24: if (sp->x - PLAYER_STEP > 0) sp->x = sp->x - PLAYER_STEP; break;
+            case I_KEY: if (sp->y - PLAYER_STEP > 0) sp->y = sp->y - PLAYER_STEP; break;
+            case L_KEY: if (sp->x + PLAYER_STEP + sp->w < ARENA_WIDTH) sp->x = sp->x + PLAYER_STEP; break;
+            case K_KEY: if (sp->y + PLAYER_STEP + sp->h < ARENA_HEIGHT) sp->y = sp->y + PLAYER_STEP; break;
+            case J_KEY: if (sp->x - PLAYER_STEP > 0) sp->x = sp->x - PLAYER_STEP; break;
         }
     }
     else {
         switch (scancode) {
-            case 0x17: if (sp->y - PLAYER_STEP > 0) sp->y = sp->y - PLAYER_STEP; break;
-            case 0x26: if (sp->x + PLAYER_STEP + sp->w < 1024) sp->x = sp->x + PLAYER_STEP; break;
-            case 0x25: if (sp->y + PLAYER_STEP + sp->h < ARENA_HEIGHT) sp->y = sp->y + PLAYER_STEP; break;
-            case 0x24: if (sp->x - PLAYER_STEP > 0) sp->x = sp->x - PLAYER_STEP; break;
+            case I_KEY: if (sp->y - PLAYER_STEP > 0) sp->y = sp->y - PLAYER_STEP; break;
+            case L_KEY: if (sp->x + PLAYER_STEP + sp->w < 1024) sp->x = sp->x + PLAYER_STEP; break;
+            case K_KEY: if (sp->y + PLAYER_STEP + sp->h < ARENA_HEIGHT) sp->y = sp->y + PLAYER_STEP; break;
+            case J_KEY: if (sp->x - PLAYER_STEP > 0) sp->x = sp->x - PLAYER_STEP; break;
         }
     }
 }
@@ -72,7 +72,7 @@ void handleMovementShot(sprite_t* shots[], int index) {
 }
 
 void handleShotSpawn(uint8_t scancode, sprite_t* player, sprite_t* shots[], int* num_shots) {
-    if (scancode == 0x39 && *num_shots < MAX_SHOTS) {
+    if (scancode == SPACE_KEY && *num_shots < MAX_SHOTS) {
         sprite_set_pos(shots[*num_shots], player->x + player->w / 2 - 1, player->y - 20);
         sprite_draw(shots[*num_shots]);
         (*num_shots)++;

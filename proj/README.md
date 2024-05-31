@@ -78,14 +78,39 @@ All the planned functionalities were implemented.
 The following table provides the I/O devices used for this project:
 
 <table>
-    <tr><td>Device</td><td>What for?</td><td>Interupt or Polling?</td></tr>
-    <tr><td>Timer</td><td>-> Control elapsed time;<br>-> Handle critical elements, such as the health and the score;<br>
-    -> Update dynamic elements, such as enemies' moviment or updates from RTC.</td><td> Interrupt</td></tr>
-    <tr><td>KBD</td><td>-> Control moviment of the cursor or player during the menu or the gameplay;<br>
-    -> Handle collisions for the respective moviment.</td><td>Interrupt</td></tr>
-    <tr><td>Mouse</td><td>-> Handle the moviment of the cursor for the menu only.</td><td>Interrupt<td></tr>
-    <tr><td>Video Card</td><td>-> Screen display.</td><td> N/A</td></tr>
-    <tr><td>RTC</td><td>-> Display real time clock.</td><td>Interrupt</td></tr>
+    <tr>
+        <td>Device</td>
+        <td>What for?</td>
+        <td>Interupt or Polling?</td>
+    </tr>
+    <tr>
+        <td>Timer</td>
+        <td>-> Control elapsed time;<br>
+        -> Handle critical elements, such as the health and the score;<br>
+        -> Update dynamic elements, such as enemies' movement or updates from RTC.</td>
+        <td> Interrupt</td>
+    </tr>
+    <tr>
+        <td>KBD</td>
+        <td>-> Control movement of the cursor or player during the menu or the gameplay;<br>
+        -> Handle collisions for the respective movement.</td>
+        <td>Interrupt</td>
+    </tr>
+    <tr>
+        <td>Mouse</td>
+        <td>-> Handle the movement of the cursor for the menu only.</td>
+        <td>Interrupt<td>
+    </tr>
+    <tr>
+        <td>Video Card</td>
+        <td>-> Screen display.</td>
+        <td> N/A</td>
+    </tr>
+    <tr>
+        <td>RTC</td>
+        <td>-> Display real time clock.</td>
+        <td>Interrupt</td>
+    </tr>
 </table>
 
 ### Timer
@@ -114,9 +139,9 @@ The keyboard serves as a crucial interface for player-game interaction. For inst
 
 <img src="img/handleclick.png">
 
-##### handleMoviment():
+##### handleMovement():
 
-<img src="img/handlemoviment.png">
+<img src="img/handlemovement.png">
 
 ### Graphics Card
 
@@ -144,9 +169,9 @@ Like the keyboard, it serves as an interface for player-game interaction, allowi
 
 #### Important functions called:
 
-##### handleMovimentCursorMouse()
+##### handleMovementCursorMouse()
 
-<img src="img/handlemovimentmouse.png">
+<img src="img/handlemovementcursormouse.png">
 
 ### RTC
 
@@ -220,11 +245,11 @@ The player is confined to a specific area and is not allowed to cross the bounda
 
 Let's see an example:
 
-<img src="img/handlemoviment.png">
+<img src="img/handlemovement.png">
 
 Beforehand, we should check if it is the player or the cursor for which we are calling the function.
 
-If it is the player, his moviment should be inside the arena. If the moviment doesn't respect the boundaries, it won't move. The same goes to the cursor. It should be inside the screen.
+If it is the player, his movement should be inside the arena. If the movement doesn't respect the boundaries, it won't move. The same goes to the cursor. It should be inside the screen.
 
 #### Enemies
 
@@ -234,7 +259,7 @@ A key aspect of the game is the interaction with enemies. If the player's sprite
 
 Should the function return true, the player's health will be decreased.
 
-### Moviment of the Sprites
+### Movement of the Sprites
 
 To accurately reflect the movement of game elements, the screen must be constantly updated with their new positions. Simultaneously, pixels from their previous positions should be erased to prevent leaving a visual trail.
 

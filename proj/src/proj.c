@@ -225,10 +225,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                     vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
                                     handleMovement(scancode, player, 1);
                                     handleShotSpawn(scancode, player, shots, &num_shots);
-                                    if (scancode == 0x24) {
+                                    if (scancode == J_KEY) {
                                         sprite_set_pos(playerLeft, player->x, player->y);
                                         sprite_draw(playerLeft);
-                                    } else if (scancode == 0x26) {
+                                    } else if (scancode == L_KEY) {
                                         sprite_set_pos(playerRight, player->x, player->y);
                                         sprite_draw(playerRight);
                                     } else {
