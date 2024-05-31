@@ -15,6 +15,23 @@ extern xpm_row_t SEVEN_xpm[];
 extern xpm_row_t EIGHT_xpm[];
 extern xpm_row_t NINE_xpm[];
 
+void updateHealth(sprite_t* hearts[], sprite_t* half_heart, float health) {
+    int full_hearts = (int)health;
+    int half_heart_flag = (health - full_hearts > 0) ? 1 : 0;
+
+    for (int i = 0; i < MAX_HEALTH; i++) {
+        vg_draw_rectangle(hearts[i]->x, hearts[i]->y, hearts[i]->w, hearts[i]->h, BLACK);
+        if (i < full_hearts) {
+            sprite_set_pos(hearts[i], 950 - 50 * i, 260);
+            sprite_draw(hearts[i]);
+        }
+        else if (i == full_hearts && half_heart_flag) {
+            sprite_set_pos(half_heart, 950 - 50 * i, 260);
+            sprite_draw(half_heart);
+        }
+    }
+}
+
 bool check_collision_menu(sprite_t* el, sprite_t* cursor) {
     if (el->x <= cursor->x && el->x + el->w >= cursor->x) {
         if (el->y <= cursor->y && el->y + el->h >= cursor->y) {
@@ -86,7 +103,7 @@ void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* e
         if (check_collision_menu(play, cursor) && *state != 1) {
             *state = 1;
             game->score = 0;
-            game->health = 100;
+            game->health = INITIAL_HEALTH;
             *num_shots = 0;
             *last_collision_time = -COOLDOWN_PERIOD;
             *explosion_time = -COOLDOWN_PERIOD;
@@ -110,7 +127,7 @@ void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo) 
 void drawRetryMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* textScore, int score) {
     sprite_set_pos(cursor, cursor->x, cursor->y);
     sprite_draw(textScore);
-    draw_numbers(score, 200, 550);
+    draw_numbers(score, 550, 200);
     sprite_draw(play);
     sprite_draw(exit);
     sprite_draw(cursor);
@@ -195,7 +212,7 @@ void handleHorizontalMovementEnemy(sprite_t* leftToRightEnemy, sprite_t* rightTo
     }
 }
 
-void draw_numbers(int number, int position_y, int position_x) {
+void draw_numbers(int number, int position_x, int position_y) {
     sprite_t* n;
     while (number > 0) {
         int digit = number % 10;
@@ -227,7 +244,7 @@ void draw_numbers(int number, int position_y, int position_x) {
     }
 }
 
-void draw_numbers_time(char* string, int position_y, int position_x) {
+void draw_numbers_time(char* string, int position_x, int position_y) {
     sprite_t* n;
     for (int i = 0; i <= 1; i++) {
         switch(string[i]) {

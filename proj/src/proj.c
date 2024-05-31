@@ -89,6 +89,11 @@ int(proj_main_loop)(int argc, char *argv[]) {
     sprite_t *textScore = sprite_ctor(textScore_xpm);
     sprite_t *scorexpm = sprite_ctor(score_xpm);
     sprite_t *healthxpm = sprite_ctor(health_xpm);
+    sprite_t *hearts[MAX_HEALTH];
+    for (int i = 0; i < MAX_HEALTH; i++) {
+        hearts[i] = sprite_ctor(heart_xpm);
+    }
+    sprite_t* half_heartxpm = sprite_ctor(half_heart_xpm);
     sprite_t *clockxpm = sprite_ctor(clock_xpm);
     sprite_t *timexpm = sprite_ctor(time_xpm);
     sprite_set_pos(scorexpm, 670, 50);
@@ -145,7 +150,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
     int state = 0;
     int good = 1;
     game_t game;
-    game.health = 100;
+    game.health = INITIAL_HEALTH;
     game.score = 0;
     while(good) { 
         if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
@@ -182,16 +187,16 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                     elapsed_time++;
                                     game.score += 50*elapsed_time + 10; 
                                     sprite_draw(scorexpm);
-                                    draw_numbers(game.score, 110, 950);
+                                    draw_numbers(game.score, 950, 110);
                                     sprite_draw(healthxpm);
                                     vg_draw_rectangle(750, 260, 150, 50, BLACK);
-                                    draw_numbers(game.health, 260, 950);
+                                    updateHealth(hearts, half_heartxpm, game.health);
                                     sprite_draw(timexpm);
-                                    draw_numbers(elapsed_time, 410, 950);
+                                    draw_numbers(elapsed_time, 950, 410);
                                     sprite_draw(clockxpm);
                                     char* string = "00:00";
                                     rtc_read_time(string);
-                                    draw_numbers_time(string, 560, 750);
+                                    draw_numbers_time(string, 750, 560);
                                 }
                                 if (game.health <= 0) {
                                     vg_draw_rectangle(0, 0, 1024, 768, BLACK);
@@ -244,14 +249,16 @@ int(proj_main_loop)(int argc, char *argv[]) {
                         for (int i = 0; i < num_shots; i++) {
                             for (int j = 0; j < 4; j++) {
                                 if (check_shot_collision(shots[i], explosion, enemies[j], enemies, j, &last_collision_time, &explosion_time, elapsed_time, shots, &num_shots, i)) {
-                                    game.health += 10;
+                                    if (game.health != MAX_HEALTH) game.health += 0.5;
+                                    updateHealth(hearts, half_heartxpm, game.health);
                                 }
                             }
                         }
 
                         for (int i = 0; i < 4; i++) {
                             if (check_player_collision(player, explosion, enemies[i], enemies, i, &last_collision_time, &explosion_time, elapsed_time)) {
-                                game.health -= 20;
+                                game.health -= 1;
+                                updateHealth(hearts, half_heartxpm, game.health);
                             }
                         }
                     }
