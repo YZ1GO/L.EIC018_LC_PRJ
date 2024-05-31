@@ -153,6 +153,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
     game.health = INITIAL_HEALTH;
     game.score = 0;
     while(good) { 
+        if (state == 1) sprite_draw(arena); 
         if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
             printf("driver_receive failed with: %d", r);
             continue;
@@ -178,7 +179,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 sprite_draw(verticalEnemy2);
                                 sprite_draw(leftRightEnemy);
                                 sprite_draw(rightLeftEnemy);
-                                sprite_draw(arena); 
                                 if (elapsed_time - explosion_time > 0.1) {
                                     vg_draw_rectangle(explosion->x, explosion->y, explosion->w, explosion->h, BLACK);
                                     explosion_time = elapsed_time;
@@ -199,12 +199,11 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                     draw_numbers_time(string, 750, 560);
                                 }
                                 if (game.health <= 0) {
-                                    vg_draw_rectangle(0, 0, 1024, 768, BLACK);
+                                    vg_draw_rectangle(0, 0, 1152, 864, BLACK);
                                     state = 2;
                                     elapsed_time = 0;
                                     drawRetryMenu(retry, exit, cursor, textScore, game.score);
                                 }
-
                             }
                         }
                     }		

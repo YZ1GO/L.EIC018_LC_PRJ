@@ -125,7 +125,6 @@ void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo) 
 
 
 void drawRetryMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* textScore, int score) {
-    vg_draw_rectangle(0, 0, 1152, 864, BLACK);
     sprite_set_pos(cursor, cursor->x, cursor->y);
     sprite_draw(textScore);
     draw_numbers(score, 600, 200);
