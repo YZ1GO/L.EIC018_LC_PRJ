@@ -1,6 +1,8 @@
 #include "sprite.h"
 #include <stdint.h>
 
+#define GRAPHICS_WIDTH 1152
+#define GRAPHICS_HEIGHT 864
 #define COOLDOWN_PERIOD 1
 #define ARENA_HEIGHT 794
 #define ARENA_WIDTH 650

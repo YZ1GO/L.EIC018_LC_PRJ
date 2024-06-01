@@ -107,7 +107,7 @@ void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* e
             *num_shots = 0;
             *last_collision_time = -COOLDOWN_PERIOD;
             *explosion_time = -COOLDOWN_PERIOD;
-            vg_draw_rectangle(0, 0, 1152, 864, BLACK);
+            vg_draw_rectangle(0, 0, GRAPHICS_WIDTH, GRAPHICS_HEIGHT, BLACK);
         }
         if (check_collision_menu(exit, cursor)) {
             *good = 0;

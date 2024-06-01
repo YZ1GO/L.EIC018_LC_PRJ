@@ -199,7 +199,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                     draw_numbers_time(string, 750, 560);
                                 }
                                 if (game.health <= 0) {
-                                    vg_draw_rectangle(0, 0, 1152, 864, BLACK);
+                                    vg_draw_rectangle(0, 0, GRAPHICS_WIDTH, GRAPHICS_HEIGHT, BLACK);
                                     state = 2;
                                     elapsed_time = 0;
                                     drawRetryMenu(retry, exit, cursor, textScore, game.score);

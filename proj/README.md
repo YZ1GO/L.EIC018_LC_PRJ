@@ -249,11 +249,11 @@ Let's see an example:
 
 Beforehand, we should check if it is the player or the cursor for which we are calling the function.
 
-If it is the player, his movement should be inside the arena. If the movement doesn't respect the boundaries, it won't move. The same goes to the cursor. It should be inside the screen.
+If it is the player, its movement should be inside the arena. If the movement doesn't respect the boundaries, it won't move. The same goes to the cursor. It should be inside the screen.
 
 #### Enemies
 
-A key aspect of the game is the interaction with enemies. If the player's sprite intersects with an enemy's sprite, indicating a collision, the player loses health. This check is performed after each keyboard or mouse input.
+A key aspect of the game is the interaction with enemies. If the player's sprite intersects with an enemy's sprite, indicating a collision, the player loses health. This check is performed continuously during the game.
 
 <img src="img/enemiescollision.png">
 
@@ -288,7 +288,7 @@ Throughout the game, various values require updating. Each time the program rece
 
 In each second, we will update those values. Let's check the following code:
 
-<img src="img/elements.png">
+<img src="img/gamelifecycle.png">
 
 As we can see, we will have a sprite for each element and the respective label. In each second, the score and the elapsed time will increase linearly with the elapsed time. The health will be updated according to the player's health and the clock will be updated with the retrieved time from the RTC.
 
