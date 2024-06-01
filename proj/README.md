@@ -57,6 +57,10 @@ When you start the game, your environment will have the following layout:
 
 * This displays the time you've survived in the game, measured in seconds!
 
+#### Shots
+
+* This displays the remaining ammunition player has
+
 #### Clock
 
 * This displays the current real-world time in the format of hours and minutes (HH:MM)!
@@ -65,7 +69,7 @@ When you start the game, your environment will have the following layout:
 
 Upon the conclusion of your game, you'll be directed to a menu that displays your score and offers the options to either restart the game or exit the program.
 
-<img src="img/end.png">
+<img src="img/gameover.png">
 
 ## Section 2 (Project Status)
 
@@ -157,7 +161,9 @@ In the event of a collision, both the player and the enemy crash, leaving behind
 
 When a shot hits an enemy, it also results in an explosion. The enemy then disappears and respawns at a random location.
 
-<img src="img/collision.png">
+| Collision | Shoot |
+|:-:|:-:|
+| <img src="img/collision.png" width="400" /> | <img src="img/shoot.png" width="500" /> |
 
 ### Mouse
 
@@ -175,7 +181,7 @@ Like the keyboard, it serves as an interface for player-game interaction, allowi
 
 ### RTC
 
-The Real-Time Clock (RTC) is utilized to obtain the current time. While it doesn't have a dedicated if-statement to read the irq_set line, it is invoked during the timer interrupt to update the on-screen clock element.
+The Real-Time Clock (RTC) is used to obtain the current time. While it doesn't have a dedicated if-statement to read the irq_set line, it is invoked during the timer interrupt to update the on-screen clock element.
 
 #### Important functions called:
 
@@ -222,20 +228,6 @@ This is the primary file for the project. It is responsible for implementing the
 TO BE DONE
 
 ## Section 4 (Implementation Details)
-
-### States
-
-It is very important to know in which screen we are to adapt the behaviour of our devices. For instance, if we are in the menu, we need only to control the cursor. However, if we are in the game, we need to control the player and not the cursor. 
-
-Let's see the example of the mouse:
-
-<img src="img/states.png">
-
-* State 0 - Initial Menu;
-* State 1 - Gameplay;
-* State 2 - End Game Menu.
-
-If the mouse receives an interrupt and the game is in the state 0 or 2, it will update the position of the cursor according to the respective interrupt. If it is in the state 1, it will update the player's position instead.
 
 ### Collisions
 
