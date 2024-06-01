@@ -17,6 +17,8 @@
 #define LR_ENEMY_Y 300
 #define RL_ENEMY_X 610
 #define RL_ENEMY_Y 100
+#define V_ENEMIES_SPEED_CAP 100
+#define H_ENEMIES_SPEED_CAP 80
 #define MAX_SHOTS 10
 #define SHOT_SPEED 5
 #define INITIAL_HEALTH 3.0

@@ -146,26 +146,15 @@ int calculate_new_x(int enemyA_width, int enemyB_x) {
 }
 
 void handleVerticalMovementEnemy(sprite_t* verticalEnemy1, sprite_t* verticalEnemy2, int elapsed_time) {
-    if (elapsed_time <= 10) {
-        verticalEnemy1->y += 5;
-        verticalEnemy2->y += 5;
+    int speed = 5 + elapsed_time / 5;
+
+    if (speed > V_ENEMIES_SPEED_CAP) {
+        speed = V_ENEMIES_SPEED_CAP;
     }
-    else if (elapsed_time > 10 && elapsed_time <= 20) {
-        verticalEnemy1->y += 7;
-        verticalEnemy2->y += 7;
-    }
-    else if (elapsed_time > 20 && elapsed_time <= 30) {
-        verticalEnemy1->y += 9;
-        verticalEnemy2->y += 9;
-    }
-    else if (elapsed_time > 30 && elapsed_time <= 40) {
-        verticalEnemy1->y += 11;
-        verticalEnemy2->y += 11;
-    }
-    else {
-        verticalEnemy1->y += 13;
-        verticalEnemy2->y += 13;
-    }
+
+    verticalEnemy1->y += speed;
+    verticalEnemy2->y += speed;
+    
     if (verticalEnemy1->y + verticalEnemy1->h > ARENA_HEIGHT) {
         verticalEnemy1->x = calculate_new_x(verticalEnemy1->w, verticalEnemy2->x);
         verticalEnemy1->y = V_ENEMY1_Y; 
@@ -185,26 +174,15 @@ int calculate_new_y(int enemyA_height, int enemyB_y) {
 }
 
 void handleHorizontalMovementEnemy(sprite_t* leftToRightEnemy, sprite_t* rightToLeftEnemy, int elapsed_time) {
-    if (elapsed_time <= 10) {
-        leftToRightEnemy->x += 3;
-        rightToLeftEnemy->x -= 3;
+    int speed = 3 + elapsed_time / 5;
+
+    if (speed > H_ENEMIES_SPEED_CAP) {
+        speed = H_ENEMIES_SPEED_CAP;
     }
-    else if (elapsed_time > 10 && elapsed_time <= 20) {
-        leftToRightEnemy->x += 5;
-        rightToLeftEnemy->x -= 5;
-    }
-    else if (elapsed_time > 20 && elapsed_time <= 30) {
-        leftToRightEnemy->x += 7;
-        rightToLeftEnemy->x -= 7;
-    }
-    else if (elapsed_time > 30 && elapsed_time <= 40) {
-        leftToRightEnemy->x += 9;
-        rightToLeftEnemy->x -= 9;
-    }
-    else {
-        leftToRightEnemy->x += 11;
-        rightToLeftEnemy->x -= 11;
-    }
+
+    leftToRightEnemy->x += speed;
+    rightToLeftEnemy->x -= speed;
+
     if (leftToRightEnemy->x + leftToRightEnemy->w > 646) {
         leftToRightEnemy->x = 5; 
         leftToRightEnemy->y = calculate_new_y(leftToRightEnemy->h, rightToLeftEnemy->y);
