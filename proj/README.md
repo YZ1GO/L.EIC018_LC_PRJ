@@ -163,7 +163,7 @@ When a shot hits an enemy, it also results in an explosion. The enemy then disap
 
 | Collision | Shoot |
 |:-:|:-:|
-| <img src="img/collision.png" width="400" /> | <img src="img/shoot.png" width="500" /> |
+| <img src="img/collision.png" width="400" /> | <img src="img/shoot.png" width="400" /> |
 
 ### Mouse
 
