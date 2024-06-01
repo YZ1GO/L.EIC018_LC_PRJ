@@ -32,6 +32,19 @@ void updateHealth(sprite_t* hearts[], sprite_t* half_heart, float health) {
     }
 }
 
+void updateShots(sprite_t* shotsInfo[], int* num_shots, sprite_t* emptyxpm) {
+    if (*num_shots == MAX_SHOTS) {
+        sprite_set_pos(emptyxpm, 950, 580);
+        sprite_draw(emptyxpm);
+        return;
+    }
+    for (int i = 0; i < MAX_SHOTS - *num_shots; i++) {
+        vg_draw_rectangle(shotsInfo[i]->x, shotsInfo[i]->y, shotsInfo[i]->w, shotsInfo[i]->h, BLACK);
+        sprite_set_pos(shotsInfo[i], 1000 - 25 * i, 560);
+        sprite_draw(shotsInfo[i]);
+    }
+}
+
 bool check_collision_menu(sprite_t* el, sprite_t* cursor) {
     if (el->x <= cursor->x && el->x + el->w >= cursor->x) {
         if (el->y <= cursor->y && el->y + el->h >= cursor->y) {

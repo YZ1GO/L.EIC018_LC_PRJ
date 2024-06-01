@@ -35,6 +35,7 @@ typedef struct {
 } game_t;
 
 void updateHealth(sprite_t* hearts[], sprite_t* half_heart, float health);
+void updateShots(sprite_t* shotsInfo[], int* num_shots, sprite_t* emptyxpm);
 bool check_collision_menu(sprite_t* el, sprite_t* cursor);
 void handleMovement(uint8_t scancode, sprite_t* sp, int is_player);
 void handleMovementCursorMouse(struct packet* pp, sprite_t* sp);

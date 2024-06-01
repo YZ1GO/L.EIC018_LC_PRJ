@@ -93,13 +93,20 @@ int(proj_main_loop)(int argc, char *argv[]) {
     for (int i = 0; i < MAX_HEALTH; i++) {
         hearts[i] = sprite_ctor(heart_xpm);
     }
-    sprite_t* half_heartxpm = sprite_ctor(half_heart_xpm);
+    sprite_t *half_heartxpm = sprite_ctor(half_heart_xpm);
     sprite_t *clockxpm = sprite_ctor(clock_xpm);
     sprite_t *timexpm = sprite_ctor(time_xpm);
+    sprite_t *shotsxpm = sprite_ctor(shots_xpm);
+    sprite_t *shotsInfo[MAX_SHOTS];
+    for (int i = 0; i < MAX_SHOTS; i++) {
+        shotsInfo[i] = sprite_ctor(shot_info_xpm);
+    }
+    sprite_t *emptyxpm = sprite_ctor(empty_xpm);
     sprite_set_pos(scorexpm, 670, 50);
     sprite_set_pos(healthxpm, 670, 200);
     sprite_set_pos(timexpm, 670, 350);
-    sprite_set_pos(clockxpm, 670, 500);
+    sprite_set_pos(shotsxpm, 670, 500);
+    sprite_set_pos(clockxpm, 670, 650);
     sprite_set_pos(textScore, 150, 50);
     sprite_set_pos(enemies[0], V_ENEMY1_X, V_ENEMY1_Y);
     sprite_set_pos(enemies[1], V_ENEMY2_X, V_ENEMY2_Y);
@@ -186,17 +193,25 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                 if (count_elapsed_time % 60 == 0) {
                                     elapsed_time++;
                                     game.score += 50*elapsed_time + 10; 
+
                                     sprite_draw(scorexpm);
                                     draw_numbers(game.score, 950, 110);
+
                                     sprite_draw(healthxpm);
                                     vg_draw_rectangle(750, 260, 150, 50, BLACK);
                                     updateHealth(hearts, half_heartxpm, game.health);
+
                                     sprite_draw(timexpm);
                                     draw_numbers(elapsed_time, 950, 410);
+                                    
+                                    sprite_draw(shotsxpm);
+                                    vg_draw_rectangle(770, 560, 250, 50, BLACK);
+                                    updateShots(shotsInfo, &num_shots, emptyxpm);
+
                                     sprite_draw(clockxpm);
                                     char* string = "00:00";
                                     rtc_read_time(string);
-                                    draw_numbers_time(string, 750, 560);
+                                    draw_numbers_time(string, 750, 710);
                                 }
                                 if (game.health <= 0) {
                                     vg_draw_rectangle(0, 0, GRAPHICS_WIDTH, GRAPHICS_HEIGHT, BLACK);
