@@ -60,21 +60,26 @@ bool check_collision_menu(sprite_t* el, sprite_t* cursor) {
 }
 
 void handleMovement(uint8_t scancode, sprite_t* sp, int is_player) {
-    if (is_player) {
-        switch (scancode) {
-            case I_KEY: if (sp->y - PLAYER_STEP > 0) sp->y = sp->y - PLAYER_STEP; break;
-            case L_KEY: if (sp->x + PLAYER_STEP + sp->w < ARENA_WIDTH) sp->x = sp->x + PLAYER_STEP; break;
-            case K_KEY: if (sp->y + PLAYER_STEP + sp->h < ARENA_HEIGHT) sp->y = sp->y + PLAYER_STEP; break;
-            case J_KEY: if (sp->x - PLAYER_STEP > 0) sp->x = sp->x - PLAYER_STEP; break;
-        }
-    }
-    else {
-        switch (scancode) {
-            case I_KEY: if (sp->y - PLAYER_STEP > 0) sp->y = sp->y - PLAYER_STEP; break;
-            case L_KEY: if (sp->x + PLAYER_STEP + sp->w < 1024) sp->x = sp->x + PLAYER_STEP; break;
-            case K_KEY: if (sp->y + PLAYER_STEP + sp->h < ARENA_HEIGHT) sp->y = sp->y + PLAYER_STEP; break;
-            case J_KEY: if (sp->x - PLAYER_STEP > 0) sp->x = sp->x - PLAYER_STEP; break;
-        }
+    int width_limit = is_player ? ARENA_WIDTH : GRAPHICS_WIDTH;
+    int height_limit = is_player ? ARENA_HEIGHT : GRAPHICS_HEIGHT;
+
+    switch (scancode) {
+        case I_KEY: 
+            if (sp->y - PLAYER_STEP > 0) 
+                sp->y = sp->y - PLAYER_STEP; 
+            break;
+        case L_KEY: 
+            if (sp->x + PLAYER_STEP + sp->w < width_limit) 
+                sp->x = sp->x + PLAYER_STEP; 
+            break;
+        case K_KEY: 
+            if (sp->y + PLAYER_STEP + sp->h < height_limit) 
+                sp->y = sp->y + PLAYER_STEP; 
+            break;
+        case J_KEY: 
+            if (sp->x - PLAYER_STEP > 0) 
+                sp->x = sp->x - PLAYER_STEP; 
+            break;
     }
 }
 
@@ -105,8 +110,15 @@ void handleMovementCursorMouse(struct packet* pp, sprite_t* sp) {
     if (b[0] & MSB_Y_DELTA) {
         y |= 0xFF00;
     }
-    sp->x = sp->x + (int8_t)x;
-    sp->y = sp->y - (int8_t)y;
+    int new_x = sp->x + (int8_t)x;
+    int new_y = sp->y - (int8_t)y;
+
+    if (new_x >= 0 && new_x + sp->w <= GRAPHICS_WIDTH) {
+        sp->x = new_x;
+    }
+    if (new_y >= 0 && new_y + sp->h <= GRAPHICS_HEIGHT) {
+        sp->y = new_y;
+    }
 }
 
 void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* exit, int* state, int* good, game_t* game, sprite_t* enemies[], int* num_shots, int* last_collision_time, int* explosion_time) {
