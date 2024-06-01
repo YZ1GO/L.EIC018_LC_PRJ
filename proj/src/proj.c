@@ -291,11 +291,6 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                     handleMovementCursorMouse(&mouse_packet, cursor);
                                     drawMenu(play, exit, cursor, logo);
                                     break;
-                                case 1:
-                                    vg_draw_rectangle(player->x,player->y, player->w, player->h, BLACK);
-                                    handleMovementCursorMouse(&mouse_packet, player);
-                                    sprite_draw(player);
-                                    break;
                                 case 2:
                                     vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
                                     handleMovementCursorMouse(&mouse_packet, cursor);
