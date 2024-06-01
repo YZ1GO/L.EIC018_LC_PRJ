@@ -4,7 +4,6 @@ LCOM Project for group T18 G06
 
 Group members:
 
-
 |  Name          |  ID         |
 |----------------|-------------|
 | Jorge Mesquita | 202108614   |
