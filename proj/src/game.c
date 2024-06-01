@@ -96,7 +96,7 @@ void handleMovementCursorMouse(struct packet* pp, sprite_t* sp) {
     sp->y = sp->y - (int8_t)y;
 }
 
-void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* exit, int* state, int* good, game_t* game, int* num_shots, int* last_collision_time, int* explosion_time) {
+void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* exit, int* state, int* good, game_t* game, sprite_t* enemies[], int* num_shots, int* last_collision_time, int* explosion_time) {
     switch (scancode) {
         case 0x81: *good = 0; break;
         case 0x1C: 
@@ -108,6 +108,11 @@ void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* e
             *last_collision_time = -COOLDOWN_PERIOD;
             *explosion_time = -COOLDOWN_PERIOD;
             vg_draw_rectangle(0, 0, GRAPHICS_WIDTH, GRAPHICS_HEIGHT, BLACK);
+
+            sprite_set_pos(enemies[0], V_ENEMY1_X, V_ENEMY1_Y);
+            sprite_set_pos(enemies[1], V_ENEMY2_X, V_ENEMY2_Y);
+            sprite_set_pos(enemies[2], LR_ENEMY_X, LR_ENEMY_Y);
+            sprite_set_pos(enemies[3], RL_ENEMY_X, RL_ENEMY_Y);
         }
         if (check_collision_menu(exit, cursor)) {
             *good = 0;
@@ -123,7 +128,6 @@ void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo) 
     sprite_draw(cursor);
 }
 
-
 void drawRetryMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* textScore, int score) {
     sprite_set_pos(cursor, cursor->x, cursor->y);
     sprite_draw(textScore);
@@ -132,7 +136,6 @@ void drawRetryMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* t
     sprite_draw(exit);
     sprite_draw(cursor);
 }
-
 
 int calculate_new_x(int enemyA_width, int enemyB_x) {
     int new_x = 5 + rand() % (ARENA_WIDTH - enemyA_width - 5);

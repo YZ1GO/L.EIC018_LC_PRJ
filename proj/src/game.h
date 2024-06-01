@@ -6,8 +6,8 @@
 #define COOLDOWN_PERIOD 1
 #define ARENA_HEIGHT 794
 #define ARENA_WIDTH 650
-#define PLAYER_X 200
-#define PLAYER_Y 500
+#define PLAYER_X 300
+#define PLAYER_Y 660
 #define PLAYER_STEP 36
 #define V_ENEMY1_X 200
 #define V_ENEMY1_Y 5
@@ -36,7 +36,7 @@ void updateHealth(sprite_t* hearts[], sprite_t* half_heart, float health);
 bool check_collision_menu(sprite_t* el, sprite_t* cursor);
 void handleMovement(uint8_t scancode, sprite_t* sp, int is_player);
 void handleMovementCursorMouse(struct packet* pp, sprite_t* sp);
-void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* exit, int* state, int* good, game_t* game, int* num_shots, int* last_collision_time, int* explosion_time);
+void handleClick(uint8_t scancode, sprite_t* cursor, sprite_t* play, sprite_t* exit, int* state, int* good, game_t* game, sprite_t* enemies[], int* num_shots, int* last_collision_time, int* explosion_time);
 void drawMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* logo);
 void drawRetryMenu(sprite_t* play, sprite_t* exit, sprite_t* cursor, sprite_t* textScore, int score);
 int calculate_new_x(int enemyA_width, int enemyB_x);

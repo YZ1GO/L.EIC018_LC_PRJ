@@ -218,10 +218,10 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                     vg_draw_rectangle(cursor->x,cursor->y, cursor->w, cursor->h, BLACK);
                                     handleMovement(scancode, cursor, 0);
                                     drawMenu(play, exit, cursor, logo);
-                                    handleClick(scancode, cursor, play, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
+                                    handleClick(scancode, cursor, play, exit, &state, &good, &game, enemies, &num_shots, &last_collision_time, &explosion_time);
                                     break;
                                 case 1:
-                                    handleClick(scancode, cursor, play, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
+                                    handleClick(scancode, cursor, play, exit, &state, &good, &game, enemies, &num_shots, &last_collision_time, &explosion_time);
                                     vg_draw_rectangle(player->x, player->y, player->w, player->h, BLACK);
                                     handleMovement(scancode, player, 1);
                                     handleShotSpawn(scancode, player, shots, &num_shots);
@@ -241,7 +241,7 @@ int(proj_main_loop)(int argc, char *argv[]) {
                                     handleMovement(scancode, cursor, 0);
                                     sprite_set_pos(cursor, cursor->x, cursor->y);
                                     drawRetryMenu(retry, exit, cursor, textScore, game.score);
-                                    handleClick(scancode, cursor, retry, exit, &state, &good, &game, &num_shots, &last_collision_time, &explosion_time);
+                                    handleClick(scancode, cursor, retry, exit, &state, &good, &game, enemies, &num_shots, &last_collision_time, &explosion_time);
                                     break;
                                 default:
                                     break;
