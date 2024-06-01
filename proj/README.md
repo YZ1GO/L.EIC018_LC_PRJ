@@ -298,7 +298,7 @@ If the player's health reaches a value lower or equal than zero, the game will c
 
 This was one of the projects where we acquired several skills during its execution. It was possible to explore new concepts, going beyond the skills of the curricular unit, and, essentially, it was possible to consolidate the skills acquired. 
 
-It is important to note that we had to invest more time and effort in the project, since two of our group members didn't participate.
+Due to the unforeseen circumstances of two group members not participating, we had to adjust our initial plans for the complexity of the game. Despite our best efforts and additional time investment, we were unable to implement some of the more complex features we had originally envisioned. However, we focused on ensuring that the implemented features were robust and provided a fun and engaging gaming experience. We believe that the final game, while a lot simpler than initially planned, is still a testament to our dedication and hard work under challenging circumstances.
 
 We complied with 100% of the mandatory parameters (Timer, KBD and Graphics Card) and explored some optional ones (Mouse and RTC). Having said that, we consider that this project was successful and we performed very well according to our expectations!
 
