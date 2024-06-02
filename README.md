@@ -29,7 +29,7 @@ To add a strategic twist, players are also equipped with a limited number of sho
 ![Gameplay GIF](proj/docs/gameplay.gif)
 
 <p align="center">
-  <a href="proj/docs">You can find here the video</a>
+  <a href="proj/docs/gameplay.mp4">Click here to see the video</a>
 </p>
 
 ### Menu
