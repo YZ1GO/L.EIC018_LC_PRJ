@@ -26,6 +26,12 @@ DodgeLite is a mini-game where the primary objective is to survive as long as po
 
 To add a strategic twist, players are also equipped with a limited number of shots. These can be used to take down incoming planes, providing temporary relief and extending survival time. However, with limited ammunition, players must decide when to dodge and when to strike for optimal survival.
 
+![Gameplay GIF](proj/docs/gameplay.gif)
+
+<p align="center">
+  <a href="proj/docs">You can find here the video</a>
+</p>
+
 ### Menu
 
 When you open the game, you will come across a user-friendly menu offering options to start or exit the game.
