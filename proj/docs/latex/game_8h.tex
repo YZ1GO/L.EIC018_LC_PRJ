@@ -1,0 +1,934 @@
+\hypertarget{game_8h}{}\doxysection{game.\+h File Reference}
+\label{game_8h}\index{game.h@{game.h}}
+{\ttfamily \#include \char`\"{}sprite.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for game.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{game_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{game_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgame__t}{game\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{game_8h_a9a07c448b4d721dbec2715f51727e099}{GRAPHICS\+\_\+\+WIDTH}}~1152
+\item 
+\#define \mbox{\hyperlink{game_8h_aa9909ac8ecb03cbb763258a8f98f4170}{GRAPHICS\+\_\+\+HEIGHT}}~864
+\item 
+\#define \mbox{\hyperlink{game_8h_a95b289b51f99681f0463da12d5f2dc36}{COOLDOWN\+\_\+\+PERIOD}}~1
+\item 
+\#define \mbox{\hyperlink{game_8h_a74c65f2cf6e5f55b98e9884867db6d2e}{ARENA\+\_\+\+HEIGHT}}~794
+\item 
+\#define \mbox{\hyperlink{game_8h_a0264098c1e94fd9923fc75558e16baf9}{ARENA\+\_\+\+WIDTH}}~650
+\item 
+\#define \mbox{\hyperlink{game_8h_a11d58baaffc49494ab91da16621b6a5c}{PLAYER\+\_\+X}}~300
+\item 
+\#define \mbox{\hyperlink{game_8h_ae22bdd9c98feb24a0843a4ff0fa6e662}{PLAYER\+\_\+Y}}~660
+\item 
+\#define \mbox{\hyperlink{game_8h_ab31894a8db899c90ea6991a68efe7b32}{PLAYER\+\_\+\+STEP}}~36
+\item 
+\#define \mbox{\hyperlink{game_8h_a01b589eb6c2e4375868a0aad2fda05db}{V\+\_\+\+ENEMY1\+\_\+X}}~200
+\item 
+\#define \mbox{\hyperlink{game_8h_a61ec418b8ab20a22b45080e13f875897}{V\+\_\+\+ENEMY1\+\_\+Y}}~5
+\item 
+\#define \mbox{\hyperlink{game_8h_aea91f4328f992a1734b72e9e617c0feb}{V\+\_\+\+ENEMY2\+\_\+X}}~400
+\item 
+\#define \mbox{\hyperlink{game_8h_abf19f37ae94f4b4115a44ccf7701c6e6}{V\+\_\+\+ENEMY2\+\_\+Y}}~-\/100
+\item 
+\#define \mbox{\hyperlink{game_8h_a31969bcf91f64dc3567cd679a9249f21}{LR\+\_\+\+ENEMY\+\_\+X}}~5
+\item 
+\#define \mbox{\hyperlink{game_8h_adac0d2687eb028cc52838c63d828c892}{LR\+\_\+\+ENEMY\+\_\+Y}}~300
+\item 
+\#define \mbox{\hyperlink{game_8h_a4fd809c399033d0fadec726a81fcdf93}{RL\+\_\+\+ENEMY\+\_\+X}}~610
+\item 
+\#define \mbox{\hyperlink{game_8h_a62fe1f9a824fe75d097bce49215183f4}{RL\+\_\+\+ENEMY\+\_\+Y}}~100
+\item 
+\#define \mbox{\hyperlink{game_8h_ac9f94e2c35107c295297b294f5848e5d}{V\+\_\+\+ENEMIES\+\_\+\+SPEED\+\_\+\+CAP}}~100
+\item 
+\#define \mbox{\hyperlink{game_8h_a44641cb3b5a87245598d0b9acb5b9f6c}{H\+\_\+\+ENEMIES\+\_\+\+SPEED\+\_\+\+CAP}}~80
+\item 
+\#define \mbox{\hyperlink{game_8h_a81fabb4c9328f1dce788621d20c9c650}{MAX\+\_\+\+SHOTS}}~10
+\item 
+\#define \mbox{\hyperlink{game_8h_af83d1d6d43a5093529db16c2ecbdde3f}{SHOT\+\_\+\+SPEED}}~5
+\item 
+\#define \mbox{\hyperlink{game_8h_a67b5ea1f4a780aaec401aa2abae7d935}{INITIAL\+\_\+\+HEALTH}}~3.\+0
+\item 
+\#define \mbox{\hyperlink{game_8h_a2cf38e1cf676620c959917828e2eac9d}{MAX\+\_\+\+HEALTH}}~5
+\item 
+\#define \mbox{\hyperlink{game_8h_a2c2fd95e748cf3ec6322b35a89fc53bf}{I\+\_\+\+KEY}}~0x17
+\item 
+\#define \mbox{\hyperlink{game_8h_a1d4c75734307f98fc096e756ffac6852}{K\+\_\+\+KEY}}~0x25
+\item 
+\#define \mbox{\hyperlink{game_8h_ac06553a93547334a545098a6ae60ab4f}{J\+\_\+\+KEY}}~0x24
+\item 
+\#define \mbox{\hyperlink{game_8h_a01d053c0e426921f363d45be6c052c39}{L\+\_\+\+KEY}}~0x26
+\item 
+\#define \mbox{\hyperlink{game_8h_abdcd784aab1ab72e5b041fef85328927}{SPACE\+\_\+\+KEY}}~0x39
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game_8h_a3feacc725c0bf5fbadc7cd2823758cab}{update\+Health}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$hearts\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$half\+\_\+heart, float health)
+\begin{DoxyCompactList}\small\item\em Updates the health of the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a849312d9225661033017dd84281bfd07}{update\+Shots}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$shots\+Info\mbox{[}$\,$\mbox{]}, int $\ast$num\+\_\+shots, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$emptyxpm)
+\begin{DoxyCompactList}\small\item\em Updates the shots information. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8h_a53ac7c066a59f3ff126d50ede430bb94}{check\+\_\+collision\+\_\+menu}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$el, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$cursor)
+\begin{DoxyCompactList}\small\item\em Checks if there is a collision in the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_adc79a501b5c797334ed3c575398c8cea}{handle\+Movement}} (uint8\+\_\+t \mbox{\hyperlink{proj_8c_aa1de7a5557e9d96b83cf03f73c92163f}{scancode}}, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$sp, int is\+\_\+player)
+\begin{DoxyCompactList}\small\item\em Handles the movement of a sprite based on a scancode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a3b8e1002185fe5e1701673e7ce5db500}{handle\+Movement\+Cursor\+Mouse}} (struct packet $\ast$pp, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$sp)
+\begin{DoxyCompactList}\small\item\em Handles the movement of a sprite based on mouse input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a3deda41820b7949e8f4ae1353fb8881b}{handle\+Click}} (uint8\+\_\+t \mbox{\hyperlink{proj_8c_aa1de7a5557e9d96b83cf03f73c92163f}{scancode}}, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$cursor, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$play, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$exit, int $\ast$state, int $\ast$good, \mbox{\hyperlink{structgame__t}{game\+\_\+t}} $\ast$game, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$enemies\mbox{[}$\,$\mbox{]}, int $\ast$num\+\_\+shots, int $\ast$\mbox{\hyperlink{proj_8c_afc4746c9ff4b8b0ac900812a19733040}{last\+\_\+collision\+\_\+time}}, int $\ast$\mbox{\hyperlink{proj_8c_a7cd697ce4427efdf47a9ad36ffba0df8}{explosion\+\_\+time}})
+\begin{DoxyCompactList}\small\item\em Handles a keyboard click event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a9fa55175b609f65c1d86073f051acdb9}{draw\+Menu}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$play, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$exit, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$cursor, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$logo)
+\begin{DoxyCompactList}\small\item\em Draws the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a3bfb2185ace92c19052be0f509932e2b}{draw\+Retry\+Menu}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$play, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$exit, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$cursor, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$text\+Score, int score)
+\begin{DoxyCompactList}\small\item\em Draws the retry menu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8h_aec95fdcd28e4225d8b2ceac7a7c1ef7f}{calculate\+\_\+new\+\_\+x}} (int enemy\+A\+\_\+width, int enemy\+B\+\_\+x)
+\begin{DoxyCompactList}\small\item\em Calculates a new x position for an enemy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a6938d29764b636746ce8d69840a6a61f}{handle\+Vertical\+Movement\+Enemy}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$vertical\+Enemy1, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$vertical\+Enemy2, int \mbox{\hyperlink{proj_8c_aa97c7080953b1a37809879b21049d531}{elapsed\+\_\+time}})
+\begin{DoxyCompactList}\small\item\em Handles the vertical movement of two enemies. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8h_a030abb8260262abccea11d958aa31f71}{calculate\+\_\+new\+\_\+y}} (int enemy\+A\+\_\+height, int enemy\+B\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Calculates a new y position for an enemy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_aab42810e09d04c66f738beb93f20a7e9}{handle\+Horizontal\+Movement\+Enemy}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$left\+To\+Right\+Enemy, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$right\+To\+Left\+Enemy, int \mbox{\hyperlink{proj_8c_aa97c7080953b1a37809879b21049d531}{elapsed\+\_\+time}})
+\begin{DoxyCompactList}\small\item\em Handles the horizontal movement of two enemies. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a7186fdc088677e5e6fa7dd813c87bfa6}{draw\+\_\+numbers}} (int number, int position\+\_\+x, int position\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Draws a number at a specific position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a04ffe69eea50f5b44305702a610f6d27}{draw\+\_\+numbers\+\_\+time}} (char $\ast$string, int position\+\_\+x, int position\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Draws a string representing time at a specific position. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8h_a71ac625b9fd425663e60c562951e9cf4}{check\+\_\+player\+\_\+collision}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$player, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$explosion, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$enemy, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$enemies\mbox{[}$\,$\mbox{]}, int enemy\+\_\+index, int $\ast$\mbox{\hyperlink{proj_8c_afc4746c9ff4b8b0ac900812a19733040}{last\+\_\+collision\+\_\+time}}, int $\ast$\mbox{\hyperlink{proj_8c_a7cd697ce4427efdf47a9ad36ffba0df8}{explosion\+\_\+time}}, int \mbox{\hyperlink{proj_8c_aa97c7080953b1a37809879b21049d531}{elapsed\+\_\+time}})
+\begin{DoxyCompactList}\small\item\em Checks if there is a collision between the player and an enemy. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8h_a6bca5bf19a8b0b98ac2f09f8cd85b53e}{check\+\_\+shot\+\_\+collision}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$shot, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$explosion, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$enemy, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$enemies\mbox{[}$\,$\mbox{]}, int enemy\+\_\+index, int $\ast$\mbox{\hyperlink{proj_8c_afc4746c9ff4b8b0ac900812a19733040}{last\+\_\+collision\+\_\+time}}, int $\ast$\mbox{\hyperlink{proj_8c_a7cd697ce4427efdf47a9ad36ffba0df8}{explosion\+\_\+time}}, int \mbox{\hyperlink{proj_8c_aa97c7080953b1a37809879b21049d531}{elapsed\+\_\+time}}, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$shots\mbox{[}$\,$\mbox{]}, int $\ast$num\+\_\+shots, int shot\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Checks if there is a collision between a shot and an enemy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a83c1c82add046d06f99404e3777540d6}{handle\+Movement\+Shot}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$shots\mbox{[}$\,$\mbox{]}, int index)
+\begin{DoxyCompactList}\small\item\em Handles the movement of a shot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a72b29117f6abaa3f1a6ce98d07224cde}{handle\+Shot\+Spawn}} (uint8\+\_\+t \mbox{\hyperlink{proj_8c_aa1de7a5557e9d96b83cf03f73c92163f}{scancode}}, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$player, \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$shots\mbox{[}$\,$\mbox{]}, int $\ast$num\+\_\+shots)
+\begin{DoxyCompactList}\small\item\em Handles the spawning of a shot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{game_8h_a74c65f2cf6e5f55b98e9884867db6d2e}\label{game_8h_a74c65f2cf6e5f55b98e9884867db6d2e}} 
+\index{game.h@{game.h}!ARENA\_HEIGHT@{ARENA\_HEIGHT}}
+\index{ARENA\_HEIGHT@{ARENA\_HEIGHT}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{ARENA\_HEIGHT}{ARENA\_HEIGHT}}
+{\footnotesize\ttfamily \#define ARENA\+\_\+\+HEIGHT~794}
+
+\mbox{\Hypertarget{game_8h_a0264098c1e94fd9923fc75558e16baf9}\label{game_8h_a0264098c1e94fd9923fc75558e16baf9}} 
+\index{game.h@{game.h}!ARENA\_WIDTH@{ARENA\_WIDTH}}
+\index{ARENA\_WIDTH@{ARENA\_WIDTH}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{ARENA\_WIDTH}{ARENA\_WIDTH}}
+{\footnotesize\ttfamily \#define ARENA\+\_\+\+WIDTH~650}
+
+\mbox{\Hypertarget{game_8h_a95b289b51f99681f0463da12d5f2dc36}\label{game_8h_a95b289b51f99681f0463da12d5f2dc36}} 
+\index{game.h@{game.h}!COOLDOWN\_PERIOD@{COOLDOWN\_PERIOD}}
+\index{COOLDOWN\_PERIOD@{COOLDOWN\_PERIOD}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{COOLDOWN\_PERIOD}{COOLDOWN\_PERIOD}}
+{\footnotesize\ttfamily \#define COOLDOWN\+\_\+\+PERIOD~1}
+
+\mbox{\Hypertarget{game_8h_aa9909ac8ecb03cbb763258a8f98f4170}\label{game_8h_aa9909ac8ecb03cbb763258a8f98f4170}} 
+\index{game.h@{game.h}!GRAPHICS\_HEIGHT@{GRAPHICS\_HEIGHT}}
+\index{GRAPHICS\_HEIGHT@{GRAPHICS\_HEIGHT}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{GRAPHICS\_HEIGHT}{GRAPHICS\_HEIGHT}}
+{\footnotesize\ttfamily \#define GRAPHICS\+\_\+\+HEIGHT~864}
+
+\mbox{\Hypertarget{game_8h_a9a07c448b4d721dbec2715f51727e099}\label{game_8h_a9a07c448b4d721dbec2715f51727e099}} 
+\index{game.h@{game.h}!GRAPHICS\_WIDTH@{GRAPHICS\_WIDTH}}
+\index{GRAPHICS\_WIDTH@{GRAPHICS\_WIDTH}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{GRAPHICS\_WIDTH}{GRAPHICS\_WIDTH}}
+{\footnotesize\ttfamily \#define GRAPHICS\+\_\+\+WIDTH~1152}
+
+\mbox{\Hypertarget{game_8h_a44641cb3b5a87245598d0b9acb5b9f6c}\label{game_8h_a44641cb3b5a87245598d0b9acb5b9f6c}} 
+\index{game.h@{game.h}!H\_ENEMIES\_SPEED\_CAP@{H\_ENEMIES\_SPEED\_CAP}}
+\index{H\_ENEMIES\_SPEED\_CAP@{H\_ENEMIES\_SPEED\_CAP}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{H\_ENEMIES\_SPEED\_CAP}{H\_ENEMIES\_SPEED\_CAP}}
+{\footnotesize\ttfamily \#define H\+\_\+\+ENEMIES\+\_\+\+SPEED\+\_\+\+CAP~80}
+
+\mbox{\Hypertarget{game_8h_a2c2fd95e748cf3ec6322b35a89fc53bf}\label{game_8h_a2c2fd95e748cf3ec6322b35a89fc53bf}} 
+\index{game.h@{game.h}!I\_KEY@{I\_KEY}}
+\index{I\_KEY@{I\_KEY}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{I\_KEY}{I\_KEY}}
+{\footnotesize\ttfamily \#define I\+\_\+\+KEY~0x17}
+
+\mbox{\Hypertarget{game_8h_a67b5ea1f4a780aaec401aa2abae7d935}\label{game_8h_a67b5ea1f4a780aaec401aa2abae7d935}} 
+\index{game.h@{game.h}!INITIAL\_HEALTH@{INITIAL\_HEALTH}}
+\index{INITIAL\_HEALTH@{INITIAL\_HEALTH}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{INITIAL\_HEALTH}{INITIAL\_HEALTH}}
+{\footnotesize\ttfamily \#define INITIAL\+\_\+\+HEALTH~3.\+0}
+
+\mbox{\Hypertarget{game_8h_ac06553a93547334a545098a6ae60ab4f}\label{game_8h_ac06553a93547334a545098a6ae60ab4f}} 
+\index{game.h@{game.h}!J\_KEY@{J\_KEY}}
+\index{J\_KEY@{J\_KEY}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{J\_KEY}{J\_KEY}}
+{\footnotesize\ttfamily \#define J\+\_\+\+KEY~0x24}
+
+\mbox{\Hypertarget{game_8h_a1d4c75734307f98fc096e756ffac6852}\label{game_8h_a1d4c75734307f98fc096e756ffac6852}} 
+\index{game.h@{game.h}!K\_KEY@{K\_KEY}}
+\index{K\_KEY@{K\_KEY}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{K\_KEY}{K\_KEY}}
+{\footnotesize\ttfamily \#define K\+\_\+\+KEY~0x25}
+
+\mbox{\Hypertarget{game_8h_a01d053c0e426921f363d45be6c052c39}\label{game_8h_a01d053c0e426921f363d45be6c052c39}} 
+\index{game.h@{game.h}!L\_KEY@{L\_KEY}}
+\index{L\_KEY@{L\_KEY}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{L\_KEY}{L\_KEY}}
+{\footnotesize\ttfamily \#define L\+\_\+\+KEY~0x26}
+
+\mbox{\Hypertarget{game_8h_a31969bcf91f64dc3567cd679a9249f21}\label{game_8h_a31969bcf91f64dc3567cd679a9249f21}} 
+\index{game.h@{game.h}!LR\_ENEMY\_X@{LR\_ENEMY\_X}}
+\index{LR\_ENEMY\_X@{LR\_ENEMY\_X}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{LR\_ENEMY\_X}{LR\_ENEMY\_X}}
+{\footnotesize\ttfamily \#define LR\+\_\+\+ENEMY\+\_\+X~5}
+
+\mbox{\Hypertarget{game_8h_adac0d2687eb028cc52838c63d828c892}\label{game_8h_adac0d2687eb028cc52838c63d828c892}} 
+\index{game.h@{game.h}!LR\_ENEMY\_Y@{LR\_ENEMY\_Y}}
+\index{LR\_ENEMY\_Y@{LR\_ENEMY\_Y}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{LR\_ENEMY\_Y}{LR\_ENEMY\_Y}}
+{\footnotesize\ttfamily \#define LR\+\_\+\+ENEMY\+\_\+Y~300}
+
+\mbox{\Hypertarget{game_8h_a2cf38e1cf676620c959917828e2eac9d}\label{game_8h_a2cf38e1cf676620c959917828e2eac9d}} 
+\index{game.h@{game.h}!MAX\_HEALTH@{MAX\_HEALTH}}
+\index{MAX\_HEALTH@{MAX\_HEALTH}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_HEALTH}{MAX\_HEALTH}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+HEALTH~5}
+
+\mbox{\Hypertarget{game_8h_a81fabb4c9328f1dce788621d20c9c650}\label{game_8h_a81fabb4c9328f1dce788621d20c9c650}} 
+\index{game.h@{game.h}!MAX\_SHOTS@{MAX\_SHOTS}}
+\index{MAX\_SHOTS@{MAX\_SHOTS}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_SHOTS}{MAX\_SHOTS}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+SHOTS~10}
+
+\mbox{\Hypertarget{game_8h_ab31894a8db899c90ea6991a68efe7b32}\label{game_8h_ab31894a8db899c90ea6991a68efe7b32}} 
+\index{game.h@{game.h}!PLAYER\_STEP@{PLAYER\_STEP}}
+\index{PLAYER\_STEP@{PLAYER\_STEP}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{PLAYER\_STEP}{PLAYER\_STEP}}
+{\footnotesize\ttfamily \#define PLAYER\+\_\+\+STEP~36}
+
+\mbox{\Hypertarget{game_8h_a11d58baaffc49494ab91da16621b6a5c}\label{game_8h_a11d58baaffc49494ab91da16621b6a5c}} 
+\index{game.h@{game.h}!PLAYER\_X@{PLAYER\_X}}
+\index{PLAYER\_X@{PLAYER\_X}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{PLAYER\_X}{PLAYER\_X}}
+{\footnotesize\ttfamily \#define PLAYER\+\_\+X~300}
+
+\mbox{\Hypertarget{game_8h_ae22bdd9c98feb24a0843a4ff0fa6e662}\label{game_8h_ae22bdd9c98feb24a0843a4ff0fa6e662}} 
+\index{game.h@{game.h}!PLAYER\_Y@{PLAYER\_Y}}
+\index{PLAYER\_Y@{PLAYER\_Y}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{PLAYER\_Y}{PLAYER\_Y}}
+{\footnotesize\ttfamily \#define PLAYER\+\_\+Y~660}
+
+\mbox{\Hypertarget{game_8h_a4fd809c399033d0fadec726a81fcdf93}\label{game_8h_a4fd809c399033d0fadec726a81fcdf93}} 
+\index{game.h@{game.h}!RL\_ENEMY\_X@{RL\_ENEMY\_X}}
+\index{RL\_ENEMY\_X@{RL\_ENEMY\_X}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{RL\_ENEMY\_X}{RL\_ENEMY\_X}}
+{\footnotesize\ttfamily \#define RL\+\_\+\+ENEMY\+\_\+X~610}
+
+\mbox{\Hypertarget{game_8h_a62fe1f9a824fe75d097bce49215183f4}\label{game_8h_a62fe1f9a824fe75d097bce49215183f4}} 
+\index{game.h@{game.h}!RL\_ENEMY\_Y@{RL\_ENEMY\_Y}}
+\index{RL\_ENEMY\_Y@{RL\_ENEMY\_Y}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{RL\_ENEMY\_Y}{RL\_ENEMY\_Y}}
+{\footnotesize\ttfamily \#define RL\+\_\+\+ENEMY\+\_\+Y~100}
+
+\mbox{\Hypertarget{game_8h_af83d1d6d43a5093529db16c2ecbdde3f}\label{game_8h_af83d1d6d43a5093529db16c2ecbdde3f}} 
+\index{game.h@{game.h}!SHOT\_SPEED@{SHOT\_SPEED}}
+\index{SHOT\_SPEED@{SHOT\_SPEED}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{SHOT\_SPEED}{SHOT\_SPEED}}
+{\footnotesize\ttfamily \#define SHOT\+\_\+\+SPEED~5}
+
+\mbox{\Hypertarget{game_8h_abdcd784aab1ab72e5b041fef85328927}\label{game_8h_abdcd784aab1ab72e5b041fef85328927}} 
+\index{game.h@{game.h}!SPACE\_KEY@{SPACE\_KEY}}
+\index{SPACE\_KEY@{SPACE\_KEY}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{SPACE\_KEY}{SPACE\_KEY}}
+{\footnotesize\ttfamily \#define SPACE\+\_\+\+KEY~0x39}
+
+\mbox{\Hypertarget{game_8h_ac9f94e2c35107c295297b294f5848e5d}\label{game_8h_ac9f94e2c35107c295297b294f5848e5d}} 
+\index{game.h@{game.h}!V\_ENEMIES\_SPEED\_CAP@{V\_ENEMIES\_SPEED\_CAP}}
+\index{V\_ENEMIES\_SPEED\_CAP@{V\_ENEMIES\_SPEED\_CAP}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{V\_ENEMIES\_SPEED\_CAP}{V\_ENEMIES\_SPEED\_CAP}}
+{\footnotesize\ttfamily \#define V\+\_\+\+ENEMIES\+\_\+\+SPEED\+\_\+\+CAP~100}
+
+\mbox{\Hypertarget{game_8h_a01b589eb6c2e4375868a0aad2fda05db}\label{game_8h_a01b589eb6c2e4375868a0aad2fda05db}} 
+\index{game.h@{game.h}!V\_ENEMY1\_X@{V\_ENEMY1\_X}}
+\index{V\_ENEMY1\_X@{V\_ENEMY1\_X}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{V\_ENEMY1\_X}{V\_ENEMY1\_X}}
+{\footnotesize\ttfamily \#define V\+\_\+\+ENEMY1\+\_\+X~200}
+
+\mbox{\Hypertarget{game_8h_a61ec418b8ab20a22b45080e13f875897}\label{game_8h_a61ec418b8ab20a22b45080e13f875897}} 
+\index{game.h@{game.h}!V\_ENEMY1\_Y@{V\_ENEMY1\_Y}}
+\index{V\_ENEMY1\_Y@{V\_ENEMY1\_Y}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{V\_ENEMY1\_Y}{V\_ENEMY1\_Y}}
+{\footnotesize\ttfamily \#define V\+\_\+\+ENEMY1\+\_\+Y~5}
+
+\mbox{\Hypertarget{game_8h_aea91f4328f992a1734b72e9e617c0feb}\label{game_8h_aea91f4328f992a1734b72e9e617c0feb}} 
+\index{game.h@{game.h}!V\_ENEMY2\_X@{V\_ENEMY2\_X}}
+\index{V\_ENEMY2\_X@{V\_ENEMY2\_X}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{V\_ENEMY2\_X}{V\_ENEMY2\_X}}
+{\footnotesize\ttfamily \#define V\+\_\+\+ENEMY2\+\_\+X~400}
+
+\mbox{\Hypertarget{game_8h_abf19f37ae94f4b4115a44ccf7701c6e6}\label{game_8h_abf19f37ae94f4b4115a44ccf7701c6e6}} 
+\index{game.h@{game.h}!V\_ENEMY2\_Y@{V\_ENEMY2\_Y}}
+\index{V\_ENEMY2\_Y@{V\_ENEMY2\_Y}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{V\_ENEMY2\_Y}{V\_ENEMY2\_Y}}
+{\footnotesize\ttfamily \#define V\+\_\+\+ENEMY2\+\_\+Y~-\/100}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{game_8h_aec95fdcd28e4225d8b2ceac7a7c1ef7f}\label{game_8h_aec95fdcd28e4225d8b2ceac7a7c1ef7f}} 
+\index{game.h@{game.h}!calculate\_new\_x@{calculate\_new\_x}}
+\index{calculate\_new\_x@{calculate\_new\_x}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{calculate\_new\_x()}{calculate\_new\_x()}}
+{\footnotesize\ttfamily int calculate\+\_\+new\+\_\+x (\begin{DoxyParamCaption}\item[{int}]{enemy\+A\+\_\+width,  }\item[{int}]{enemy\+B\+\_\+x }\end{DoxyParamCaption})}
+
+
+
+Calculates a new x position for an enemy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enemy\+A\+\_\+width} & The width of enemy A. \\
+\hline
+{\em enemy\+B\+\_\+x} & The x position of enemy B. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new x position. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_aec95fdcd28e4225d8b2ceac7a7c1ef7f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a030abb8260262abccea11d958aa31f71}\label{game_8h_a030abb8260262abccea11d958aa31f71}} 
+\index{game.h@{game.h}!calculate\_new\_y@{calculate\_new\_y}}
+\index{calculate\_new\_y@{calculate\_new\_y}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{calculate\_new\_y()}{calculate\_new\_y()}}
+{\footnotesize\ttfamily int calculate\+\_\+new\+\_\+y (\begin{DoxyParamCaption}\item[{int}]{enemy\+A\+\_\+height,  }\item[{int}]{enemy\+B\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Calculates a new y position for an enemy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enemy\+A\+\_\+height} & The height of enemy A. \\
+\hline
+{\em enemy\+B\+\_\+y} & The y position of enemy B. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new y position. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a030abb8260262abccea11d958aa31f71_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a53ac7c066a59f3ff126d50ede430bb94}\label{game_8h_a53ac7c066a59f3ff126d50ede430bb94}} 
+\index{game.h@{game.h}!check\_collision\_menu@{check\_collision\_menu}}
+\index{check\_collision\_menu@{check\_collision\_menu}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{check\_collision\_menu()}{check\_collision\_menu()}}
+{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{el,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{cursor }\end{DoxyParamCaption})}
+
+
+
+Checks if there is a collision in the menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em el} & A sprite representing an element in the menu. \\
+\hline
+{\em cursor} & A sprite representing the cursor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there is a collision, false otherwise. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a53ac7c066a59f3ff126d50ede430bb94_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a71ac625b9fd425663e60c562951e9cf4}\label{game_8h_a71ac625b9fd425663e60c562951e9cf4}} 
+\index{game.h@{game.h}!check\_player\_collision@{check\_player\_collision}}
+\index{check\_player\_collision@{check\_player\_collision}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{check\_player\_collision()}{check\_player\_collision()}}
+{\footnotesize\ttfamily bool check\+\_\+player\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{player,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{explosion,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{enemy,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{enemies\mbox{[}$\,$\mbox{]},  }\item[{int}]{enemy\+\_\+index,  }\item[{int $\ast$}]{last\+\_\+collision\+\_\+time,  }\item[{int $\ast$}]{explosion\+\_\+time,  }\item[{int}]{elapsed\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Checks if there is a collision between the player and an enemy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player sprite. \\
+\hline
+{\em explosion} & The explosion sprite. \\
+\hline
+{\em enemy} & The enemy sprite. \\
+\hline
+{\em enemies} & An array of sprites representing the enemies. \\
+\hline
+{\em enemy\+\_\+index} & The index of the enemy to check. \\
+\hline
+{\em last\+\_\+collision\+\_\+time} & The time of the last collision. \\
+\hline
+{\em explosion\+\_\+time} & The time of the last explosion. \\
+\hline
+{\em elapsed\+\_\+time} & The elapsed time since the last frame. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there is a collision, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a71ac625b9fd425663e60c562951e9cf4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{game_8h_a71ac625b9fd425663e60c562951e9cf4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a6bca5bf19a8b0b98ac2f09f8cd85b53e}\label{game_8h_a6bca5bf19a8b0b98ac2f09f8cd85b53e}} 
+\index{game.h@{game.h}!check\_shot\_collision@{check\_shot\_collision}}
+\index{check\_shot\_collision@{check\_shot\_collision}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{check\_shot\_collision()}{check\_shot\_collision()}}
+{\footnotesize\ttfamily bool check\+\_\+shot\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{shot,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{explosion,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{enemy,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{enemies\mbox{[}$\,$\mbox{]},  }\item[{int}]{enemy\+\_\+index,  }\item[{int $\ast$}]{last\+\_\+collision\+\_\+time,  }\item[{int $\ast$}]{explosion\+\_\+time,  }\item[{int}]{elapsed\+\_\+time,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{shots\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{num\+\_\+shots,  }\item[{int}]{shot\+\_\+index }\end{DoxyParamCaption})}
+
+
+
+Checks if there is a collision between a shot and an enemy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shot} & The shot sprite. \\
+\hline
+{\em explosion} & The explosion sprite. \\
+\hline
+{\em enemy} & The enemy sprite. \\
+\hline
+{\em enemies} & An array of sprites representing the enemies. \\
+\hline
+{\em enemy\+\_\+index} & The index of the enemy to check. \\
+\hline
+{\em last\+\_\+collision\+\_\+time} & The time of the last collision. \\
+\hline
+{\em explosion\+\_\+time} & The time of the last explosion. \\
+\hline
+{\em elapsed\+\_\+time} & The elapsed time since the last frame. \\
+\hline
+{\em shots} & An array of sprites representing the shots. \\
+\hline
+{\em num\+\_\+shots} & The current number of shots. \\
+\hline
+{\em shot\+\_\+index} & The index of the shot to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there is a collision, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a6bca5bf19a8b0b98ac2f09f8cd85b53e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{game_8h_a6bca5bf19a8b0b98ac2f09f8cd85b53e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a7186fdc088677e5e6fa7dd813c87bfa6}\label{game_8h_a7186fdc088677e5e6fa7dd813c87bfa6}} 
+\index{game.h@{game.h}!draw\_numbers@{draw\_numbers}}
+\index{draw\_numbers@{draw\_numbers}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{draw\_numbers()}{draw\_numbers()}}
+{\footnotesize\ttfamily void draw\+\_\+numbers (\begin{DoxyParamCaption}\item[{int}]{number,  }\item[{int}]{position\+\_\+x,  }\item[{int}]{position\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Draws a number at a specific position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & The number to draw. \\
+\hline
+{\em position\+\_\+x} & The x position to draw the number at. \\
+\hline
+{\em position\+\_\+y} & The y position to draw the number at. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a7186fdc088677e5e6fa7dd813c87bfa6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a7186fdc088677e5e6fa7dd813c87bfa6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a04ffe69eea50f5b44305702a610f6d27}\label{game_8h_a04ffe69eea50f5b44305702a610f6d27}} 
+\index{game.h@{game.h}!draw\_numbers\_time@{draw\_numbers\_time}}
+\index{draw\_numbers\_time@{draw\_numbers\_time}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{draw\_numbers\_time()}{draw\_numbers\_time()}}
+{\footnotesize\ttfamily void draw\+\_\+numbers\+\_\+time (\begin{DoxyParamCaption}\item[{char $\ast$}]{string,  }\item[{int}]{position\+\_\+x,  }\item[{int}]{position\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Draws a string representing time at a specific position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & The string to draw. \\
+\hline
+{\em position\+\_\+x} & The x position to draw the string at. \\
+\hline
+{\em position\+\_\+y} & The y position to draw the string at. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a04ffe69eea50f5b44305702a610f6d27_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{game_8h_a04ffe69eea50f5b44305702a610f6d27_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a9fa55175b609f65c1d86073f051acdb9}\label{game_8h_a9fa55175b609f65c1d86073f051acdb9}} 
+\index{game.h@{game.h}!drawMenu@{drawMenu}}
+\index{drawMenu@{drawMenu}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{drawMenu()}{drawMenu()}}
+{\footnotesize\ttfamily void draw\+Menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{play,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{exit,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{cursor,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{logo }\end{DoxyParamCaption})}
+
+
+
+Draws the menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em play} & A sprite representing the play button. \\
+\hline
+{\em exit} & A sprite representing the exit button. \\
+\hline
+{\em cursor} & A sprite representing the cursor. \\
+\hline
+{\em logo} & A sprite representing the logo. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a9fa55175b609f65c1d86073f051acdb9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{game_8h_a9fa55175b609f65c1d86073f051acdb9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a3bfb2185ace92c19052be0f509932e2b}\label{game_8h_a3bfb2185ace92c19052be0f509932e2b}} 
+\index{game.h@{game.h}!drawRetryMenu@{drawRetryMenu}}
+\index{drawRetryMenu@{drawRetryMenu}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{drawRetryMenu()}{drawRetryMenu()}}
+{\footnotesize\ttfamily void draw\+Retry\+Menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{play,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{exit,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{cursor,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{text\+Score,  }\item[{int}]{score }\end{DoxyParamCaption})}
+
+
+
+Draws the retry menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em play} & A sprite representing the play button. \\
+\hline
+{\em exit} & A sprite representing the exit button. \\
+\hline
+{\em cursor} & A sprite representing the cursor. \\
+\hline
+{\em text\+Score} & A sprite representing the score text. \\
+\hline
+{\em score} & The current score. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a3bfb2185ace92c19052be0f509932e2b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{game_8h_a3bfb2185ace92c19052be0f509932e2b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a3deda41820b7949e8f4ae1353fb8881b}\label{game_8h_a3deda41820b7949e8f4ae1353fb8881b}} 
+\index{game.h@{game.h}!handleClick@{handleClick}}
+\index{handleClick@{handleClick}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{handleClick()}{handleClick()}}
+{\footnotesize\ttfamily void handle\+Click (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{scancode,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{cursor,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{play,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{exit,  }\item[{int $\ast$}]{state,  }\item[{int $\ast$}]{good,  }\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} $\ast$}]{game,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{enemies\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{num\+\_\+shots,  }\item[{int $\ast$}]{last\+\_\+collision\+\_\+time,  }\item[{int $\ast$}]{explosion\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Handles a keyboard click event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scancode} & The scancode representing the key pressed. \\
+\hline
+{\em cursor} & A sprite representing the cursor. \\
+\hline
+{\em play} & A sprite representing the play button. \\
+\hline
+{\em exit} & A sprite representing the exit button. \\
+\hline
+{\em state} & The current state of the game. \\
+\hline
+{\em good} & A flag indicating whether the game is in a good state. \\
+\hline
+{\em game} & The current game. \\
+\hline
+{\em enemies} & An array of sprites representing the enemies. \\
+\hline
+{\em num\+\_\+shots} & The current number of shots. \\
+\hline
+{\em last\+\_\+collision\+\_\+time} & The time of the last collision. \\
+\hline
+{\em explosion\+\_\+time} & The time of the last explosion. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a3deda41820b7949e8f4ae1353fb8881b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{game_8h_a3deda41820b7949e8f4ae1353fb8881b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_aab42810e09d04c66f738beb93f20a7e9}\label{game_8h_aab42810e09d04c66f738beb93f20a7e9}} 
+\index{game.h@{game.h}!handleHorizontalMovementEnemy@{handleHorizontalMovementEnemy}}
+\index{handleHorizontalMovementEnemy@{handleHorizontalMovementEnemy}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{handleHorizontalMovementEnemy()}{handleHorizontalMovementEnemy()}}
+{\footnotesize\ttfamily void handle\+Horizontal\+Movement\+Enemy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{left\+To\+Right\+Enemy,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{right\+To\+Left\+Enemy,  }\item[{int}]{elapsed\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Handles the horizontal movement of two enemies. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em left\+To\+Right\+Enemy} & The enemy moving from left to right. \\
+\hline
+{\em right\+To\+Left\+Enemy} & The enemy moving from right to left. \\
+\hline
+{\em elapsed\+\_\+time} & The elapsed time since the last frame. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_aab42810e09d04c66f738beb93f20a7e9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_aab42810e09d04c66f738beb93f20a7e9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_adc79a501b5c797334ed3c575398c8cea}\label{game_8h_adc79a501b5c797334ed3c575398c8cea}} 
+\index{game.h@{game.h}!handleMovement@{handleMovement}}
+\index{handleMovement@{handleMovement}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{handleMovement()}{handleMovement()}}
+{\footnotesize\ttfamily void handle\+Movement (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{scancode,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{sp,  }\item[{int}]{is\+\_\+player }\end{DoxyParamCaption})}
+
+
+
+Handles the movement of a sprite based on a scancode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scancode} & The scancode representing the key pressed. \\
+\hline
+{\em sp} & The sprite to move. \\
+\hline
+{\em is\+\_\+player} & A flag indicating whether the sprite is the player. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{game_8h_adc79a501b5c797334ed3c575398c8cea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a3b8e1002185fe5e1701673e7ce5db500}\label{game_8h_a3b8e1002185fe5e1701673e7ce5db500}} 
+\index{game.h@{game.h}!handleMovementCursorMouse@{handleMovementCursorMouse}}
+\index{handleMovementCursorMouse@{handleMovementCursorMouse}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{handleMovementCursorMouse()}{handleMovementCursorMouse()}}
+{\footnotesize\ttfamily void handle\+Movement\+Cursor\+Mouse (\begin{DoxyParamCaption}\item[{struct packet $\ast$}]{pp,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{sp }\end{DoxyParamCaption})}
+
+
+
+Handles the movement of a sprite based on mouse input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pp} & A packet representing the mouse input. \\
+\hline
+{\em sp} & The sprite to move. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a3b8e1002185fe5e1701673e7ce5db500_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a83c1c82add046d06f99404e3777540d6}\label{game_8h_a83c1c82add046d06f99404e3777540d6}} 
+\index{game.h@{game.h}!handleMovementShot@{handleMovementShot}}
+\index{handleMovementShot@{handleMovementShot}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{handleMovementShot()}{handleMovementShot()}}
+{\footnotesize\ttfamily void handle\+Movement\+Shot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{shots\mbox{[}$\,$\mbox{]},  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Handles the movement of a shot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shots} & An array of sprites representing the shots. \\
+\hline
+{\em index} & The index of the shot to move. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a83c1c82add046d06f99404e3777540d6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{game_8h_a83c1c82add046d06f99404e3777540d6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a72b29117f6abaa3f1a6ce98d07224cde}\label{game_8h_a72b29117f6abaa3f1a6ce98d07224cde}} 
+\index{game.h@{game.h}!handleShotSpawn@{handleShotSpawn}}
+\index{handleShotSpawn@{handleShotSpawn}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{handleShotSpawn()}{handleShotSpawn()}}
+{\footnotesize\ttfamily void handle\+Shot\+Spawn (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{scancode,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{player,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{shots\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{num\+\_\+shots }\end{DoxyParamCaption})}
+
+
+
+Handles the spawning of a shot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scancode} & The scancode representing the key pressed. \\
+\hline
+{\em player} & The player sprite. \\
+\hline
+{\em shots} & An array of sprites representing the shots. \\
+\hline
+{\em num\+\_\+shots} & The current number of shots. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a72b29117f6abaa3f1a6ce98d07224cde_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{game_8h_a72b29117f6abaa3f1a6ce98d07224cde_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a6938d29764b636746ce8d69840a6a61f}\label{game_8h_a6938d29764b636746ce8d69840a6a61f}} 
+\index{game.h@{game.h}!handleVerticalMovementEnemy@{handleVerticalMovementEnemy}}
+\index{handleVerticalMovementEnemy@{handleVerticalMovementEnemy}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{handleVerticalMovementEnemy()}{handleVerticalMovementEnemy()}}
+{\footnotesize\ttfamily void handle\+Vertical\+Movement\+Enemy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{vertical\+Enemy1,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{vertical\+Enemy2,  }\item[{int}]{elapsed\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Handles the vertical movement of two enemies. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertical\+Enemy1} & The first enemy. \\
+\hline
+{\em vertical\+Enemy2} & The second enemy. \\
+\hline
+{\em elapsed\+\_\+time} & The elapsed time since the last frame. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a6938d29764b636746ce8d69840a6a61f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a6938d29764b636746ce8d69840a6a61f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a3feacc725c0bf5fbadc7cd2823758cab}\label{game_8h_a3feacc725c0bf5fbadc7cd2823758cab}} 
+\index{game.h@{game.h}!updateHealth@{updateHealth}}
+\index{updateHealth@{updateHealth}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{updateHealth()}{updateHealth()}}
+{\footnotesize\ttfamily void update\+Health (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{hearts\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{half\+\_\+heart,  }\item[{float}]{health }\end{DoxyParamCaption})}
+
+
+
+Updates the health of the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hearts} & An array of sprites representing the player\textquotesingle{}s full hearts. \\
+\hline
+{\em half\+\_\+heart} & A sprite representing a half heart. \\
+\hline
+{\em health} & The player\textquotesingle{}s current health. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a3feacc725c0bf5fbadc7cd2823758cab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{game_8h_a3feacc725c0bf5fbadc7cd2823758cab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8h_a849312d9225661033017dd84281bfd07}\label{game_8h_a849312d9225661033017dd84281bfd07}} 
+\index{game.h@{game.h}!updateShots@{updateShots}}
+\index{updateShots@{updateShots}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{updateShots()}{updateShots()}}
+{\footnotesize\ttfamily void update\+Shots (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{shots\+Info\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{num\+\_\+shots,  }\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{emptyxpm }\end{DoxyParamCaption})}
+
+
+
+Updates the shots information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shots\+Info} & An array of sprites representing the shots left. \\
+\hline
+{\em num\+\_\+shots} & The current number of shots used. \\
+\hline
+{\em emptyxpm} & A sprite representing empty shots. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h_a849312d9225661033017dd84281bfd07_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{game_8h_a849312d9225661033017dd84281bfd07_icgraph}
+\end{center}
+\end{figure}

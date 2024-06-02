@@ -1,0 +1,5 @@
+<map id="check_collision_menu" name="check_collision_menu">
+<area shape="rect" id="node1" title="Checks if there is a collision in the menu." alt="" coords="323,5,488,32"/>
+<area shape="rect" id="node2" href="$game_8c.html#a3deda41820b7949e8f4ae1353fb8881b" title="Handles a keyboard click event." alt="" coords="176,5,275,32"/>
+<area shape="rect" id="node3" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,128,32"/>
+</map>

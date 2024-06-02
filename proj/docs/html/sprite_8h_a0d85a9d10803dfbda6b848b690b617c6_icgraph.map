@@ -1,0 +1,15 @@
+<map id="sprite_draw" name="sprite_draw">
+<area shape="rect" id="node1" title=" " alt="" coords="580,233,679,260"/>
+<area shape="rect" id="node2" href="$game_8c.html#a71ac625b9fd425663e60c562951e9cf4" title="Checks if there is a collision between the player and an enemy." alt="" coords="176,132,345,158"/>
+<area shape="rect" id="node3" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,233,128,260"/>
+<area shape="rect" id="node4" href="$game_8c.html#a7186fdc088677e5e6fa7dd813c87bfa6" title="Draws a number at a specific position." alt="" coords="403,30,522,57"/>
+<area shape="rect" id="node5" href="$game_8c.html#a3bfb2185ace92c19052be0f509932e2b" title="Draws the retry menu." alt="" coords="198,81,323,108"/>
+<area shape="rect" id="node6" href="$game_8c.html#a04ffe69eea50f5b44305702a610f6d27" title="Draws a string representing time at a specific position." alt="" coords="183,233,338,260"/>
+<area shape="rect" id="node7" href="$game_8c.html#a9fa55175b609f65c1d86073f051acdb9" title="Draws the menu." alt="" coords="215,284,306,310"/>
+<area shape="rect" id="node8" href="$game_8c.html#a71ec230f1c028880ec9f21076d9ce874" title=" " alt="" coords="399,182,526,209"/>
+<area shape="rect" id="node10" href="$game_8c.html#a83c1c82add046d06f99404e3777540d6" title="Handles the movement of a shot." alt="" coords="178,334,343,361"/>
+<area shape="rect" id="node11" href="$game_8c.html#a72b29117f6abaa3f1a6ce98d07224cde" title="Handles the spawning of a shot." alt="" coords="393,385,532,412"/>
+<area shape="rect" id="node12" href="$game_8c.html#a3feacc725c0bf5fbadc7cd2823758cab" title="Updates the health of the player." alt="" coords="407,436,518,462"/>
+<area shape="rect" id="node13" href="$game_8c.html#a849312d9225661033017dd84281bfd07" title="Updates the shots information." alt="" coords="411,486,514,513"/>
+<area shape="rect" id="node9" href="$game_8c.html#a6bca5bf19a8b0b98ac2f09f8cd85b53e" title="Checks if there is a collision between a shot and an enemy." alt="" coords="183,182,339,209"/>
+</map>

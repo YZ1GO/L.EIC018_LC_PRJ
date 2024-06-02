@@ -1,0 +1,4 @@
+<map id="handleHorizontalMovementEnemy" name="handleHorizontalMovementEnemy">
+<area shape="rect" id="node1" title="Handles the horizontal movement of two enemies." alt="" coords="5,5,208,47"/>
+<area shape="rect" id="node2" href="$game_8c.html#a030abb8260262abccea11d958aa31f71" title="Calculates a new y position for an enemy." alt="" coords="256,13,387,39"/>
+</map>

@@ -1,0 +1,180 @@
+\hypertarget{sprite_8h}{}\doxysection{sprite.\+h File Reference}
+\label{sprite_8h}\index{sprite.h@{sprite.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for sprite.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=144pt]{sprite_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{sprite_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} \mbox{\hyperlink{sprite_8h_ad115bb2d2510bfa2d94662801046cf45}{sprite\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$ \mbox{\hyperlink{sprite_8h_af1e91d5dc0d72c2d520eb366decbb689}{sprite\+\_\+ctor}} (const xpm\+\_\+map\+\_\+t xpm)
+\item 
+void \mbox{\hyperlink{sprite_8h_a685fec2926956192519bf28ed7935ff3}{sprite\+\_\+dtor}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$p)
+\item 
+void \mbox{\hyperlink{sprite_8h_a6f33be11bbc3cecba4c80ecbf357dc7c}{sprite\+\_\+set\+\_\+x}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$p, int x)
+\item 
+void \mbox{\hyperlink{sprite_8h_a4dcfb6a33cfc54e46795ce5d1f914bd1}{sprite\+\_\+set\+\_\+y}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$p, int y)
+\item 
+void \mbox{\hyperlink{sprite_8h_a3b4d4650099c6fefa3515801dca0d1d9}{sprite\+\_\+set\+\_\+pos}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$p, int x, int y)
+\item 
+int \mbox{\hyperlink{sprite_8h_a2b4b41ff37cef4adbe548fe8e5a1acf9}{sprite\+\_\+get\+\_\+h}} (const \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$p)
+\item 
+int \mbox{\hyperlink{sprite_8h_a8035fb7ea046ad73b3eac53b9c0170eb}{sprite\+\_\+get\+\_\+w}} (const \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$p)
+\item 
+void \mbox{\hyperlink{sprite_8h_aa1344d8785a2cbd326eef053354cfbee}{sprite\+\_\+set\+\_\+vx}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$p, int vx)
+\item 
+void \mbox{\hyperlink{sprite_8h_aa90339753611925307e3c05c677efb5d}{sprite\+\_\+set\+\_\+vy}} (\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$p, int vy)
+\item 
+void \mbox{\hyperlink{sprite_8h_a0d85a9d10803dfbda6b848b690b617c6}{sprite\+\_\+draw}} (const \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$p)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{sprite_8h_ad115bb2d2510bfa2d94662801046cf45}\label{sprite_8h_ad115bb2d2510bfa2d94662801046cf45}} 
+\index{sprite.h@{sprite.h}!sprite\_t@{sprite\_t}}
+\index{sprite\_t@{sprite\_t}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{sprite\_t}{sprite\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sprite_8h_af1e91d5dc0d72c2d520eb366decbb689}\label{sprite_8h_af1e91d5dc0d72c2d520eb366decbb689}} 
+\index{sprite.h@{sprite.h}!sprite\_ctor@{sprite\_ctor}}
+\index{sprite\_ctor@{sprite\_ctor}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{sprite\_ctor()}{sprite\_ctor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}}$\ast$ sprite\+\_\+ctor (\begin{DoxyParamCaption}\item[{const xpm\+\_\+map\+\_\+t}]{xpm }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_af1e91d5dc0d72c2d520eb366decbb689_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sprite_8h_a0d85a9d10803dfbda6b848b690b617c6}\label{sprite_8h_a0d85a9d10803dfbda6b848b690b617c6}} 
+\index{sprite.h@{sprite.h}!sprite\_draw@{sprite\_draw}}
+\index{sprite\_draw@{sprite\_draw}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{sprite\_draw()}{sprite\_draw()}}
+{\footnotesize\ttfamily void sprite\+\_\+draw (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{sprite_8h_a0d85a9d10803dfbda6b848b690b617c6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a0d85a9d10803dfbda6b848b690b617c6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sprite_8h_a685fec2926956192519bf28ed7935ff3}\label{sprite_8h_a685fec2926956192519bf28ed7935ff3}} 
+\index{sprite.h@{sprite.h}!sprite\_dtor@{sprite\_dtor}}
+\index{sprite\_dtor@{sprite\_dtor}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{sprite\_dtor()}{sprite\_dtor()}}
+{\footnotesize\ttfamily void sprite\+\_\+dtor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sprite_8h_a2b4b41ff37cef4adbe548fe8e5a1acf9}\label{sprite_8h_a2b4b41ff37cef4adbe548fe8e5a1acf9}} 
+\index{sprite.h@{sprite.h}!sprite\_get\_h@{sprite\_get\_h}}
+\index{sprite\_get\_h@{sprite\_get\_h}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{sprite\_get\_h()}{sprite\_get\_h()}}
+{\footnotesize\ttfamily int sprite\+\_\+get\+\_\+h (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sprite_8h_a8035fb7ea046ad73b3eac53b9c0170eb}\label{sprite_8h_a8035fb7ea046ad73b3eac53b9c0170eb}} 
+\index{sprite.h@{sprite.h}!sprite\_get\_w@{sprite\_get\_w}}
+\index{sprite\_get\_w@{sprite\_get\_w}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{sprite\_get\_w()}{sprite\_get\_w()}}
+{\footnotesize\ttfamily int sprite\+\_\+get\+\_\+w (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sprite_8h_a3b4d4650099c6fefa3515801dca0d1d9}\label{sprite_8h_a3b4d4650099c6fefa3515801dca0d1d9}} 
+\index{sprite.h@{sprite.h}!sprite\_set\_pos@{sprite\_set\_pos}}
+\index{sprite\_set\_pos@{sprite\_set\_pos}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{sprite\_set\_pos()}{sprite\_set\_pos()}}
+{\footnotesize\ttfamily void sprite\+\_\+set\+\_\+pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{p,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{sprite_8h_a3b4d4650099c6fefa3515801dca0d1d9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a3b4d4650099c6fefa3515801dca0d1d9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sprite_8h_aa1344d8785a2cbd326eef053354cfbee}\label{sprite_8h_aa1344d8785a2cbd326eef053354cfbee}} 
+\index{sprite.h@{sprite.h}!sprite\_set\_vx@{sprite\_set\_vx}}
+\index{sprite\_set\_vx@{sprite\_set\_vx}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{sprite\_set\_vx()}{sprite\_set\_vx()}}
+{\footnotesize\ttfamily void sprite\+\_\+set\+\_\+vx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{p,  }\item[{int}]{vx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sprite_8h_aa90339753611925307e3c05c677efb5d}\label{sprite_8h_aa90339753611925307e3c05c677efb5d}} 
+\index{sprite.h@{sprite.h}!sprite\_set\_vy@{sprite\_set\_vy}}
+\index{sprite\_set\_vy@{sprite\_set\_vy}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{sprite\_set\_vy()}{sprite\_set\_vy()}}
+{\footnotesize\ttfamily void sprite\+\_\+set\+\_\+vy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{p,  }\item[{int}]{vy }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sprite_8h_a6f33be11bbc3cecba4c80ecbf357dc7c}\label{sprite_8h_a6f33be11bbc3cecba4c80ecbf357dc7c}} 
+\index{sprite.h@{sprite.h}!sprite\_set\_x@{sprite\_set\_x}}
+\index{sprite\_set\_x@{sprite\_set\_x}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{sprite\_set\_x()}{sprite\_set\_x()}}
+{\footnotesize\ttfamily void sprite\+\_\+set\+\_\+x (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{p,  }\item[{int}]{x }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a6f33be11bbc3cecba4c80ecbf357dc7c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sprite_8h_a4dcfb6a33cfc54e46795ce5d1f914bd1}\label{sprite_8h_a4dcfb6a33cfc54e46795ce5d1f914bd1}} 
+\index{sprite.h@{sprite.h}!sprite\_set\_y@{sprite\_set\_y}}
+\index{sprite\_set\_y@{sprite\_set\_y}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{sprite\_set\_y()}{sprite\_set\_y()}}
+{\footnotesize\ttfamily void sprite\+\_\+set\+\_\+y (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__t}{sprite\+\_\+t}} $\ast$}]{p,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a4dcfb6a33cfc54e46795ce5d1f914bd1_icgraph}
+\end{center}
+\end{figure}

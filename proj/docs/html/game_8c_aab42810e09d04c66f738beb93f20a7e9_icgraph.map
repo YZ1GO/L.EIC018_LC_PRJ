@@ -1,0 +1,4 @@
+<map id="handleHorizontalMovementEnemy" name="handleHorizontalMovementEnemy">
+<area shape="rect" id="node1" title="Handles the horizontal movement of two enemies." alt="" coords="176,5,379,47"/>
+<area shape="rect" id="node2" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,13,128,39"/>
+</map>

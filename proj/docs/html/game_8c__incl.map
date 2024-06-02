@@ -1,0 +1,11 @@
+<map id="game.c" name="game.c">
+<area shape="rect" id="node1" title=" " alt="" coords="160,5,231,32"/>
+<area shape="rect" id="node2" href="$graphic_8h.html" title=" " alt="" coords="255,80,338,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="83,155,153,181"/>
+<area shape="rect" id="node5" href="$mouse_8h.html" title=" " alt="" coords="5,80,84,107"/>
+<area shape="rect" id="node7" href="$game_8h.html" title=" " alt="" coords="160,80,231,107"/>
+<area shape="rect" id="node9" title=" " alt="" coords="363,80,433,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="272,155,399,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="86,229,171,256"/>
+<area shape="rect" id="node8" href="$sprite_8h.html" title=" " alt="" coords="177,155,248,181"/>
+</map>

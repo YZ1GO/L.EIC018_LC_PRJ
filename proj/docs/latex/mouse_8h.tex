@@ -1,0 +1,368 @@
+\hypertarget{mouse_8h}{}\doxysection{mouse.\+h File Reference}
+\label{mouse_8h}\index{mouse.h@{mouse.h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for mouse.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{mouse_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{mouse_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mouse_8h_abbc8382ae4ea521f03c119a14478b759}{LEFT\+\_\+\+BUTTON}}~BIT(0) /$\ast$ @brief Left button click event$\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_aeb17351958162535ab6af2cd6b030955}{RIGHT\+\_\+\+BUTTON}}~BIT(1) /$\ast$ @brief Right button click event $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_aea4935ff922fa4fbbc0f03fc250e268b}{MIDDLE\+\_\+\+BUTTON}}~BIT(2) /$\ast$ @brief Middle button click event $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_acf8440b3511e95097baf55d14b9a51c3}{FIRST\+\_\+\+BYTE\+\_\+\+ID}}~BIT(3) /$\ast$ @brief Identifier of first byte of packet CAREFUL\+: Not 100\% accurate $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_ab3682a7593eea6b3a98269c3105714b1}{MSB\+\_\+\+X\+\_\+\+DELTA}}~BIT(4) /$\ast$ @brief Most significant bit of X delta $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_a73e7f39e782c9d57707ff7a518d031a6}{MSB\+\_\+\+Y\+\_\+\+DELTA}}~BIT(5) /$\ast$ @brief Most significant bit of Y delta $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_a82dc3ac9577dabd19733ada75d2822d0}{X\+\_\+\+OVERFLOW}}~BIT(6) /$\ast$ @brief X delta overflowed $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_acd54c5569c84fd2d1710cccd190e138a}{Y\+\_\+\+OVERFLOW}}~BIT(7) /$\ast$ @brief Y delta overflowed $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}}~0x\+FF /$\ast$ @brief Reset mouse $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_a92f67631ef5a97e4a266c15bc710776d}{RESEND}}~0x\+FE /$\ast$ @brief Resend command $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_a3da44afeba217135a680a7477b5e3ce3}{DEFAULT}}~0x\+F6 /$\ast$ @brief Set default values $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_a1c84607e844d7b3736a1a3491c18e872}{DIS\+\_\+\+DATA\+\_\+\+REP}}~0x\+F5 /$\ast$ @brief Disable Data Reporting $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_a0be5107de1323fcc692f8a2e6002e41e}{ENABLE\+\_\+\+DATA\+\_\+\+REP}}~0x\+F4 /$\ast$ @brief Enable Data Reporting $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_a076c7f5a0419fcfa0a19450553fc1ead}{SET\+\_\+\+SAMPLE\+\_\+\+RT}}~0x\+F3 /$\ast$ @brief Sets state sampling rate $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_a463c9603333b416642d46869016cd05a}{SET\+\_\+\+REMOTE\+\_\+\+MD}}~0x\+F0 /$\ast$ @brief Sets Mouse on Remote Mode, data on request $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_a8d406d5aff787991429e62cfd9bac721}{READ\+\_\+\+DATA}}~0x\+EB /$\ast$ @brief Sends data packet request $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_a36decadeba3a7e6eeee64beeb1e01a5a}{SET\+\_\+\+STREAM\+\_\+\+MD}}~0x\+EA /$\ast$ @brief Sets mouse on Stream Mode, data on events $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_ab74d8cf9ec50650fee5058cb33a9160e}{STATUS\+\_\+\+REQUEST}}~0x\+E9 /$\ast$ @brief Get mouse configuration $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_a34d57709215034b82f6887fec2af1b02}{SET\+\_\+\+RESOLUTION}}~0x\+E8 /$\ast$ @brief Sets resolution for mouse movement $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_a75b5104e1efee7f0cbbb874aab25c840}{SCALING\+\_\+\+ACC\+\_\+\+MD}}~0x\+E7 /$\ast$ @brief Sets scaling on acceleration mode $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_adaea74a3865e718fcb985122015528f1}{SCALING\+\_\+\+LIN\+\_\+\+MD}}~0x\+E6 /$\ast$ @brief Sets scaling on linear mode $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_a4dc7574681861c30957f3ffc1fe84f41}{ACK\+\_\+\+OK}}~0x\+FA /$\ast$ @brief Operation sucessful $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_ad6d6032121d8482ec2e6d5c21c3dfd8a}{ACK\+\_\+\+INVALID}}~0x\+FE /$\ast$ @brief Invalid Byte, first occurence $\ast$/
+\item 
+\#define \mbox{\hyperlink{mouse_8h_acd6ac9f5064297a742e115eadca475e6}{ACK\+\_\+\+ERROR}}~0x\+FC /$\ast$ @brief Invalid Byte on resend $\ast$/
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{mouse_8h_a20285aed4b3ef45812cd967532dd09db}{mouse\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t $\ast$bit\+\_\+no)
+\item 
+int() \mbox{\hyperlink{mouse_8h_a3ecf823d80520009ae5e0d76ae40a3c3}{mouse\+\_\+unsubscribe\+\_\+int}} ()
+\item 
+int() \mbox{\hyperlink{mouse_8h_ae61f9a128e7b7ac6922e520f40b8ae02}{mouse\+\_\+read\+\_\+status}} (uint8\+\_\+t $\ast$status)
+\item 
+int() \mbox{\hyperlink{mouse_8h_a6cb8b1b76cd7f500442d8d98d344fd41}{mouse\+\_\+read\+\_\+byte}} (uint8\+\_\+t status, uint8\+\_\+t $\ast$byte)
+\item 
+void() \mbox{\hyperlink{mouse_8h_a210374b50462acdedab00df64d5cea3c}{mouse\+\_\+ih}} ()
+\item 
+void() \mbox{\hyperlink{mouse_8h_a25afb9cf1225bb0b03c80719eb1a9e66}{build\+\_\+packet}} (struct packet $\ast$pp)
+\item 
+int() \mbox{\hyperlink{mouse_8h_a926121b9c6d89ac8825f115e3eb8dac3}{send\+\_\+command}} (uint8\+\_\+t command)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mouse_8h_acd6ac9f5064297a742e115eadca475e6}\label{mouse_8h_acd6ac9f5064297a742e115eadca475e6}} 
+\index{mouse.h@{mouse.h}!ACK\_ERROR@{ACK\_ERROR}}
+\index{ACK\_ERROR@{ACK\_ERROR}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{ACK\_ERROR}{ACK\_ERROR}}
+{\footnotesize\ttfamily \#define ACK\+\_\+\+ERROR~0x\+FC /$\ast$ @brief Invalid Byte on resend $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_ad6d6032121d8482ec2e6d5c21c3dfd8a}\label{mouse_8h_ad6d6032121d8482ec2e6d5c21c3dfd8a}} 
+\index{mouse.h@{mouse.h}!ACK\_INVALID@{ACK\_INVALID}}
+\index{ACK\_INVALID@{ACK\_INVALID}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{ACK\_INVALID}{ACK\_INVALID}}
+{\footnotesize\ttfamily \#define ACK\+\_\+\+INVALID~0x\+FE /$\ast$ @brief Invalid Byte, first occurence $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_a4dc7574681861c30957f3ffc1fe84f41}\label{mouse_8h_a4dc7574681861c30957f3ffc1fe84f41}} 
+\index{mouse.h@{mouse.h}!ACK\_OK@{ACK\_OK}}
+\index{ACK\_OK@{ACK\_OK}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{ACK\_OK}{ACK\_OK}}
+{\footnotesize\ttfamily \#define ACK\+\_\+\+OK~0x\+FA /$\ast$ @brief Operation sucessful $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_a3da44afeba217135a680a7477b5e3ce3}\label{mouse_8h_a3da44afeba217135a680a7477b5e3ce3}} 
+\index{mouse.h@{mouse.h}!DEFAULT@{DEFAULT}}
+\index{DEFAULT@{DEFAULT}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{DEFAULT}{DEFAULT}}
+{\footnotesize\ttfamily \#define DEFAULT~0x\+F6 /$\ast$ @brief Set default values $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_a1c84607e844d7b3736a1a3491c18e872}\label{mouse_8h_a1c84607e844d7b3736a1a3491c18e872}} 
+\index{mouse.h@{mouse.h}!DIS\_DATA\_REP@{DIS\_DATA\_REP}}
+\index{DIS\_DATA\_REP@{DIS\_DATA\_REP}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{DIS\_DATA\_REP}{DIS\_DATA\_REP}}
+{\footnotesize\ttfamily \#define DIS\+\_\+\+DATA\+\_\+\+REP~0x\+F5 /$\ast$ @brief Disable Data Reporting $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_a0be5107de1323fcc692f8a2e6002e41e}\label{mouse_8h_a0be5107de1323fcc692f8a2e6002e41e}} 
+\index{mouse.h@{mouse.h}!ENABLE\_DATA\_REP@{ENABLE\_DATA\_REP}}
+\index{ENABLE\_DATA\_REP@{ENABLE\_DATA\_REP}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_DATA\_REP}{ENABLE\_DATA\_REP}}
+{\footnotesize\ttfamily \#define ENABLE\+\_\+\+DATA\+\_\+\+REP~0x\+F4 /$\ast$ @brief Enable Data Reporting $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_acf8440b3511e95097baf55d14b9a51c3}\label{mouse_8h_acf8440b3511e95097baf55d14b9a51c3}} 
+\index{mouse.h@{mouse.h}!FIRST\_BYTE\_ID@{FIRST\_BYTE\_ID}}
+\index{FIRST\_BYTE\_ID@{FIRST\_BYTE\_ID}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{FIRST\_BYTE\_ID}{FIRST\_BYTE\_ID}}
+{\footnotesize\ttfamily \#define FIRST\+\_\+\+BYTE\+\_\+\+ID~BIT(3) /$\ast$ @brief Identifier of first byte of packet CAREFUL\+: Not 100\% accurate $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_abbc8382ae4ea521f03c119a14478b759}\label{mouse_8h_abbc8382ae4ea521f03c119a14478b759}} 
+\index{mouse.h@{mouse.h}!LEFT\_BUTTON@{LEFT\_BUTTON}}
+\index{LEFT\_BUTTON@{LEFT\_BUTTON}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{LEFT\_BUTTON}{LEFT\_BUTTON}}
+{\footnotesize\ttfamily \#define LEFT\+\_\+\+BUTTON~BIT(0) /$\ast$ @brief Left button click event$\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_aea4935ff922fa4fbbc0f03fc250e268b}\label{mouse_8h_aea4935ff922fa4fbbc0f03fc250e268b}} 
+\index{mouse.h@{mouse.h}!MIDDLE\_BUTTON@{MIDDLE\_BUTTON}}
+\index{MIDDLE\_BUTTON@{MIDDLE\_BUTTON}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{MIDDLE\_BUTTON}{MIDDLE\_BUTTON}}
+{\footnotesize\ttfamily \#define MIDDLE\+\_\+\+BUTTON~BIT(2) /$\ast$ @brief Middle button click event $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_ab3682a7593eea6b3a98269c3105714b1}\label{mouse_8h_ab3682a7593eea6b3a98269c3105714b1}} 
+\index{mouse.h@{mouse.h}!MSB\_X\_DELTA@{MSB\_X\_DELTA}}
+\index{MSB\_X\_DELTA@{MSB\_X\_DELTA}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{MSB\_X\_DELTA}{MSB\_X\_DELTA}}
+{\footnotesize\ttfamily \#define MSB\+\_\+\+X\+\_\+\+DELTA~BIT(4) /$\ast$ @brief Most significant bit of X delta $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_a73e7f39e782c9d57707ff7a518d031a6}\label{mouse_8h_a73e7f39e782c9d57707ff7a518d031a6}} 
+\index{mouse.h@{mouse.h}!MSB\_Y\_DELTA@{MSB\_Y\_DELTA}}
+\index{MSB\_Y\_DELTA@{MSB\_Y\_DELTA}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{MSB\_Y\_DELTA}{MSB\_Y\_DELTA}}
+{\footnotesize\ttfamily \#define MSB\+\_\+\+Y\+\_\+\+DELTA~BIT(5) /$\ast$ @brief Most significant bit of Y delta $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_a8d406d5aff787991429e62cfd9bac721}\label{mouse_8h_a8d406d5aff787991429e62cfd9bac721}} 
+\index{mouse.h@{mouse.h}!READ\_DATA@{READ\_DATA}}
+\index{READ\_DATA@{READ\_DATA}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{READ\_DATA}{READ\_DATA}}
+{\footnotesize\ttfamily \#define READ\+\_\+\+DATA~0x\+EB /$\ast$ @brief Sends data packet request $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_a92f67631ef5a97e4a266c15bc710776d}\label{mouse_8h_a92f67631ef5a97e4a266c15bc710776d}} 
+\index{mouse.h@{mouse.h}!RESEND@{RESEND}}
+\index{RESEND@{RESEND}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{RESEND}{RESEND}}
+{\footnotesize\ttfamily \#define RESEND~0x\+FE /$\ast$ @brief Resend command $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_ab702106cf3b3e96750b6845ded4e0299}\label{mouse_8h_ab702106cf3b3e96750b6845ded4e0299}} 
+\index{mouse.h@{mouse.h}!RESET@{RESET}}
+\index{RESET@{RESET}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{RESET}{RESET}}
+{\footnotesize\ttfamily \#define RESET~0x\+FF /$\ast$ @brief Reset mouse $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_aeb17351958162535ab6af2cd6b030955}\label{mouse_8h_aeb17351958162535ab6af2cd6b030955}} 
+\index{mouse.h@{mouse.h}!RIGHT\_BUTTON@{RIGHT\_BUTTON}}
+\index{RIGHT\_BUTTON@{RIGHT\_BUTTON}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{RIGHT\_BUTTON}{RIGHT\_BUTTON}}
+{\footnotesize\ttfamily \#define RIGHT\+\_\+\+BUTTON~BIT(1) /$\ast$ @brief Right button click event $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_a75b5104e1efee7f0cbbb874aab25c840}\label{mouse_8h_a75b5104e1efee7f0cbbb874aab25c840}} 
+\index{mouse.h@{mouse.h}!SCALING\_ACC\_MD@{SCALING\_ACC\_MD}}
+\index{SCALING\_ACC\_MD@{SCALING\_ACC\_MD}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{SCALING\_ACC\_MD}{SCALING\_ACC\_MD}}
+{\footnotesize\ttfamily \#define SCALING\+\_\+\+ACC\+\_\+\+MD~0x\+E7 /$\ast$ @brief Sets scaling on acceleration mode $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_adaea74a3865e718fcb985122015528f1}\label{mouse_8h_adaea74a3865e718fcb985122015528f1}} 
+\index{mouse.h@{mouse.h}!SCALING\_LIN\_MD@{SCALING\_LIN\_MD}}
+\index{SCALING\_LIN\_MD@{SCALING\_LIN\_MD}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{SCALING\_LIN\_MD}{SCALING\_LIN\_MD}}
+{\footnotesize\ttfamily \#define SCALING\+\_\+\+LIN\+\_\+\+MD~0x\+E6 /$\ast$ @brief Sets scaling on linear mode $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_a463c9603333b416642d46869016cd05a}\label{mouse_8h_a463c9603333b416642d46869016cd05a}} 
+\index{mouse.h@{mouse.h}!SET\_REMOTE\_MD@{SET\_REMOTE\_MD}}
+\index{SET\_REMOTE\_MD@{SET\_REMOTE\_MD}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{SET\_REMOTE\_MD}{SET\_REMOTE\_MD}}
+{\footnotesize\ttfamily \#define SET\+\_\+\+REMOTE\+\_\+\+MD~0x\+F0 /$\ast$ @brief Sets Mouse on Remote Mode, data on request $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_a34d57709215034b82f6887fec2af1b02}\label{mouse_8h_a34d57709215034b82f6887fec2af1b02}} 
+\index{mouse.h@{mouse.h}!SET\_RESOLUTION@{SET\_RESOLUTION}}
+\index{SET\_RESOLUTION@{SET\_RESOLUTION}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{SET\_RESOLUTION}{SET\_RESOLUTION}}
+{\footnotesize\ttfamily \#define SET\+\_\+\+RESOLUTION~0x\+E8 /$\ast$ @brief Sets resolution for mouse movement $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_a076c7f5a0419fcfa0a19450553fc1ead}\label{mouse_8h_a076c7f5a0419fcfa0a19450553fc1ead}} 
+\index{mouse.h@{mouse.h}!SET\_SAMPLE\_RT@{SET\_SAMPLE\_RT}}
+\index{SET\_SAMPLE\_RT@{SET\_SAMPLE\_RT}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{SET\_SAMPLE\_RT}{SET\_SAMPLE\_RT}}
+{\footnotesize\ttfamily \#define SET\+\_\+\+SAMPLE\+\_\+\+RT~0x\+F3 /$\ast$ @brief Sets state sampling rate $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_a36decadeba3a7e6eeee64beeb1e01a5a}\label{mouse_8h_a36decadeba3a7e6eeee64beeb1e01a5a}} 
+\index{mouse.h@{mouse.h}!SET\_STREAM\_MD@{SET\_STREAM\_MD}}
+\index{SET\_STREAM\_MD@{SET\_STREAM\_MD}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{SET\_STREAM\_MD}{SET\_STREAM\_MD}}
+{\footnotesize\ttfamily \#define SET\+\_\+\+STREAM\+\_\+\+MD~0x\+EA /$\ast$ @brief Sets mouse on Stream Mode, data on events $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_ab74d8cf9ec50650fee5058cb33a9160e}\label{mouse_8h_ab74d8cf9ec50650fee5058cb33a9160e}} 
+\index{mouse.h@{mouse.h}!STATUS\_REQUEST@{STATUS\_REQUEST}}
+\index{STATUS\_REQUEST@{STATUS\_REQUEST}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{STATUS\_REQUEST}{STATUS\_REQUEST}}
+{\footnotesize\ttfamily \#define STATUS\+\_\+\+REQUEST~0x\+E9 /$\ast$ @brief Get mouse configuration $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_a82dc3ac9577dabd19733ada75d2822d0}\label{mouse_8h_a82dc3ac9577dabd19733ada75d2822d0}} 
+\index{mouse.h@{mouse.h}!X\_OVERFLOW@{X\_OVERFLOW}}
+\index{X\_OVERFLOW@{X\_OVERFLOW}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{X\_OVERFLOW}{X\_OVERFLOW}}
+{\footnotesize\ttfamily \#define X\+\_\+\+OVERFLOW~BIT(6) /$\ast$ @brief X delta overflowed $\ast$/}
+
+\mbox{\Hypertarget{mouse_8h_acd54c5569c84fd2d1710cccd190e138a}\label{mouse_8h_acd54c5569c84fd2d1710cccd190e138a}} 
+\index{mouse.h@{mouse.h}!Y\_OVERFLOW@{Y\_OVERFLOW}}
+\index{Y\_OVERFLOW@{Y\_OVERFLOW}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{Y\_OVERFLOW}{Y\_OVERFLOW}}
+{\footnotesize\ttfamily \#define Y\+\_\+\+OVERFLOW~BIT(7) /$\ast$ @brief Y delta overflowed $\ast$/}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mouse_8h_a25afb9cf1225bb0b03c80719eb1a9e66}\label{mouse_8h_a25afb9cf1225bb0b03c80719eb1a9e66}} 
+\index{mouse.h@{mouse.h}!build\_packet@{build\_packet}}
+\index{build\_packet@{build\_packet}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{build\_packet()}{build\_packet()}}
+{\footnotesize\ttfamily void() build\+\_\+packet (\begin{DoxyParamCaption}\item[{struct packet $\ast$}]{pp }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{mouse_8h_a25afb9cf1225bb0b03c80719eb1a9e66_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mouse_8h_a210374b50462acdedab00df64d5cea3c}\label{mouse_8h_a210374b50462acdedab00df64d5cea3c}} 
+\index{mouse.h@{mouse.h}!mouse\_ih@{mouse\_ih}}
+\index{mouse\_ih@{mouse\_ih}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{mouse\_ih()}{mouse\_ih()}}
+{\footnotesize\ttfamily void() mouse\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mouse_8h_a210374b50462acdedab00df64d5cea3c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{mouse_8h_a210374b50462acdedab00df64d5cea3c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mouse_8h_a6cb8b1b76cd7f500442d8d98d344fd41}\label{mouse_8h_a6cb8b1b76cd7f500442d8d98d344fd41}} 
+\index{mouse.h@{mouse.h}!mouse\_read\_byte@{mouse\_read\_byte}}
+\index{mouse\_read\_byte@{mouse\_read\_byte}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{mouse\_read\_byte()}{mouse\_read\_byte()}}
+{\footnotesize\ttfamily int() mouse\+\_\+read\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{status,  }\item[{uint8\+\_\+t $\ast$}]{byte }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{mouse_8h_a6cb8b1b76cd7f500442d8d98d344fd41_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mouse_8h_a6cb8b1b76cd7f500442d8d98d344fd41_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mouse_8h_ae61f9a128e7b7ac6922e520f40b8ae02}\label{mouse_8h_ae61f9a128e7b7ac6922e520f40b8ae02}} 
+\index{mouse.h@{mouse.h}!mouse\_read\_status@{mouse\_read\_status}}
+\index{mouse\_read\_status@{mouse\_read\_status}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{mouse\_read\_status()}{mouse\_read\_status()}}
+{\footnotesize\ttfamily int() mouse\+\_\+read\+\_\+status (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{status }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{mouse_8h_ae61f9a128e7b7ac6922e520f40b8ae02_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mouse_8h_ae61f9a128e7b7ac6922e520f40b8ae02_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mouse_8h_a20285aed4b3ef45812cd967532dd09db}\label{mouse_8h_a20285aed4b3ef45812cd967532dd09db}} 
+\index{mouse.h@{mouse.h}!mouse\_subscribe\_int@{mouse\_subscribe\_int}}
+\index{mouse\_subscribe\_int@{mouse\_subscribe\_int}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{mouse\_subscribe\_int()}{mouse\_subscribe\_int()}}
+{\footnotesize\ttfamily int() mouse\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{mouse_8h_a20285aed4b3ef45812cd967532dd09db_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mouse_8h_a3ecf823d80520009ae5e0d76ae40a3c3}\label{mouse_8h_a3ecf823d80520009ae5e0d76ae40a3c3}} 
+\index{mouse.h@{mouse.h}!mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}}
+\index{mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{mouse\_unsubscribe\_int()}{mouse\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() mouse\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{mouse_8h_a3ecf823d80520009ae5e0d76ae40a3c3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mouse_8h_a926121b9c6d89ac8825f115e3eb8dac3}\label{mouse_8h_a926121b9c6d89ac8825f115e3eb8dac3}} 
+\index{mouse.h@{mouse.h}!send\_command@{send\_command}}
+\index{send\_command@{send\_command}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{send\_command()}{send\_command()}}
+{\footnotesize\ttfamily int() send\+\_\+command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mouse_8h_a926121b9c6d89ac8825f115e3eb8dac3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{mouse_8h_a926121b9c6d89ac8825f115e3eb8dac3_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,7 @@
+<map id="sprite_ctor" name="sprite_ctor">
+<area shape="rect" id="node1" title=" " alt="" coords="545,107,636,133"/>
+<area shape="rect" id="node2" href="$game_8c.html#a7186fdc088677e5e6fa7dd813c87bfa6" title="Draws a number at a specific position." alt="" coords="379,56,497,83"/>
+<area shape="rect" id="node4" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,81,128,108"/>
+<area shape="rect" id="node5" href="$game_8c.html#a04ffe69eea50f5b44305702a610f6d27" title="Draws a string representing time at a specific position." alt="" coords="176,157,331,184"/>
+<area shape="rect" id="node3" href="$game_8c.html#a3bfb2185ace92c19052be0f509932e2b" title="Draws the retry menu." alt="" coords="191,5,316,32"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="vg_draw_hline" name="vg_draw_hline">
+<area shape="rect" id="node1" title=" " alt="" coords="761,156,877,183"/>
+<area shape="rect" id="node2" href="$graphic_8c.html#a99d2da2559e11200c6b40c469e9977ec" title=" " alt="" coords="568,156,713,183"/>
+<area shape="rect" id="node3" href="$game_8c.html#a71ac625b9fd425663e60c562951e9cf4" title="Checks if there is a collision between the player and an enemy." alt="" coords="176,55,345,82"/>
+<area shape="rect" id="node4" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,182,128,208"/>
+<area shape="rect" id="node5" href="$game_8c.html#a6bca5bf19a8b0b98ac2f09f8cd85b53e" title="Checks if there is a collision between a shot and an enemy." alt="" coords="183,106,339,132"/>
+<area shape="rect" id="node6" href="$game_8c.html#a7186fdc088677e5e6fa7dd813c87bfa6" title="Draws a number at a specific position." alt="" coords="201,156,320,183"/>
+<area shape="rect" id="node7" href="$game_8c.html#a04ffe69eea50f5b44305702a610f6d27" title="Draws a string representing time at a specific position." alt="" coords="183,207,338,234"/>
+<area shape="rect" id="node8" href="$game_8c.html#a71ec230f1c028880ec9f21076d9ce874" title=" " alt="" coords="393,55,520,82"/>
+<area shape="rect" id="node9" href="$game_8c.html#a3deda41820b7949e8f4ae1353fb8881b" title="Handles a keyboard click event." alt="" coords="407,258,506,284"/>
+<area shape="rect" id="node10" href="$game_8c.html#a3feacc725c0bf5fbadc7cd2823758cab" title="Updates the health of the player." alt="" coords="401,308,512,335"/>
+<area shape="rect" id="node11" href="$game_8c.html#a849312d9225661033017dd84281bfd07" title="Updates the shots information." alt="" coords="405,359,508,386"/>
+</map>

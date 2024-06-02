@@ -1,0 +1,5 @@
+<map id="draw_numbers" name="draw_numbers">
+<area shape="rect" id="node1" title="Draws a number at a specific position." alt="" coords="349,31,468,57"/>
+<area shape="rect" id="node2" href="$game_8c.html#a3bfb2185ace92c19052be0f509932e2b" title="Draws the retry menu." alt="" coords="176,5,301,32"/>
+<area shape="rect" id="node3" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,31,128,57"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="calculate_new_y" name="calculate_new_y">
+<area shape="rect" id="node1" title="Calculates a new y position for an enemy." alt="" coords="644,77,775,104"/>
+<area shape="rect" id="node2" href="$game_8c.html#a71ec230f1c028880ec9f21076d9ce874" title=" " alt="" coords="431,48,558,75"/>
+<area shape="rect" id="node6" href="$game_8c.html#aab42810e09d04c66f738beb93f20a7e9" title="Handles the horizontal movement of two enemies." alt="" coords="393,99,596,141"/>
+<area shape="rect" id="node3" href="$game_8c.html#a71ac625b9fd425663e60c562951e9cf4" title="Checks if there is a collision between the player and an enemy." alt="" coords="176,5,345,32"/>
+<area shape="rect" id="node5" href="$game_8c.html#a6bca5bf19a8b0b98ac2f09f8cd85b53e" title="Checks if there is a collision between a shot and an enemy." alt="" coords="183,56,339,83"/>
+<area shape="rect" id="node4" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,56,128,83"/>
+</map>

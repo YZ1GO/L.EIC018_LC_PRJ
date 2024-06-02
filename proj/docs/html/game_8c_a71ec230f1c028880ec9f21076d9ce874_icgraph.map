@@ -1,0 +1,6 @@
+<map id="handle_collision" name="handle_collision">
+<area shape="rect" id="node1" title=" " alt="" coords="393,31,520,57"/>
+<area shape="rect" id="node2" href="$game_8c.html#a71ac625b9fd425663e60c562951e9cf4" title="Checks if there is a collision between the player and an enemy." alt="" coords="176,5,345,32"/>
+<area shape="rect" id="node4" href="$game_8c.html#a6bca5bf19a8b0b98ac2f09f8cd85b53e" title="Checks if there is a collision between a shot and an enemy." alt="" coords="183,56,339,83"/>
+<area shape="rect" id="node3" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,31,128,57"/>
+</map>

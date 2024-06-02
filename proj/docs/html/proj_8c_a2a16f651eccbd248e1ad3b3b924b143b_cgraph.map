@@ -1,0 +1,49 @@
+<map id="proj_main_loop" name="proj_main_loop">
+<area shape="rect" id="node1" title=" " alt="" coords="5,1095,128,1121"/>
+<area shape="rect" id="node2" href="$mouse_8c.html#a25afb9cf1225bb0b03c80719eb1a9e66" title=" " alt="" coords="235,5,339,32"/>
+<area shape="rect" id="node3" href="$game_8c.html#a71ac625b9fd425663e60c562951e9cf4" title="Checks if there is a collision between the player and an enemy." alt="" coords="202,461,371,488"/>
+<area shape="rect" id="node7" href="$sprite_8c.html#a0d85a9d10803dfbda6b848b690b617c6" title=" " alt="" coords="757,411,856,437"/>
+<area shape="rect" id="node8" href="$sprite_8c.html#a3b4d4650099c6fefa3515801dca0d1d9" title=" " alt="" coords="749,613,865,640"/>
+<area shape="rect" id="node9" href="$graphic_8c.html#a99d2da2559e11200c6b40c469e9977ec" title=" " alt="" coords="734,816,879,843"/>
+<area shape="rect" id="node10" href="$game_8c.html#a6bca5bf19a8b0b98ac2f09f8cd85b53e" title="Checks if there is a collision between a shot and an enemy." alt="" coords="209,664,365,691"/>
+<area shape="rect" id="node11" href="$game_8c.html#a7186fdc088677e5e6fa7dd813c87bfa6" title="Draws a number at a specific position." alt="" coords="501,917,620,944"/>
+<area shape="rect" id="node12" href="$sprite_8c.html#af1e91d5dc0d72c2d520eb366decbb689" title=" " alt="" coords="761,968,852,995"/>
+<area shape="rect" id="node13" href="$game_8c.html#a04ffe69eea50f5b44305702a610f6d27" title="Draws a string representing time at a specific position." alt="" coords="483,968,638,995"/>
+<area shape="rect" id="node14" href="$game_8c.html#a9fa55175b609f65c1d86073f051acdb9" title="Draws the menu." alt="" coords="515,411,606,437"/>
+<area shape="rect" id="node15" href="$game_8c.html#a3bfb2185ace92c19052be0f509932e2b" title="Draws the retry menu." alt="" coords="224,816,349,843"/>
+<area shape="rect" id="node16" href="$graphic_8c.html#aabacb1f8185b8fc5c1918a668442fb2b" title=" " alt="" coords="213,1120,360,1147"/>
+<area shape="rect" id="node17" href="$game_8c.html#a3deda41820b7949e8f4ae1353fb8881b" title="Handles a keyboard click event." alt="" coords="511,1019,610,1045"/>
+<area shape="rect" id="node19" href="$game_8c.html#aab42810e09d04c66f738beb93f20a7e9" title="Handles the horizontal movement of two enemies." alt="" coords="459,91,662,133"/>
+<area shape="rect" id="node20" href="$game_8c.html#adc79a501b5c797334ed3c575398c8cea" title="Handles the movement of a sprite based on a scancode." alt="" coords="219,1171,355,1197"/>
+<area shape="rect" id="node21" href="$game_8c.html#a3b8e1002185fe5e1701673e7ce5db500" title="Handles the movement of a sprite based on mouse input." alt="" coords="176,1221,397,1248"/>
+<area shape="rect" id="node22" href="$game_8c.html#a83c1c82add046d06f99404e3777540d6" title="Handles the movement of a shot." alt="" coords="478,208,643,235"/>
+<area shape="rect" id="node23" href="$game_8c.html#a72b29117f6abaa3f1a6ce98d07224cde" title="Handles the spawning of a shot." alt="" coords="491,309,630,336"/>
+<area shape="rect" id="node24" href="$game_8c.html#a6938d29764b636746ce8d69840a6a61f" title="Handles the vertical movement of two enemies." alt="" coords="445,40,676,67"/>
+<area shape="rect" id="node25" href="$keyboard_8c.html#aab084c9c77ba692fb692243554e3fe7d" title=" " alt="" coords="211,1373,363,1400"/>
+<area shape="rect" id="node29" href="$keyboard_8c.html#ab1f27c240a6c7b800a98edcab59a0977" title=" " alt="" coords="221,1475,352,1501"/>
+<area shape="rect" id="node30" href="$keyboard_8c.html#a7cf9ff7b2a68cc388492c91756a55153" title=" " alt="" coords="213,1525,360,1552"/>
+<area shape="rect" id="node31" href="$mouse_8c.html#a210374b50462acdedab00df64d5cea3c" title=" " alt="" coords="244,1323,329,1349"/>
+<area shape="rect" id="node34" href="$mouse_8c.html#a20285aed4b3ef45812cd967532dd09db" title=" " alt="" coords="207,1576,366,1603"/>
+<area shape="rect" id="node35" href="$mouse_8c.html#a3ecf823d80520009ae5e0d76ae40a3c3" title=" " alt="" coords="199,1627,374,1653"/>
+<area shape="rect" id="node36" href="$rtc_8c.html#a6e8238e632c34c9ed1fb03ee69506721" title=" " alt="" coords="231,1424,343,1451"/>
+<area shape="rect" id="node38" href="$rtc_8c.html#a5171a9c0f54940fe60f7500896afcc86" title=" " alt="" coords="221,1677,353,1704"/>
+<area shape="rect" id="node39" href="$rtc_8c.html#ab8f17bf5280c908c8b199a90fefcc758" title=" " alt="" coords="213,1728,361,1755"/>
+<area shape="rect" id="node40" href="$mouse_8c.html#a926121b9c6d89ac8825f115e3eb8dac3" title=" " alt="" coords="224,1272,349,1299"/>
+<area shape="rect" id="node41" href="$graphic_8c.html#aa3eb82d3b44f0375e27216392595fdb3" title=" " alt="" coords="232,1779,341,1805"/>
+<area shape="rect" id="node42" href="$i8254_8h.html#a91a2072306c68353712a6b771287dc2c" title=" " alt="" coords="218,1829,355,1856"/>
+<area shape="rect" id="node43" href="$i8254_8h.html#ac57a7e1140a7e00ad95ac5488d2a671b" title=" " alt="" coords="211,1880,362,1907"/>
+<area shape="rect" id="node44" href="$i8254_8h.html#afabd21de449be154dd65d5fdb2d8045d" title=" " alt="" coords="203,1931,370,1957"/>
+<area shape="rect" id="node45" href="$game_8c.html#a3feacc725c0bf5fbadc7cd2823758cab" title="Updates the health of the player." alt="" coords="505,563,616,589"/>
+<area shape="rect" id="node46" href="$game_8c.html#a849312d9225661033017dd84281bfd07" title="Updates the shots information." alt="" coords="509,613,612,640"/>
+<area shape="rect" id="node47" href="$graphic_8c.html#aa6c1ff5024cd4d15e476bce487584daa" title=" " alt="" coords="253,1981,320,2008"/>
+<area shape="rect" id="node4" href="$game_8c.html#a71ec230f1c028880ec9f21076d9ce874" title=" " alt="" coords="497,360,624,387"/>
+<area shape="rect" id="node5" href="$game_8c.html#aec95fdcd28e4225d8b2ceac7a7c1ef7f" title="Calculates a new x position for an enemy." alt="" coords="741,109,872,136"/>
+<area shape="rect" id="node6" href="$game_8c.html#a030abb8260262abccea11d958aa31f71" title="Calculates a new y position for an enemy." alt="" coords="741,229,872,256"/>
+<area shape="rect" id="node18" href="$game_8c.html#a53ac7c066a59f3ff126d50ede430bb94" title="Checks if there is a collision in the menu." alt="" coords="724,1019,889,1045"/>
+<area shape="rect" id="node26" href="$keyboard_8c.html#a2089c90b6dc655a60a77973a89d0c76f" title=" " alt="" coords="489,1424,632,1451"/>
+<area shape="rect" id="node28" href="$keyboard_8c.html#aa61cbb27cd24e6af6104d76ca516406c" title=" " alt="" coords="500,1373,621,1400"/>
+<area shape="rect" id="node27" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title=" " alt="" coords="757,1348,856,1375"/>
+<area shape="rect" id="node32" href="$mouse_8c.html#a6cb8b1b76cd7f500442d8d98d344fd41" title=" " alt="" coords="491,1323,630,1349"/>
+<area shape="rect" id="node33" href="$mouse_8c.html#ae61f9a128e7b7ac6922e520f40b8ae02" title=" " alt="" coords="486,1272,635,1299"/>
+<area shape="rect" id="node37" href="$rtc_8c.html#a4b02e005d3b54c5760608f97c58950f9" title=" " alt="" coords="495,1475,627,1501"/>
+</map>

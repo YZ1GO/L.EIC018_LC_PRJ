@@ -1,0 +1,4 @@
+<map id="check_shot_collision" name="check_shot_collision">
+<area shape="rect" id="node1" title="Checks if there is a collision between a shot and an enemy." alt="" coords="176,5,332,32"/>
+<area shape="rect" id="node2" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,128,32"/>
+</map>

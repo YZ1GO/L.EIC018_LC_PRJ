@@ -224,7 +224,7 @@ This is the primary file for the project. It is responsible for implementing the
 
 ### Function Call Graph (Doxygen)
 
-TO BE DONE
+<img src="proj/docs/html/function_call_graph.png">
 
 ## Section 4 (Implementation Details)
 
