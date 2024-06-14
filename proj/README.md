@@ -36,7 +36,7 @@ To add a strategic twist, players are also equipped with a limited number of sho
 
 When you open the game, you will come across a user-friendly menu offering options to start or exit the game.
 
-<img src="proj/img/menu.png">
+<img src="img/menu.png">
 
 You can move the cursor with the "I" (up), "J" (left), "K"(down) and "L" (right) letters or, if you prefer, you can use the mouse to move the cursor! To click, you can use the spacebar!
 
@@ -44,7 +44,7 @@ You can move the cursor with the "I" (up), "J" (left), "K"(down) and "L" (right)
 
 When you start the game, your environment will have the following layout:
 
-<img src="proj/img/gameplay.png">
+<img src="img/gameplay.png">
 
 #### Player and Enemies
 
@@ -74,7 +74,7 @@ When you start the game, your environment will have the following layout:
 
 Upon the conclusion of your game, you'll be directed to a menu that displays your score and offers the options to either restart the game or exit the program.
 
-<img src="proj/img/gameover.png">
+<img src="img/gameover.png">
 
 ## Section 2 (Project Status)
 
@@ -132,7 +132,7 @@ Once a second has elapsed, the timer triggers various functions to update on-scr
 
 #### Interrupt:
 
-<img src="proj/img/timer.png">
+<img src="img/timer.png">
 
 ### KBD
 
@@ -140,17 +140,17 @@ The keyboard serves as a crucial interface for player-game interaction. For inst
 
 #### Interrupt:
 
-<img src="proj/img/keyboard.png">
+<img src="img/keyboard.png">
 
 #### Important functions called:
 
 ##### handleClick():
 
-<img src="proj/img/handleclick.png">
+<img src="img/handleclick.png">
 
 ##### handleMovement():
 
-<img src="proj/img/handlemovement.png">
+<img src="img/handlemovement.png">
 
 ### Graphics Card
 
@@ -158,7 +158,7 @@ The selected video mode for our game is the direct color mode with a resolution 
 
 To minimize screen flickering and enhance the player's experience, we implemented double buffering through a copy method, ensuring smoother gameplay.
 
-<img src="proj/img/secondbuffer.png">
+<img src="img/secondbuffer.png">
 
 When the player initiates a left or right movement, the plane's sprite changes to depict a tilt towards the respective direction. It then reverts back to the original sprite, creating a simple yet effective horizontal movement animation. No animation occurs for up or down movements.
 
@@ -168,7 +168,7 @@ When a shot hits an enemy, it also results in an explosion. The enemy then disap
 
 | Collision | Shoot |
 |:-:|:-:|
-| <img src="proj/img/collision.png" width="400" /> | <img src="proj/img/shoot.png" width="400" /> |
+| <img src="img/collision.png" width="400" /> | <img src="img/shoot.png" width="400" /> |
 
 ### Mouse
 
@@ -176,13 +176,13 @@ Like the keyboard, it serves as an interface for player-game interaction, allowi
 
 #### Interrupt: 
 
-<img src="proj/img/mouse.png">
+<img src="img/mouse.png">
 
 #### Important functions called:
 
 ##### handleMovementCursorMouse()
 
-<img src="proj/img/handlemovementcursormouse.png">
+<img src="img/handlemovementcursormouse.png">
 
 ### RTC
 
@@ -192,7 +192,7 @@ The Real-Time Clock (RTC) is used to obtain the current time. While it doesn't h
 
 ##### rtc_read_time()
 
-<img src="proj/img/rtc.png">
+<img src="img/rtc.png">
 
 ## Section 3 (Code Organization/Structure)
 
@@ -242,7 +242,7 @@ The player is confined to a specific area and is not allowed to cross the bounda
 
 Let's see an example:
 
-<img src="proj/img/handlemovement.png">
+<img src="img/handlemovement.png">
 
 Beforehand, we should check if it is the player or the cursor for which we are calling the function.
 
@@ -252,7 +252,7 @@ If it is the player, its movement should be inside the arena. If the movement do
 
 A key aspect of the game is the interaction with enemies. If the player's sprite intersects with an enemy's sprite, indicating a collision, the player loses health. This check is performed continuously during the game.
 
-<img src="proj/img/enemiescollision.png">
+<img src="img/enemiescollision.png">
 
 Should the function return true, the player's health will be decreased.
 
@@ -275,7 +275,7 @@ same happens when tilting to the left.
 
 This can be achieved by the following implementation:
 
-<img src="proj/img/animatedsprite.png">
+<img src="img/animatedsprite.png">
 
 The plane will temporarily display a sprite tilted in the respective direction, before reverting back to the normal sprite.
 
@@ -285,7 +285,7 @@ Throughout the game, various values require updating. Each time the program rece
 
 In each second, we will update those values. Let's check the following code:
 
-<img src="proj/img/gamelifecycle.png">
+<img src="img/gamelifecycle.png">
 
 As we can see, we will have a sprite for each element and the respective label. In each second, the score and the elapsed time will increase linearly with the elapsed time. The health will be updated according to the player's health and the clock will be updated with the retrieved time from the RTC.
 
