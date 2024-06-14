@@ -13,7 +13,7 @@
 
 6. Clone the repository in the shared folder
 ```bash
-$ git clone git@github.com:YZ1GO/L.EIC018_LC_PRJ.git
+git clone git@github.com:YZ1GO/L.EIC018_LC_PRJ.git
 ```
 
 # How to run
@@ -21,4 +21,9 @@ $ git clone git@github.com:YZ1GO/L.EIC018_LC_PRJ.git
 
 * The credentials for login are: <strong>lcom</strong> with password <strong>lcom</strong>.
 
-
+2. Build and run the project
+```bash
+cd labs/L.EIC018_LC_PRJ/proj/src
+make
+lcom_run proj
+```
