@@ -1,0 +1,7 @@
+# Exclude Doxygen documentation files from language stats
+*.doxygen linguist-vendored
+*.tex linguist-vendored
+*.js linguist-vendored
+*.css linguist-vendored
+*.html linguist-vendored
+*.xml linguist-vendored
