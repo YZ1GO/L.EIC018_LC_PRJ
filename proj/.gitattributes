@@ -5,3 +5,5 @@
 *.css linguist-vendored
 *.html linguist-vendored
 *.xml linguist-vendored
+
+docs/** linguist-vendored
