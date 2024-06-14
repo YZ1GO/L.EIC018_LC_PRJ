@@ -27,3 +27,18 @@ cd labs/L.EIC018_LC_PRJ/proj/src
 make
 lcom_run proj
 ```
+
+3. If game crashes you can do (<strong>in a remote terminal</strong>):
+```bash
+lcom_stop proj
+```
+
+# "Remote" Access via SSH
+Rather than using the VBox terminal, you may use a terminal on the host OS (Linux, Windows or Mac) and the ssh utility to login to Minix 3.
+
+After opening a terminal (in Ubuntu or Windows) you can do:
+```bash
+ssh lcom@localhost -p 2222
+```
+
+For more info about the project click [<u>here</u>](proj/README.md)
