@@ -7,3 +7,4 @@
 *.xml linguist-vendored
 
 docs/** linguist-vendored
+../.minix-src/* linguist-vendored
